@@ -189,23 +189,68 @@
   .reveal.in{opacity:1;transform:none}
 
   @media(max-width:1024px){
+    .nav-links{display:none}
+    .burger{display:flex}
+    .nav-cta .btn-primary{display:none}
+    .nav-phone-el{display:none !important}
     .hero .wrap{grid-template-columns:1fr;gap:40px}
     .hero-bg svg{display:none}
     .classes,.why-grid,.feat-grid,.steps,.reviews{grid-template-columns:repeat(2,1fr)}
     .fleet{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr 1fr}
+    .step:nth-child(2)::after{display:none}
+    .step:nth-child(4)::after{display:none}
   }
-  @media(max-width:680px){
-    .wrap{padding:0 20px}
+  @media(max-width:768px){
+    .nav-phone-el{display:none !important}
+    .nav-cta{gap:8px}
+    .nav-cta button:first-of-type{font-size:12px;padding:10px 14px}
+    .wrap{padding:0 16px}
     .nav-links{display:none}
     .burger{display:flex}
     .nav-cta .btn-primary{display:none}
-    .pad{padding:80px 0}
+    .nav-cta button:not(.burger){display:none}
+    .nav-phone{font-size:13px}
+    .logo b{font-size:22px}
+    .logo span{font-size:11px}
+    .pad{padding:60px 0}
+    .hero{padding:100px 0 60px}
+    .hero h1{font-size:36px}
+    .hero-sub{font-size:15px}
+    .hero-stats{gap:20px}
+    .stat .num{font-size:28px}
+    .booking{padding:24px 20px}
+    .booking h3{font-size:20px}
     .services,.why-grid,.feat-grid,.steps,.reviews,.classes{grid-template-columns:1fr}
     .step::after{display:none}
-    .cta-band{padding:48px 26px}
+    .steps{gap:24px}
+    .cta-band{padding:40px 24px;border-radius:20px}
+    .cta-band h2{font-size:26px}
+    .cta-actions{flex-direction:column;align-items:center}
+    .cta-actions .btn{width:100%;justify-content:center}
     .foot-grid{grid-template-columns:1fr 1fr}
     .field-row{grid-template-columns:1fr}
+    .fleet{grid-template-columns:1fr}
+    .fleet-big{min-height:280px}
+    .section-title{font-size:28px}
+    .head-flex{flex-direction:column;align-items:flex-start;gap:16px}
+    .srv{padding:24px 20px;gap:16px}
+    .srv .ico{width:46px;height:46px}
+    .class-card{padding:24px 20px}
+    .hero-actions{flex-direction:column}
+    .hero-actions .btn{width:100%;justify-content:center}
+    .marquee span{font-size:16px}
+    .why-grid{grid-template-columns:repeat(2,1fr)}
+    .feat-grid{grid-template-columns:1fr}
+    .reviews{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .foot-bottom{flex-direction:column;align-items:flex-start;gap:12px}
+  }
+  @media(max-width:400px){
+    .hero h1{font-size:30px}
+    .booking{padding:20px 16px}
+    .class-pick{flex-wrap:wrap}
+    .class-pick button{flex:1 1 calc(50% - 4px)}
   }
 </style>
 </head>
@@ -221,7 +266,7 @@
       <li><a href="#fleet">Автопарк</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="tel:+380000000000" class="nav-phone">+38 (000) 000-00-00</a>
+      <a href="tel:+380000000000" class="nav-phone nav-phone-el">+38 (000) 000-00-00</a>
       <button onclick="openCallback()" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-b);font-weight:700;font-size:14px;padding:13px 22px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(40,167,69,.28);transition:.3s;white-space:nowrap;">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7A2 2 0 0122 16.9z"/></svg>
         Зворотній зв'язок
@@ -231,6 +276,20 @@
     </div>
   </div>
 </header>
+
+<div id="mobileMenu" style="display:none;position:fixed;top:84px;left:0;right:0;z-index:999;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:20px 24px;box-shadow:0 20px 40px rgba(16,42,90,.12);">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <a href="#classes" onclick="closeMenu()" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Класи авто</a>
+    <a href="#services" onclick="closeMenu()" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Послуги</a>
+    <a href="#why" onclick="closeMenu()" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Про нас</a>
+    <a href="#fleet" onclick="closeMenu()" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Автопарк</a>
+    <a href="tel:+380000000000" style="font-family:var(--font-b);font-weight:700;font-size:16px;color:var(--blue);padding:12px 0;border-bottom:1px solid var(--line-2);">+38 (000) 000-00-00</a>
+    <div style="display:flex;gap:12px;margin-top:4px;">
+      <button onclick="closeMenu();openCallback();" style="flex:1;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;font-family:var(--font-b);font-weight:700;font-size:14px;padding:14px;border-radius:100px;border:none;cursor:pointer;">📞 Зворотній зв'язок</button>
+      <a href="#booking" onclick="closeMenu()" style="flex:1;background:linear-gradient(135deg,#3B6BE0,var(--blue));color:#fff;font-family:var(--font-b);font-weight:700;font-size:14px;padding:14px;border-radius:100px;text-align:center;">Замовити поїздку</a>
+    </div>
+  </div>
+</div>
 
 <section class="hero">
   <div class="hero-bg">
@@ -286,14 +345,32 @@
       </div>
       <div class="field"><label>Орієнтовна відстань, км</label><input type="number" id="dist" value="100" min="1"></div>
       <div class="estimate">
-        <span class="lbl">Орієнтовна вартість маршруту</span>
+        <span class="lbl">Приблизна вартість*</span>
         <span class="val" id="estVal">2 300 <small>грн</small></span>
       </div>
-      <button class="btn btn-primary" onclick="bookNow()">Замовити поїздку</button>
+      <p style="font-size:11px;color:var(--grey-2);margin-bottom:12px;">* Точна вартість узгоджується з оператором після підтвердження заявки</p><button class="btn btn-primary" onclick="bookNow()">Замовити поїздку</button>
     </div>
   </div>
 </section>
 
+
+<div style="background:linear-gradient(135deg,#15294A,#1a3560);padding:20px 0;border-top:1px solid rgba(91,134,240,.2);">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div style="width:48px;height:48px;border-radius:12px;background:rgba(91,134,240,.2);display:grid;place-items:center;flex-shrink:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#5B86F0"><path d="M21 4L3 11l5 2 2 6 3-4 5 4 3-15z"/></svg>
+      </div>
+      <div>
+        <div style="font-family:var(--font-b);font-weight:700;font-size:15px;color:#fff;">Відстежуйте статус поїздки в Telegram</div>
+        <div style="font-family:var(--font-b);font-size:13px;color:#AAB6CC;margin-top:2px;">Підпишіться на бота — отримуйте сповіщення про підтвердження та статус замовлення</div>
+      </div>
+    </div>
+    <a href="https://t.me/transferkh_bot" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:700;font-size:14px;padding:12px 24px;border-radius:100px;white-space:nowrap;box-shadow:0 8px 24px rgba(43,87,200,.4);text-decoration:none;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 4L3 11l5 2 2 6 3-4 5 4 3-15z"/></svg>
+      @transferkh_bot
+    </a>
+  </div>
+</div>
 <div class="strip">
   <div class="marquee">
     <span>Фіксована ціна за маршрут</span><span>200+ міст України</span><span>З точки в точку</span>
@@ -372,6 +449,14 @@
       <div class="srv reveal">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><circle cx="12" cy="16" r="1"/><circle cx="20" cy="16" r="1"/></svg></div>
         <div><h3>Перегін авто</h3><p>Перевеземо Ваш автомобіль у будь-яке місто України. Досвідчені водії, повна відповідальність за авто.</p></div>
+      </div>
+      <div class="srv reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12l20-8-8 20-2-8-10-4z"/></svg></div>
+        <div><h3>До аеропортів</h3><p>Доставимо до аеропортів Польщі, Румунії, Угорщини та інших країн. Варшава, Краків, Жешув, Бухарест — фіксована ціна за маршрут.</p></div>
+      </div>
+      <div class="srv reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></div>
+        <div><h3>Поїздки за кордон</h3><p>Польща, Румунія, Угорщина, Молдова та інші країни ЄС. Досвідчені водії з досвідом міжнародних маршрутів.</p></div>
       </div>
     </div>
   </div>
@@ -597,7 +682,7 @@
   const estEl = document.getElementById('estVal');
   function calc() {
     const km = Math.max(0, +distEl.value || 0);
-    const price = Math.round(km * rate);
+    const price = Math.round(km * rate * 1.3);
     estEl.innerHTML = price.toLocaleString('uk') + ' <small>грн</small>';
   }
   distEl.addEventListener('input', calc); calc();
@@ -630,7 +715,17 @@
   }
 
   document.getElementById('date').valueAsDate = new Date();
-  document.getElementById('burger').addEventListener('click', () => document.getElementById('booking').scrollIntoView({behavior:'smooth'}));
+  let menuOpen = false;
+  document.getElementById('burger').addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    document.getElementById('mobileMenu').style.display = menuOpen ? 'block' : 'none';
+    document.getElementById('burger').style.opacity = menuOpen ? '0.6' : '1';
+  });
+  function closeMenu() {
+    menuOpen = false;
+    document.getElementById('mobileMenu').style.display = 'none';
+    document.getElementById('burger').style.opacity = '1';
+  }
 
   function openCallback() {
     document.getElementById('callbackModal').style.display = 'flex';
