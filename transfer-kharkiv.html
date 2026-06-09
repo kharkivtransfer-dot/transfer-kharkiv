@@ -49,11 +49,12 @@
   .burger span{width:26px;height:2px;background:var(--ink);border-radius:2px}
 
   /* HERO */
-  .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0 80px;overflow:hidden}
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-start;padding:140px 0 80px;overflow:hidden}
   .hero-bg{position:absolute;inset:0;z-index:0}
   .hero-bg::before{content:"";position:absolute;inset:0;background:radial-gradient(110% 80% at 80% 12%,rgba(91,134,240,.18),transparent 55%),radial-gradient(90% 70% at 8% 100%,rgba(43,87,200,.10),transparent 60%),linear-gradient(180deg,#F2F5FA 0%,#EAEFF6 60%,#EEF2F7 100%)}
   .hero-bg svg{position:absolute;right:-3%;bottom:1%;width:60%;filter:drop-shadow(0 28px 50px rgba(20,40,80,.18))}
-  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:flex-start}
+  .hero-copy{padding-top:60px}
   .hero h1{font-size:clamp(44px,6.2vw,80px);margin:24px 0 24px}
   .hero h1 em{font-style:italic;color:var(--blue)}
   .hero-sub{font-size:18px;color:var(--grey);max-width:490px;margin-bottom:36px}
@@ -214,7 +215,7 @@
     .logo b{font-size:22px}
     .logo span{font-size:11px}
     .pad{padding:60px 0}
-    .hero{padding:100px 0 60px}
+    .hero{padding:80px 0 60px}
     .hero h1{font-size:36px}
     .hero-sub{font-size:15px}
     .hero-stats{gap:20px}
