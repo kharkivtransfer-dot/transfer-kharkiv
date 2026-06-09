@@ -700,7 +700,7 @@
     if (!from) { alert('Введіть місто відправлення'); return; }
     if (!to) { alert('Введіть місто призначення'); return; }
     try {
-      const res = await fetch('http://localhost:8000/booking', {
+      const res = await fetch('https://web-production-a94ea.up.railway.app/booking', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({name, phone, from_city: from, to_city: to, date, time, car_class: carClass, price})
