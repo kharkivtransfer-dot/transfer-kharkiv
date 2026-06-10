@@ -22,7 +22,7 @@
   ::selection{background:var(--blue);color:#fff}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
-  .eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);font-weight:700;display:inline-flex;align-items:center;gap:12px}
+  .eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);font-weight:900;display:inline-flex;align-items:center;gap:12px}
   .eyebrow::before{content:"";width:30px;height:2px;background:var(--blue);border-radius:2px}
   h1,h2,h3{font-family:var(--font-d);font-weight:500;line-height:1.08;letter-spacing:-.01em;color:var(--ink)}
   .section-title{font-size:clamp(34px,5vw,56px);margin:18px 0 22px}
@@ -32,15 +32,15 @@
   .nav{display:flex;align-items:center;justify-content:space-between;height:84px}
   .logo{display:flex;flex-direction:column;line-height:1}
   .logo b{font-family:var(--font-d);font-size:32px;letter-spacing:.05em;font-weight:600;color:var(--ink)}
-  .logo span{font-size:16px;letter-spacing:.44em;color:var(--blue);margin-top:5px;font-weight:700}
+  .logo span{font-size:16px;letter-spacing:.44em;color:var(--blue);margin-top:5px;font-weight:900}
   .nav-links{display:flex;gap:36px;list-style:none}
   .nav-links a{font-size:14px;font-weight:600;color:var(--navy);opacity:.85;position:relative;transition:.3s}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--blue);border-radius:2px;transition:.4s var(--ease)}
   .nav-links a:hover{opacity:1}
   .nav-links a:hover::after{width:100%}
   .nav-cta{display:flex;align-items:center;gap:16px}
-  .nav-phone{font-weight:700;font-size:15px;color:var(--ink)}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--font-b);font-weight:700;font-size:14px;padding:14px 26px;border-radius:100px;border:none;cursor:pointer;transition:.4s var(--ease)}
+  .nav-phone{font-weight:900;font-size:15px;color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--font-b);font-weight:900;font-size:14px;padding:14px 26px;border-radius:100px;border:none;cursor:pointer;transition:.4s var(--ease)}
   .btn-primary{background:linear-gradient(135deg,#3B6BE0,var(--blue));color:#fff;box-shadow:0 10px 28px rgba(43,87,200,.28)}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(43,87,200,.42)}
   .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
@@ -69,13 +69,13 @@
   .booking h3{font-size:23px;margin-bottom:4px}
   .booking .bk-sub{font-size:13px;color:var(--grey);margin-bottom:22px}
   .field{margin-bottom:14px}
-  .field label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:700;display:block;margin-bottom:7px}
+  .field label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:900;display:block;margin-bottom:7px}
   .field input,.field select{width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;font-weight:500;padding:14px 16px;border-radius:12px;transition:.3s;outline:none}
   .field input::placeholder{color:var(--grey-2)}
   .field input:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(43,87,200,.08)}
   .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .class-pick{display:flex;gap:8px;margin:6px 0 18px}
-  .class-pick button{flex:1;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--grey);padding:12px 4px;border-radius:11px;cursor:pointer;font-family:var(--font-b);font-size:13px;font-weight:700;transition:.3s}
+  .class-pick button{flex:1;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--grey);padding:12px 4px;border-radius:11px;cursor:pointer;font-family:var(--font-b);font-size:13px;font-weight:900;transition:.3s}
   .class-pick button.active{border-color:var(--blue);color:var(--blue);background:rgba(43,87,200,.07)}
   .estimate{display:flex;align-items:baseline;justify-content:space-between;padding:16px 0;border-top:1px solid var(--line);margin-top:4px}
   .estimate .lbl{font-size:13px;color:var(--grey)}
@@ -112,7 +112,7 @@
   .srv{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--radius);padding:40px;display:flex;gap:26px;transition:.5s var(--ease);box-shadow:var(--shadow-sm)}
   .srv:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
   .srv .ico{flex-shrink:0;width:58px;height:58px;border-radius:14px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--blue-2),var(--blue))}
-  .srv h3{font-size:22px;margin-bottom:10px}
+  .srv h3{font-size:22px;margin-bottom:10px;font-weight:900}
   .srv p{color:var(--grey);font-size:15px}
 
   /* WHY */
@@ -155,7 +155,7 @@
   .review .stars{color:var(--blue);letter-spacing:3px;margin-bottom:16px;font-size:14px}
   .review p{font-size:15px;line-height:1.7;margin-bottom:22px;color:var(--navy)}
   .review .who{display:flex;align-items:center;gap:13px}
-  .review .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blue-2),var(--blue-deep));display:grid;place-items:center;color:#fff;font-weight:700;font-family:var(--font-d)}
+  .review .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blue-2),var(--blue-deep));display:grid;place-items:center;color:#fff;font-weight:900;font-family:var(--font-d)}
   .review .who b{font-size:14.5px;display:block;color:var(--ink)}
   .review .who span{font-size:12.5px;color:var(--grey)}
 
@@ -174,7 +174,7 @@
   /* FOOTER */
   footer{border-top:1px solid var(--line);padding:70px 0 36px;background:var(--bg-2)}
   .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
-  .foot-grid h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:20px;font-weight:700}
+  .foot-grid h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:20px;font-weight:900}
   .foot-grid ul{list-style:none}
   .foot-grid li{margin-bottom:12px}
   .foot-grid a{color:var(--grey);font-size:14.5px;transition:.3s}
@@ -268,7 +268,7 @@
     </ul>
     <div class="nav-cta">
       <a href="tel:+380000000000" class="nav-phone nav-phone-el">+38 (000) 000-00-00</a>
-      <button onclick="openCallback()" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-b);font-weight:700;font-size:14px;padding:13px 22px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(40,167,69,.28);transition:.3s;white-space:nowrap;">
+      <button onclick="openCallback()" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-b);font-weight:900;font-size:14px;padding:13px 22px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(40,167,69,.28);transition:.3s;white-space:nowrap;">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7A2 2 0 0122 16.9z"/></svg>
         Зворотній зв'язок
       </button>
@@ -284,10 +284,10 @@
     <a href="#services" onclick="closeMenu()" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Послуги</a>
     <a href="#why" onclick="closeMenu()" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Про нас</a>
     <a href="#fleet" onclick="closeMenu()" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Автопарк</a>
-    <a href="tel:+380000000000" style="font-family:var(--font-b);font-weight:700;font-size:16px;color:var(--blue);padding:12px 0;border-bottom:1px solid var(--line-2);">+38 (000) 000-00-00</a>
+    <a href="tel:+380000000000" style="font-family:var(--font-b);font-weight:900;font-size:16px;color:var(--blue);padding:12px 0;border-bottom:1px solid var(--line-2);">+38 (000) 000-00-00</a>
     <div style="display:flex;gap:12px;margin-top:4px;">
-      <button onclick="closeMenu();openCallback();" style="flex:1;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;font-family:var(--font-b);font-weight:700;font-size:14px;padding:14px;border-radius:100px;border:none;cursor:pointer;">📞 Зворотній зв'язок</button>
-      <a href="#booking" onclick="closeMenu()" style="flex:1;background:linear-gradient(135deg,#3B6BE0,var(--blue));color:#fff;font-family:var(--font-b);font-weight:700;font-size:14px;padding:14px;border-radius:100px;text-align:center;">Замовити поїздку</a>
+      <button onclick="closeMenu();openCallback();" style="flex:1;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;font-family:var(--font-b);font-weight:900;font-size:14px;padding:14px;border-radius:100px;border:none;cursor:pointer;">📞 Зворотній зв'язок</button>
+      <a href="#booking" onclick="closeMenu()" style="flex:1;background:linear-gradient(135deg,#3B6BE0,var(--blue));color:#fff;font-family:var(--font-b);font-weight:900;font-size:14px;padding:14px;border-radius:100px;text-align:center;">Замовити поїздку</a>
     </div>
   </div>
 </div>
@@ -339,7 +339,7 @@
         <div class="field"><label>Час</label><input type="time" id="time"></div>
       </div>
       <div style="background:rgba(43,87,200,.07);border:1.5px solid var(--blue);border-radius:12px;padding:14px 16px;margin-bottom:14px;">
-        <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:700;">Тариф</span>
+        <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:900;">Тариф</span>
         <div style="font-family:var(--font-d);font-size:22px;color:var(--ink);margin-top:4px;">25 <span style="font-size:14px;color:var(--grey);font-family:var(--font-b);">грн/км</span></div>
       </div>
       <div class="field"><label>Орієнтовна відстань, км</label><input type="number" id="dist" value="100" min="1"></div>
@@ -360,11 +360,11 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="#5B86F0"><path d="M21 4L3 11l5 2 2 6 3-4 5 4 3-15z"/></svg>
       </div>
       <div>
-        <div style="font-family:var(--font-b);font-weight:700;font-size:15px;color:#fff;">Відстежуйте статус поїздки в Telegram</div>
+        <div style="font-family:var(--font-b);font-weight:900;font-size:15px;color:#fff;">Відстежуйте статус поїздки в Telegram</div>
         <div style="font-family:var(--font-b);font-size:13px;color:#AAB6CC;margin-top:2px;">Підпишіться на бота — отримуйте сповіщення про підтвердження та статус замовлення</div>
       </div>
     </div>
-    <a href="https://t.me/transferkh_bot" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:700;font-size:14px;padding:12px 24px;border-radius:100px;white-space:nowrap;box-shadow:0 8px 24px rgba(43,87,200,.4);text-decoration:none;">
+    <a href="https://t.me/transferkh_bot" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:900;font-size:14px;padding:12px 24px;border-radius:100px;white-space:nowrap;box-shadow:0 8px 24px rgba(43,87,200,.4);text-decoration:none;">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 4L3 11l5 2 2 6 3-4 5 4 3-15z"/></svg>
       @transferkh_bot
     </a>
@@ -600,14 +600,14 @@
     <h3 style="font-family:var(--font-d);font-size:26px;margin-bottom:8px;">Зворотній зв'язок</h3>
     <p style="color:var(--grey);font-size:15px;margin-bottom:24px;">Залиште номер — менеджер зателефонує протягом 5 хвилин</p>
     <div style="margin-bottom:14px;">
-      <label style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:700;display:block;margin-bottom:7px;">Ваше ім'я</label>
+      <label style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:900;display:block;margin-bottom:7px;">Ваше ім'я</label>
       <input id="cb-name" type="text" placeholder="Іван Петренко" style="width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;padding:14px 16px;border-radius:12px;outline:none;box-sizing:border-box;">
     </div>
     <div style="margin-bottom:24px;">
-      <label style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:700;display:block;margin-bottom:7px;">Номер телефону</label>
+      <label style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:900;display:block;margin-bottom:7px;">Номер телефону</label>
       <input id="cb-phone" type="tel" placeholder="+38 (0__) ___-__-__" style="width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;padding:14px 16px;border-radius:12px;outline:none;box-sizing:border-box;">
     </div>
-    <button onclick="sendCallback()" style="width:100%;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:700;font-size:15px;padding:16px;border-radius:100px;border:none;cursor:pointer;">Відправити</button>
+    <button onclick="sendCallback()" style="width:100%;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:900;font-size:15px;padding:16px;border-radius:100px;border:none;cursor:pointer;">Відправити</button>
     <p id="cb-success" style="display:none;text-align:center;color:var(--blue);font-weight:600;margin-top:16px;">✓ Дякуємо! Менеджер зв'яжеться з Вами протягом 5 хвилин.</p>
   </div>
 </div>
