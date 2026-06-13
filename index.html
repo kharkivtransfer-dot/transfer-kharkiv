@@ -684,7 +684,19 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
       });
       const data = await res.json();
       if (data.ok) {
-        alert('✅ Заявку прийнято!\n\nДля відстеження статусу підпишіться: @transferkh_bot');
+        // Очищаємо поля
+        document.getElementById('name').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('from').value = '';
+        document.getElementById('to').value = '';
+        document.getElementById('date').value = '';
+        document.getElementById('time').value = '';
+        document.getElementById('comment').value = '';
+        document.getElementById('pets').checked = false;
+        document.getElementById('dist').value = 100;
+        calc();
+        // Показуємо модалку
+        document.getElementById('successModal').style.display = 'flex';
       }
     } catch(e) {
       alert('Помилка. Зателефонуйте нам.');
@@ -728,5 +740,19 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
   }
   document.getElementById('callbackModal').addEventListener('click', function(e) { if (e.target === this) closeCallback(); });
 </script>
+<div id="successModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(14,27,48,.6);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:24px;padding:40px 32px;max-width:420px;width:100%;text-align:center;box-shadow:0 24px 60px rgba(14,27,48,.2);">
+    <div style="font-size:48px;margin-bottom:16px;">✅</div>
+    <h3 style="font-family:var(--font-d);font-size:24px;color:var(--ink);margin-bottom:12px;">Заявку прийнято!</h3>
+    <p style="font-family:var(--font-b);font-size:15px;color:var(--grey);margin-bottom:24px;line-height:1.6;">Оператор зв'яжеться з вами найближчим часом для підтвердження поїздки.</p>
+    <p style="font-family:var(--font-b);font-size:14px;color:var(--grey);margin-bottom:20px;">Відстежуйте статус замовлення в нашому Telegram-боті:</p>
+    <a href="https://t.me/transferkh_bot" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:900;font-size:15px;padding:14px 28px;border-radius:100px;text-decoration:none;margin-bottom:20px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.02 9.52c-.149.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 14.748l-2.95-.924c-.641-.2-.654-.641.136-.953l11.527-4.448c.537-.194 1.006.131.37.825z"/></svg>
+      @transferkh_bot
+    </a>
+    <br>
+    <button onclick="document.getElementById('successModal').style.display='none'" style="font-family:var(--font-b);font-size:14px;color:var(--grey);background:none;border:none;cursor:pointer;padding:8px;">Закрити</button>
+  </div>
+</div>
 </body>
 </html>
