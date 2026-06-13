@@ -345,7 +345,16 @@
         <span class="lbl">Приблизна вартість*</span>
         <span class="val" id="estVal">2 300 <small>грн</small></span>
       </div>
-      <p style="font-size:11px;color:var(--grey-2);margin-bottom:12px;">* Точна вартість узгоджується з оператором після підтвердження заявки</p><button class="btn btn-primary" onclick="bookNow()">Замовити поїздку</button>
+      <p style="font-size:11px;color:var(--grey-2);margin-bottom:12px;">* Точна вартість узгоджується з оператором після підтвердження заявки</p>
+      <label style="display:flex;align-items:center;gap:10px;font-family:var(--font-b);font-size:14px;color:var(--ink);margin-bottom:14px;cursor:pointer;">
+        <input type="checkbox" id="pets" style="width:18px;height:18px;accent-color:var(--blue);cursor:pointer;">
+        🐾 Є тварини
+      </label>
+      <div class="field">
+        <label>Коментар</label>
+        <textarea id="comment" rows="3" placeholder="Багато багажу, дитяче крісло, зустріч в аеропорту..." style="width:100%;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:12px;font-family:var(--font-b);font-size:14px;color:var(--ink);background:var(--surface);resize:none;outline:none;transition:.3s;box-sizing:border-box;"></textarea>
+      </div>
+      <button class="btn btn-primary" onclick="bookNow()">Замовити поїздку</button>
     </div>
   </div>
 </section>
@@ -661,6 +670,8 @@
     const time = document.getElementById('time').value || '';
     const carClass = 'Комфорт';
     const price = document.getElementById('estVal').textContent.replace(/[^0-9]/g,'');
+    const comment = document.getElementById('comment').value || '';
+    const pets = document.getElementById('pets').checked;
     if (!phone) { alert('Введіть номер телефону'); return; }
     if (!from) { alert('Введіть місто відправлення'); return; }
     if (!to) { alert('Введіть місто призначення'); return; }
@@ -668,7 +679,7 @@
       const res = await fetch('https://web-production-a94ea.up.railway.app/booking', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({name, phone, from_city: from, to_city: to, date, time, car_class: carClass, price})
+        body: JSON.stringify({name, phone, from_city: from, to_city: to, date, time, car_class: carClass, price, comment, pets})
       });
       const data = await res.json();
       if (data.ok) {
