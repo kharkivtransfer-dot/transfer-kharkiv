@@ -253,7 +253,7 @@
     .class-pick{flex-wrap:wrap}
     .class-pick button{flex:1 1 calc(50% - 4px)}
   }
-textarea::placeholder{color:var(--grey-2);opacity:.25}
+textarea::placeholder{color:#B0BAC9;font-size:13px;}
 </style>
 </head>
 <body>
@@ -349,11 +349,11 @@ textarea::placeholder{color:var(--grey-2);opacity:.25}
       <p style="font-size:11px;color:var(--grey-2);margin-bottom:12px;">* Точна вартість узгоджується з оператором після підтвердження заявки</p>
       <label style="display:flex;align-items:center;gap:10px;font-family:var(--font-b);font-size:14px;color:var(--ink);margin-bottom:14px;cursor:pointer;">
         <input type="checkbox" id="pets" style="width:18px;height:18px;accent-color:var(--blue);cursor:pointer;">
-        🐾 Є тварини
+        Є тварини (домашні улюбленці)
       </label>
       <div class="field">
         <label>Коментар</label>
-        <textarea id="comment" rows="3" placeholder="Багато багажу, дитяче крісло, зустріч в аеропорту..." style="color:var(--ink)"  style="width:100%;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:12px;font-family:var(--font-b);font-size:14px;color:var(--ink);background:var(--surface);resize:none;outline:none;transition:.3s;box-sizing:border-box;"></textarea>
+        <textarea id="comment" rows="3" placeholder="Наприклад: багато багажу, дитяче крісло, зустріч в аеропорту" style="width:100%;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:12px;font-family:var(--font-b);font-size:14px;color:var(--ink);background:var(--surface);resize:none;outline:none;transition:.3s;box-sizing:border-box;"></textarea>
       </div>
       <button class="btn btn-primary" onclick="bookNow()">Замовити поїздку</button>
     </div>
