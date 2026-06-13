@@ -296,12 +296,22 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
 
 <section class="hero">
   <div class="hero-bg">
-<div style="position:absolute;right:0;bottom:0;width:62%;height:100%;">
-  <img src="img/avalon-white.jpg" alt="Toyota Avalon" style="width:100%;height:100%;object-fit:cover;object-position:center center;">
-  <div style="position:absolute;inset:0;background:linear-gradient(to right, #F2F5FA 0%, #F2F5FA 5%, transparent 35%);"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(to bottom, #F2F5FA 0%, transparent 20%, transparent 60%, #F2F5FA 100%);"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(to top, #F2F5FA 0%, transparent 30%);"></div>
-</div>
+<svg viewBox="0 0 600 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EAEFF6"/><stop offset="1" stop-color="#B9C6D8"/></linearGradient>
+        <linearGradient id="glow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5B86F0" stop-opacity="0"/><stop offset="1" stop-color="#2B57C8" stop-opacity=".6"/></linearGradient>
+      </defs>
+      <ellipse cx="300" cy="280" rx="265" ry="20" fill="#1a2c4a" opacity=".10"/>
+      <path d="M40 230 L70 235 H540 L560 228 Q578 222 575 205 L568 178 Q564 165 548 162 L455 150 Q430 110 388 100 L250 92 Q210 92 178 120 L120 158 L62 172 Q40 178 38 200 L38 218 Q38 228 40 230Z" fill="url(#body)" stroke="#9AAABC" stroke-width="1.5"/>
+      <path d="M250 100 L382 108 Q415 116 432 148 L262 142 Z" fill="#cdd8e6" opacity=".95"/>
+      <path d="M190 124 L248 100 L246 142 L150 150 Z" fill="#cdd8e6" opacity=".95"/>
+      <rect x="38" y="196" width="540" height="3" fill="url(#glow)"/>
+      <circle cx="160" cy="232" r="42" fill="#e9eef5" stroke="#9AAABC" stroke-width="2"/>
+      <circle cx="160" cy="232" r="20" fill="#fff" stroke="#2B57C8" stroke-width="1.5" opacity=".8"/>
+      <circle cx="450" cy="232" r="42" fill="#e9eef5" stroke="#9AAABC" stroke-width="2"/>
+      <circle cx="450" cy="232" r="20" fill="#fff" stroke="#2B57C8" stroke-width="1.5" opacity=".8"/>
+      <path d="M548 168 Q566 172 568 188 L548 186 Z" fill="#5B86F0" opacity=".9"/>
+    </svg>
   </div>
   <div class="wrap">
     <div class="hero-copy reveal">
