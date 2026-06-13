@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRANSFER KHARKIV — Міжміське таксі по Україні та Європі</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF2F7;--bg-2:#FFFFFF;--surface:#FFFFFF;--surface-2:#F4F7FB;
+    --ink:#0E1B30;--navy:#15294A;--blue:#2B57C8;--blue-2:#5B86F0;--blue-deep:#16336F;
+    --grey:#5E6B7E;--grey-2:#93A0B2;--line:rgba(14,27,48,.10);--line-2:rgba(14,27,48,.06);
+    --shadow:0 26px 60px rgba(16,42,90,.12);--shadow-sm:0 12px 30px rgba(16,42,90,.08);
+    --radius:18px;--maxw:1240px;--ease:cubic-bezier(.16,1,.3,1);
+    --font-d:'Playfair Display',Georgia,serif;--font-b:'Manrope',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font-b);font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--blue);color:#fff}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);font-weight:900;display:inline-flex;align-items:center;gap:12px}
+  .eyebrow::before{content:"";width:30px;height:2px;background:var(--blue);border-radius:2px}
+  h1,h2,h3{font-family:var(--font-d);font-weight:500;line-height:1.08;letter-spacing:-.01em;color:var(--ink)}
+  .section-title{font-size:clamp(34px,5vw,56px);margin:18px 0 22px}
+  .section-lead{color:var(--grey);max-width:560px;font-size:17px}
+  header{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .5s var(--ease);border-bottom:1px solid transparent}
+  header.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(18px) saturate(140%);border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(16,42,90,.05)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .logo{display:flex;flex-direction:column;line-height:1}
+  .logo b{font-family:var(--font-d);font-size:32px;letter-spacing:.05em;font-weight:600;color:var(--ink)}
+  .logo span{font-size:16px;letter-spacing:.44em;color:var(--blue);margin-top:5px;font-weight:900}
+  .nav-links{display:flex;gap:36px;list-style:none}
+  .nav-links a{font-size:14px;font-weight:600;color:var(--navy);opacity:.85;position:relative;transition:.3s}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--blue);border-radius:2px;transition:.4s var(--ease)}
+  .nav-links a:hover{opacity:1}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{display:flex;align-items:center;gap:16px}
+  .nav-phone{font-weight:900;font-size:15px;color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--font-b);font-weight:900;font-size:14px;padding:14px 26px;border-radius:100px;border:none;cursor:pointer;transition:.4s var(--ease)}
+  .btn-primary{background:linear-gradient(135deg,#3B6BE0,var(--blue));color:#fff;box-shadow:0 10px 28px rgba(43,87,200,.28)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(43,87,200,.42)}
+  .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--blue);color:var(--blue);background:rgba(43,87,200,.05)}
+  .burger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:8px}
+  .burger span{width:32px;height:3.5px;background:#0A1628;border-radius:3px}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-start;padding:140px 0 80px;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg::before{content:"";position:absolute;inset:0;background:radial-gradient(110% 80% at 80% 12%,rgba(91,134,240,.18),transparent 55%),radial-gradient(90% 70% at 8% 100%,rgba(43,87,200,.10),transparent 60%),linear-gradient(180deg,#F2F5FA 0%,#EAEFF6 60%,#EEF2F7 100%)}
+  .hero-bg svg{position:absolute;right:-3%;bottom:1%;width:60%;filter:drop-shadow(0 28px 50px rgba(20,40,80,.18))}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:flex-start}
+  .hero-copy{padding-top:60px}
+  .hero h1{font-size:clamp(44px,6.2vw,80px);margin:24px 0 24px}
+  .hero h1 em{font-style:italic;color:var(--blue)}
+  .hero-sub{font-size:18px;color:var(--grey);max-width:490px;margin-bottom:36px}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px}
+  .hero-stats{display:flex;gap:44px}
+  .stat .num{font-family:var(--font-d);font-size:36px;color:var(--ink);line-height:1}
+  .stat .num i{color:var(--blue);font-style:normal}
+  .stat .lbl{font-size:12.5px;color:var(--grey);margin-top:6px}
+
+  /* BOOKING */
+  .booking{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:34px;box-shadow:var(--shadow)}
+  .booking h3{font-size:23px;margin-bottom:4px}
+  .booking .bk-sub{font-size:13px;color:var(--grey);margin-bottom:22px}
+  .field{margin-bottom:14px}
+  .field label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:900;display:block;margin-bottom:7px}
+  .field input,.field select{width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;font-weight:500;padding:14px 16px;border-radius:12px;transition:.3s;outline:none}
+  .field input::placeholder{color:var(--grey-2)}
+  .field input:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(43,87,200,.08)}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .class-pick{display:flex;gap:8px;margin:6px 0 18px}
+  .class-pick button{flex:1;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--grey);padding:12px 4px;border-radius:11px;cursor:pointer;font-family:var(--font-b);font-size:13px;font-weight:900;transition:.3s}
+  .class-pick button.active{border-color:var(--blue);color:var(--blue);background:rgba(43,87,200,.07)}
+  .estimate{display:flex;align-items:baseline;justify-content:space-between;padding:16px 0;border-top:1px solid var(--line);margin-top:4px}
+  .estimate .lbl{font-size:13px;color:var(--grey)}
+  .estimate .val{font-family:var(--font-d);font-size:30px;color:var(--blue)}
+  .estimate .val small{font-size:14px;color:var(--grey);font-family:var(--font-b)}
+  .booking .btn{width:100%;margin-top:8px;padding:16px}
+
+  /* STRIP */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0;overflow:hidden;background:var(--bg-2)}
+  .marquee{display:flex;gap:64px;white-space:nowrap;animation:scroll 28s linear infinite;width:max-content}
+  .marquee span{font-family:var(--font-d);font-style:italic;font-size:21px;color:var(--navy);opacity:.75;display:inline-flex;align-items:center;gap:64px}
+  .marquee span::after{content:"◆";color:var(--blue);font-style:normal;font-size:11px}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  section{position:relative}
+  .pad{padding:120px 0}
+  .head-flex{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:60px}
+
+  /* CLASSES */
+  .classes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .class-card{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--radius);padding:34px 30px;transition:.5s var(--ease);position:relative;overflow:hidden;box-shadow:var(--shadow-sm)}
+  .class-card::after{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,var(--blue-2),var(--blue));transition:.5s var(--ease)}
+  .class-card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+  .class-card:hover::after{width:100%}
+  .class-card .car{height:62px;margin-bottom:22px;color:var(--blue)}
+  .class-card h3{font-size:25px;margin-bottom:6px}
+  .class-card .seats{font-size:12.5px;color:var(--grey);letter-spacing:.05em;text-transform:uppercase;margin-bottom:18px;font-weight:600}
+  .class-card .models{font-size:14px;color:var(--grey);line-height:1.7;margin-bottom:22px;min-height:48px}
+  .class-card .price{font-family:var(--font-d);font-size:24px;color:var(--ink)}
+  .class-card .price small{font-size:13px;color:var(--grey);font-family:var(--font-b)}
+
+  /* SERVICES */
+  .services{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .srv{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--radius);padding:40px;display:flex;gap:26px;transition:.5s var(--ease);box-shadow:var(--shadow-sm)}
+  .srv:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .srv .ico{flex-shrink:0;width:58px;height:58px;border-radius:14px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--blue-2),var(--blue))}
+  .srv h3{font-size:22px;margin-bottom:10px;font-weight:900}
+  .srv p{color:var(--grey);font-size:15px}
+
+  /* WHY */
+  .why{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
+  .why-grid .num{font-family:var(--font-d);font-size:clamp(40px,5vw,60px);color:var(--blue);line-height:1}
+  .why-grid .lbl{color:var(--grey);font-size:14px;margin-top:10px}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:70px}
+  .feat{padding:32px;border:1px solid var(--line-2);border-radius:var(--radius);background:var(--surface-2);transition:.4s}
+  .feat:hover{border-color:var(--line);background:#fff;box-shadow:var(--shadow-sm)}
+  .feat .ico{color:var(--blue);margin-bottom:18px}
+  .feat h3{font-size:19px;margin-bottom:8px}
+  .feat p{color:var(--grey);font-size:14.5px}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);counter-reset:s;margin-top:20px}
+  .step{padding:0 28px;position:relative}
+  .step:not(:last-child)::after{content:"";position:absolute;right:0;top:34px;width:1px;height:70%;background:var(--line)}
+  .step .n{counter-increment:s;font-family:var(--font-d);font-size:54px;color:var(--blue);opacity:.45;line-height:1}
+  .step .n::before{content:"0" counter(s)}
+  .step h3{font-size:20px;margin:16px 0 10px}
+  .step p{color:var(--grey);font-size:14.5px}
+
+  /* FLEET */
+  .fleet{display:grid;grid-template-columns:1.3fr 1fr;gap:24px}
+  .fleet-big,.fleet-small{border-radius:var(--radius);overflow:hidden;position:relative;min-height:300px;border:1px solid var(--line-2);display:flex;align-items:flex-end;background:linear-gradient(160deg,#F4F7FB,#E4EAF2);transition:.5s var(--ease);box-shadow:var(--shadow-sm)}
+  .fleet-col{display:grid;gap:24px}
+  .fleet-item:hover{box-shadow:var(--shadow)}
+  .fleet-item .car-art{position:absolute;inset:0;display:grid;place-items:center;color:rgba(43,87,200,.45);transition:.6s var(--ease)}
+  .fleet-item:hover .car-art{transform:scale(1.06)}
+  .fleet-item .meta{position:relative;z-index:2;padding:28px;width:100%;background:linear-gradient(0deg,rgba(255,255,255,.96),transparent)}
+  .fleet-item .meta h3{font-size:22px}
+  .fleet-item .meta p{color:var(--grey);font-size:13px}
+  .fleet-big{min-height:420px}
+
+  /* REVIEWS */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .review{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--radius);padding:32px;transition:.4s;box-shadow:var(--shadow-sm)}
+  .review:hover{box-shadow:var(--shadow)}
+  .review .stars{color:var(--blue);letter-spacing:3px;margin-bottom:16px;font-size:14px}
+  .review p{font-size:15px;line-height:1.7;margin-bottom:22px;color:var(--navy)}
+  .review .who{display:flex;align-items:center;gap:13px}
+  .review .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blue-2),var(--blue-deep));display:grid;place-items:center;color:#fff;font-weight:900;font-family:var(--font-d)}
+  .review .who b{font-size:14.5px;display:block;color:var(--ink)}
+  .review .who span{font-size:12.5px;color:var(--grey)}
+
+  /* CTA */
+  .cta-band{position:relative;overflow:hidden;border-radius:28px;padding:74px 60px;background:linear-gradient(135deg,#16294A,#0E1B30);text-align:center;box-shadow:var(--shadow)}
+  .cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 120% at 50% 0%,rgba(91,134,240,.30),transparent 60%)}
+  .cta-band>*{position:relative;z-index:2}
+  .cta-band .eyebrow{color:var(--blue-2)}
+  .cta-band .eyebrow::before{background:var(--blue-2)}
+  .cta-band h2{font-size:clamp(32px,4.5vw,52px);margin-bottom:18px;color:#fff}
+  .cta-band p{color:#AAB6CC;max-width:540px;margin:0 auto 34px;font-size:17px}
+  .cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .cta-band .btn-ghost{color:#fff;border-color:rgba(255,255,255,.25)}
+  .cta-band .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08);color:#fff}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:70px 0 36px;background:var(--bg-2)}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+  .foot-grid h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:20px;font-weight:900}
+  .foot-grid ul{list-style:none}
+  .foot-grid li{margin-bottom:12px}
+  .foot-grid a{color:var(--grey);font-size:14.5px;transition:.3s}
+  .foot-grid a:hover{color:var(--blue)}
+  .foot-about p{color:var(--grey);font-size:14.5px;max-width:300px;margin-top:16px}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid var(--line-2);flex-wrap:wrap;gap:16px}
+  .foot-bottom p{font-size:13px;color:var(--grey-2)}
+  .socials{display:flex;gap:12px}
+  .socials a{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--grey);transition:.3s}
+  .socials a:hover{color:#fff;background:var(--blue);border-color:var(--blue);transform:translateY(-3px)}
+
+  .reveal{opacity:0;transform:translateY(40px);transition:1s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:1024px){
+    .nav-links{display:none}
+    .burger{display:flex}
+    .nav-cta .btn-primary{display:none}
+    .nav-phone-el{display:none !important}
+    .hero .wrap{grid-template-columns:1fr;gap:40px}
+    .hero-bg svg{display:none}
+    .classes,.why-grid,.feat-grid,.steps,.reviews{grid-template-columns:repeat(2,1fr)}
+    .fleet{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .step:nth-child(2)::after{display:none}
+    .step:nth-child(4)::after{display:none}
+  }
+  @media(max-width:768px){
+    .nav-phone-el{display:none !important}
+    .nav-cta{gap:40px;margin-left:auto}
+    .nav-cta button:first-of-type{font-size:12px;padding:10px 14px}
+    .wrap{padding:0 16px}
+    .nav-links{display:none}
+    .burger{display:flex}
+    .nav-cta .btn-primary{display:none}
+    .nav-cta button:not(.burger):not(.callback-btn){display:none}
+    .nav-phone{font-size:13px}
+    .logo b{font-size:22px}
+    .logo span{font-size:11px}
+    .pad{padding:60px 0}
+    .hero{padding:80px 0 60px}
+    .hero h1{font-size:36px}
+    .hero-sub{font-size:15px}
+    .hero-stats{gap:20px}
+    .stat .num{font-size:28px}
+    .booking{padding:24px 20px}
+    .booking h3{font-size:20px}
+    .services,.why-grid,.feat-grid,.steps,.reviews,.classes{grid-template-columns:1fr}
+    .step::after{display:none}
+    .steps{gap:24px}
+    .cta-band{padding:40px 24px;border-radius:20px}
+    .cta-band h2{font-size:26px}
+    .cta-actions{flex-direction:column;align-items:center}
+    .cta-actions .btn{width:100%;justify-content:center}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .field-row{grid-template-columns:1fr}
+    .fleet{grid-template-columns:1fr}
+    .fleet-big{min-height:280px}
+    .section-title{font-size:28px}
+    .head-flex{flex-direction:column;align-items:flex-start;gap:16px}
+    .srv{padding:24px 20px;gap:16px}
+    .srv .ico{width:46px;height:46px}
+    .class-card{padding:24px 20px}
+    .hero-actions{flex-direction:column}
+    .hero-actions .btn{width:100%;justify-content:center}
+    .marquee span{font-size:16px}
+    .why-grid{grid-template-columns:repeat(2,1fr)}
+    .feat-grid{grid-template-columns:1fr}
+    .reviews{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .foot-bottom{flex-direction:column;align-items:flex-start;gap:12px}
+  }
+  @media(max-width:400px){
+    .hero h1{font-size:30px}
+    .booking{padding:20px 16px}
+    .class-pick{flex-wrap:wrap}
+    .class-pick button{flex:1 1 calc(50% - 4px)}
+  }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#" class="logo"><b>TRANSFER</b><span>KHARKIV</span></a>
+    <button onclick="openCallback()" class="mobile-callback" style="display:none;align-items:center;gap:6px;font-family:var(--font-b);font-weight:900;font-size:12px;padding:9px 12px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;white-space:nowrap;margin-left:auto;">📞 Зворотній зв'язок</button>
+    <ul class="nav-links">
+      
+      <li><a href="#services">Послуги</a></li>
+      <li><a href="#why">Про нас</a></li>
+      <li><a href="#fleet">Автопарк</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+380000000000" class="nav-phone nav-phone-el">+38 (000) 000-00-00</a>
+      <button onclick="openCallback()" class="callback-btn" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-b);font-weight:900;font-size:13px;padding:10px 14px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(40,167,69,.28);transition:.3s;white-space:nowrap;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7A2 2 0 0122 16.9z"/></svg>
+        Зворотній зв'язок
+      </button>
+      <a href="#booking" class="btn btn-primary">Замовити поїздку</a>
+      <button class="burger" id="burger" style="margin-left:-8px;"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div id="mobileMenu" style="display:none;position:fixed;top:84px;left:0;right:0;z-index:999;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:20px 24px;box-shadow:0 20px 40px rgba(16,42,90,.12);">
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    
+    <a href="#services" onclick="closeMenu()" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Послуги</a>
+    <a href="#why" onclick="closeMenu()" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Про нас</a>
+    <a href="#fleet" onclick="closeMenu()" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Автопарк</a>
+    <a href="tel:+380000000000" style="font-family:var(--font-b);font-weight:900;font-size:16px;color:var(--blue);padding:12px 0;border-bottom:1px solid var(--line-2);">+38 (000) 000-00-00</a>
+    <div style="display:flex;gap:12px;margin-top:4px;">
+      <button onclick="closeMenu();openCallback();" style="flex:1;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;font-family:var(--font-b);font-weight:900;font-size:14px;padding:14px;border-radius:100px;border:none;cursor:pointer;">📞 Зворотній зв'язок</button>
+      <a href="#booking" onclick="closeMenu()" style="flex:1;background:linear-gradient(135deg,#3B6BE0,var(--blue));color:#fff;font-family:var(--font-b);font-weight:900;font-size:14px;padding:14px;border-radius:100px;text-align:center;">Замовити поїздку</a>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-bg">
+    <svg viewBox="0 0 600 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EAEFF6"/><stop offset="1" stop-color="#B9C6D8"/></linearGradient>
+        <linearGradient id="glow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5B86F0" stop-opacity="0"/><stop offset="1" stop-color="#2B57C8" stop-opacity=".6"/></linearGradient>
+      </defs>
+      <ellipse cx="300" cy="280" rx="265" ry="20" fill="#1a2c4a" opacity=".10"/>
+      <path d="M40 230 L70 235 H540 L560 228 Q578 222 575 205 L568 178 Q564 165 548 162 L455 150 Q430 110 388 100 L250 92 Q210 92 178 120 L120 158 L62 172 Q40 178 38 200 L38 218 Q38 228 40 230Z" fill="url(#body)" stroke="#9AAABC" stroke-width="1.5"/>
+      <path d="M250 100 L382 108 Q415 116 432 148 L262 142 Z" fill="#cdd8e6" opacity=".95"/>
+      <path d="M190 124 L248 100 L246 142 L150 150 Z" fill="#cdd8e6" opacity=".95"/>
+      <rect x="38" y="196" width="540" height="3" fill="url(#glow)"/>
+      <circle cx="160" cy="232" r="42" fill="#e9eef5" stroke="#9AAABC" stroke-width="2"/>
+      <circle cx="160" cy="232" r="20" fill="#fff" stroke="#2B57C8" stroke-width="1.5" opacity=".8"/>
+      <circle cx="450" cy="232" r="42" fill="#e9eef5" stroke="#9AAABC" stroke-width="2"/>
+      <circle cx="450" cy="232" r="20" fill="#fff" stroke="#2B57C8" stroke-width="1.5" opacity=".8"/>
+      <path d="M548 168 Q566 172 568 188 L548 186 Z" fill="#5B86F0" opacity=".9"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="hero-copy reveal">
+      <a href="tel:+380000000000" style="display:block;font-family:var(--font-b);font-weight:700;font-size:20px;color:var(--ink);text-decoration:none;margin-bottom:10px;">📞 +38 (000) 000-00-00</a>
+      <span class="eyebrow">Міжміське таксі по Україні та Європі</span>
+      <h1>З будь-якого міста —<br>у <em>будь-яке</em></h1>
+      <p class="hero-sub">Заберемо з будь-якої точки й довеземо просто до дверей — у будь-якому місті України або країні Європи. Фіксована ціна за маршрут, без прихованих доплат.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-primary">Розрахувати вартість →</a>
+        <a href="#services" class="btn btn-ghost">Наші послуги</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="num"><i>200</i>+</div><div class="lbl">міст України</div></div>
+        <div class="stat"><div class="num"><i>4.9</i>/5</div><div class="lbl">середня оцінка</div></div>
+        <div class="stat"><div class="num"><i>24</i>/7</div><div class="lbl">на зв'язку</div></div>
+      </div>
+    </div>
+
+    <div class="booking reveal" id="booking">
+      <h3>Замовити поїздку</h3>
+      <p class="bk-sub">Дізнайтесь вартість маршруту за 15 секунд</p>
+      <div class="field"><label>Ваше ім'я</label><input type="text" id="name" placeholder="Іван Петренко"></div>
+      <div class="field"><label>Номер телефону</label><input type="tel" id="phone" placeholder="+38 (0__) ___-__-__"></div>
+      <div class="field"><label>Звідки</label><input type="text" id="from" placeholder="Місто, адреса подачі"></div>
+      <div class="field"><label>Куди</label><input type="text" id="to" placeholder="Місто, адреса призначення"></div>
+      <div class="field-row">
+        <div class="field"><label>Дата</label><input type="date" id="date"></div>
+        <div class="field"><label>Час</label><input type="time" id="time"></div>
+      </div>
+      <div class="field"><label>Орієнтовна відстань, км</label><input type="number" id="dist" value="100" min="1"></div>
+      <div class="estimate">
+        <span class="lbl">Приблизна вартість*</span>
+        <span class="val" id="estVal">2 300 <small>грн</small></span>
+      </div>
+      <p style="font-size:11px;color:var(--grey-2);margin-bottom:12px;">* Точна вартість узгоджується з оператором після підтвердження заявки</p><button class="btn btn-primary" onclick="bookNow()">Замовити поїздку</button>
+    </div>
+  </div>
+</section>
+
+
+<div style="background:linear-gradient(135deg,#15294A,#1a3560);padding:20px 0;border-top:1px solid rgba(91,134,240,.2);">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div style="width:48px;height:48px;border-radius:12px;background:rgba(91,134,240,.2);display:grid;place-items:center;flex-shrink:0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#5B86F0"><path d="M21 4L3 11l5 2 2 6 3-4 5 4 3-15z"/></svg>
+      </div>
+      <div>
+        <div style="font-family:var(--font-b);font-weight:900;font-size:15px;color:#fff;">Відстежуйте статус поїздки в Telegram</div>
+        <div style="font-family:var(--font-b);font-size:13px;color:#AAB6CC;margin-top:2px;">Підпишіться на бота — отримуйте сповіщення про підтвердження та статус замовлення</div>
+      </div>
+    </div>
+    <a href="https://t.me/transferkh_bot" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:900;font-size:14px;padding:12px 24px;border-radius:100px;white-space:nowrap;box-shadow:0 8px 24px rgba(43,87,200,.4);text-decoration:none;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 4L3 11l5 2 2 6 3-4 5 4 3-15z"/></svg>
+      @transferkh_bot
+    </a>
+  </div>
+</div>
+<div class="strip">
+  <div class="marquee">
+    <span>Фіксована ціна за маршрут</span><span>200+ міст та напрямків</span><span>З точки в точку</span>
+    <span>Поїздки 24/7</span><span>Дитячі крісла</span><span>Оплата карткою</span>
+    <span>Фіксована ціна за маршрут</span><span>200+ міст та напрямків</span><span>З точки в точку</span>
+    <span>Поїздки 24/7</span><span>Дитячі крісла</span><span>Оплата карткою</span>
+  </div>
+</div>
+
+
+
+<section class="pad" id="services" style="background:var(--bg-2);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="head-flex reveal">
+      <div>
+        <span class="eyebrow">Що ми робимо</span>
+        <h2 class="section-title">Поїздки по Україні та Європі</h2>
+      </div>
+      <p class="section-lead">Один номер — і вирішена будь-яка задача з перевезенням між містами України та країнами Європи.</p>
+    </div>
+    <div class="services">
+      <div class="srv reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h18M12 3v18M5 7l14 10"/></svg></div>
+        <div><h3>Таксі між містами</h3><p>Київ, Дніпро, Львів, Одеса, Полтава та будь-які міста України й Європи. Фіксована ціна за маршрут, узгоджена заздалегідь.</p></div>
+      </div>
+      <div class="srv reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+        <div><h3>З точки в точку</h3><p>Заберемо від дому, села чи офісу й довеземо просто до дверей у пункті призначення — без пересадок і очікувань.</p></div>
+      </div>
+      <div class="srv reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></div>
+        <div><h3>Бізнес-поїздки</h3><p>Авто представницького класу для відряджень, переговорів і VIP-супроводу між містами України та Європи.</p></div>
+      </div>
+      <div class="srv reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15.5 14c2.7 0 4.5 2 4.5 5"/></svg></div>
+        <div><h3>Поїздки на події</h3><p>Весілля, конференції, сімейні та групові поїздки в інші міста — комфортно для всієї компанії.</p></div>
+      </div>
+      <div class="srv reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></div>
+        <div><h3>Тверезий водій</h3><p>Ваш особистий водій на Вашому авто — після свята, корпоративу або будь-якої події. Безпечно та комфортно.</p></div>
+      </div>
+      <div class="srv reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><circle cx="12" cy="16" r="1"/><circle cx="20" cy="16" r="1"/></svg></div>
+        <div><h3>Перегін авто</h3><p>Перевеземо Ваш автомобіль у будь-яке місто України або країну Європи. Досвідчені водії, повна відповідальність за авто.</p></div>
+      </div>
+      <div class="srv reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12l20-8-8 20-2-8-10-4z"/></svg></div>
+        <div><h3>До аеропортів</h3><p>Доставимо до аеропортів Польщі, Румунії, Угорщини та інших країн. Варшава, Краків, Жешув, Бухарест — фіксована ціна за маршрут.</p></div>
+      </div>
+      <div class="srv reveal">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></div>
+        <div><h3>Поїздки за кордон</h3><p>Польща, Румунія, Угорщина, Молдова та інші країни ЄС. Досвідчені водії з досвідом міжнародних маршрутів.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad why" id="why">
+  <div class="wrap">
+    <div class="why-grid reveal">
+      <div><div class="num" data-count="12000">0</div><div class="lbl">виконаних поїздок</div></div>
+      <div><div class="num" data-count="60">0</div><div class="lbl">авто в автопарку</div></div>
+      <div><div class="num" data-count="8">0</div><div class="lbl">років на ринку</div></div>
+      <div><div class="num" data-count="98">0</div><div class="lbl">% задоволених клієнтів</div></div>
+    </div>
+    <div class="head-flex reveal" style="margin-top:90px">
+      <div>
+        <span class="eyebrow">Чому обирають нас</span>
+        <h2 class="section-title">Сервіс, до якого<br>повертаються</h2>
+      </div>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.5 5 5.5.8-4 4 1 5.5L12 20l-5 2.8 1-5.5-4-4 5.5-.8z"/></svg></div>
+        <h3>Фіксована ціна</h3>
+        <p>Вартість маршруту відома до поїздки. Жодних доплат за затори, ніч чи очікування понад узгоджене.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></div>
+        <h3>Перевірені водії</h3>
+        <p>Стаж від 5 років, досвід дальніх маршрутів і незмінно ввічливе ставлення до пасажирів.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Безпека 24/7</h3>
+        <p>Застраховані авто, відстеження поїздки в реальному часі та підтримка о будь-якій порі доби.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="how">
+  <div class="wrap">
+    <div class="head-flex reveal">
+      <div>
+        <span class="eyebrow">Як це працює</span>
+        <h2 class="section-title">Чотири прості кроки</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n"></div><h3>Залиште заявку</h3><p>Через форму на сайті, у месенджері або телефоном — як вам зручно.</p></div>
+      <div class="step reveal"><div class="n"></div><h3>Підтверджуємо ціну</h3><p>Менеджер уточнює деталі маршруту й фіксує точну вартість поїздки.</p></div>
+      <div class="step reveal"><div class="n"></div><h3>Подаємо авто</h3><p>Водій приїжджає до вказаного часу, ви отримуєте сповіщення.</p></div>
+      <div class="step reveal"><div class="n"></div><h3>Вирушаємо</h3><p>Комфортна дорога й оплата зручним способом — готівкою або карткою.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="fleet" style="background:var(--bg-2);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="head-flex reveal">
+      <div>
+        <span class="eyebrow">Наш автопарк</span>
+        <h2 class="section-title">Авто, що вражають</h2>
+      </div>
+      <p class="section-lead">Регулярне ТО, бездоганна чистота салону й стиль, що відповідає рівню сервісу.</p>
+    </div>
+    <div class="fleet">
+      <div class="fleet-big fleet-item reveal" style="border-radius:20px;overflow:hidden;">
+        <div class="car-art" style="inset:0;position:absolute;">
+          <img src="img/avalon-white.jpg" alt="Toyota Avalon" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,20,50,.75) 0%,transparent 55%);border-radius:20px;"></div>
+        <div class="meta" style="background:none;"><h3 style="font-size:28px;font-weight:900;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.4);">Toyota Avalon</h3><p style="color:rgba(255,255,255,.85);font-size:14px;">Комфорт преміум · просторий салон · до 3 пасажирів</p></div>
+      </div>
+      <div class="fleet-col">
+        <div class="fleet-small fleet-item reveal" style="border-radius:20px;overflow:hidden;">
+          <div class="car-art" style="inset:0;position:absolute;">
+            <img src="img/avalon-gold.jpg" alt="Toyota Avalon Hybrid" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,20,50,.75) 0%,transparent 55%);border-radius:20px;"></div>
+          <div class="meta" style="background:none;"><h3 style="font-size:22px;font-weight:900;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.4);">Toyota Avalon Hybrid</h3><p style="color:rgba(255,255,255,.85);font-size:13px;">Бізнес-клас · золотистий · до 3 пасажирів</p></div>
+        </div>
+        <div class="fleet-small fleet-item reveal" style="border-radius:20px;overflow:hidden;">
+          <div class="car-art" style="inset:0;position:absolute;">
+            <img src="img/sienna.jpg" alt="Toyota Sienna" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,20,50,.75) 0%,transparent 55%);border-radius:20px;"></div>
+          <div class="meta" style="background:none;"><h3 style="font-size:22px;font-weight:900;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.4);">Toyota Sienna</h3><p style="color:rgba(255,255,255,.85);font-size:13px;">Мінівен · до 6 пасажирів · ідеально для груп</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="reviews">
+  <div class="wrap">
+    <div class="head-flex reveal">
+      <div><span class="eyebrow">Відгуки клієнтів</span><h2 class="section-title">Нам довіряють</h2></div>
+    </div>
+    <div class="reviews">
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>«Замовляла поїздку з Харкова до Києва вночі. Водій забрав просто від під'їзду, допоміг із багажем, доїхали швидко й комфортно. Тепер лише до вас.»</p>
+        <div class="who"><div class="av">А</div><div><b>Анна К.</b><span>Харків → Київ</span></div></div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>«Їздимо компанією в інші області щомісяця. Мінівен завжди в ідеальному стані, ціна фіксована, без сюрпризів у дорозі. Рекомендую всім.»</p>
+        <div class="who"><div class="av">Д</div><div><b>Дмитро В.</b><span>Міжобласні поїздки</span></div></div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>«Сподобалось, що можна сплатити карткою й наперед знати вартість маршруту. Водій ввічливий, авто бізнес-класу — усе на висоті.»</p>
+        <div class="who"><div class="av">М</div><div><b>Марина С.</b><span>Бізнес-поїздка</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <span class="eyebrow" style="justify-content:center">Готові вирушати?</span>
+      <h2 style="font-family:var(--font-d)">Вирушаймо у Вашу подорож — Україною та Європою</h2>
+      <p>Заберемо з будь-якої точки й довеземо до місця призначення — в Україні або Європі. Зателефонуйте або залиште заявку — розрахуємо вартість маршруту.</p>
+      <div class="cta-actions">
+        <a href="tel:+380000000000" class="btn btn-primary">+38 (000) 000-00-00</a>
+        <a href="#booking" class="btn btn-ghost">Онлайн-заявка</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a href="#" class="logo"><b>TRANSFER</b><span>KHARKIV</span></a>
+    <button onclick="openCallback()" class="mobile-callback" style="display:none;align-items:center;gap:6px;font-family:var(--font-b);font-weight:900;font-size:12px;padding:9px 12px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;white-space:nowrap;margin-left:auto;">📞 Зворотній зв'язок</button>
+        <p>Міжміське таксі по Україні та Європі. Заберемо з будь-якої точки й довеземо у будь-яке місто — з 2018 року.</p>
+      </div>
+      <div>
+        <h4>Послуги</h4>
+        <ul>
+          <li><a href="#services">Між містами</a></li>
+          <li><a href="#services">З точки в точку</a></li>
+          <li><a href="#services">Бізнес-поїздки</a></li>
+          <li><a href="#services">Тверезий водій</a></li>
+          <li><a href="#services">Перегін авто</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Компанія</h4>
+        <ul>
+          <li><a href="#why">Про нас</a></li>
+          <li><a href="#fleet">Автопарк</a></li>
+          <li><a href="#reviews">Відгуки</a></li>
+          <li><a href="#how">Як замовити</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакти</h4>
+        <ul>
+          <li><a href="tel:+380000000000">+38 (000) 000-00-00</a></li>
+          <li><a href="mailto:info@transfer.kh.ua">info@transfer.kh.ua</a></li>
+          <li><a href="#">м. Харків, Україна</a></li>
+          <li><a href="#">Працюємо 24/7</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 TRANSFER KHARKIV. Усі права захищені.</p>
+      <div class="socials">
+        <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21 4L3 11l5 2 2 6 3-4 5 4 3-15z"/></svg></a>
+        <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- CALLBACK MODAL -->
+<div id="callbackModal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(14,27,48,.5);backdrop-filter:blur(6px);align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:24px;padding:40px;width:100%;max-width:420px;margin:20px;box-shadow:0 40px 80px rgba(16,42,90,.18);position:relative;">
+    <button onclick="closeCallback()" style="position:absolute;top:18px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--grey);">✕</button>
+    <h3 style="font-family:var(--font-d);font-size:26px;margin-bottom:8px;">Зворотній зв'язок</h3>
+    <p style="color:var(--grey);font-size:15px;margin-bottom:24px;">Залиште номер — менеджер зателефонує протягом 5 хвилин</p>
+    <div style="margin-bottom:14px;">
+      <label style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:900;display:block;margin-bottom:7px;">Ваше ім'я</label>
+      <input id="cb-name" type="text" placeholder="Іван Петренко" style="width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;padding:14px 16px;border-radius:12px;outline:none;box-sizing:border-box;">
+    </div>
+    <div style="margin-bottom:24px;">
+      <label style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:900;display:block;margin-bottom:7px;">Номер телефону</label>
+      <input id="cb-phone" type="tel" placeholder="+38 (0__) ___-__-__" style="width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;padding:14px 16px;border-radius:12px;outline:none;box-sizing:border-box;">
+    </div>
+    <button onclick="sendCallback()" style="width:100%;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:900;font-size:15px;padding:16px;border-radius:100px;border:none;cursor:pointer;">Відправити</button>
+    <p id="cb-success" style="display:none;text-align:center;color:var(--blue);font-weight:600;margin-top:16px;">✓ Дякуємо! Менеджер зв'яжеться з Вами протягом 5 хвилин.</p>
+  </div>
+</div>
+
+<script>
+  const hdr = document.getElementById('hdr');
+  addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 30));
+
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 4) * .08 + 's'; io.observe(el); });
+
+  const counted = new WeakSet();
+  const cio = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting && !counted.has(e.target)) {
+        counted.add(e.target);
+        const el = e.target, target = +el.dataset.count; let cur = 0, step = target / 60;
+        const t = setInterval(() => {
+          cur += step; if (cur >= target) { cur = target; clearInterval(t); }
+          el.textContent = Math.floor(cur).toLocaleString('uk') + (target === 98 ? '%' : target >= 1000 ? '+' : '');
+        }, 22);
+      }
+    });
+  }, { threshold: .5 });
+  document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+
+  const distEl = document.getElementById('dist');
+  const estEl = document.getElementById('estVal');
+  function calc() {
+    const km = Math.max(0, +distEl.value || 0);
+    const price = Math.round(km * 28);
+    estEl.innerHTML = price.toLocaleString('uk') + ' <small>грн</small>';
+  }
+  distEl.addEventListener('input', calc); calc();
+
+  async function bookNow() {
+    const name = document.getElementById('name').value || '';
+    const phone = document.getElementById('phone').value || '';
+    const from = document.getElementById('from').value || '';
+    const to = document.getElementById('to').value || '';
+    const date = document.getElementById('date').value || '';
+    const time = document.getElementById('time').value || '';
+    const carClass = 'Стандарт';
+    const price = document.getElementById('estVal').textContent.replace(/[^0-9]/g,'');
+    if (!phone) { alert('Введіть номер телефону'); return; }
+    if (!from) { alert('Введіть місто відправлення'); return; }
+    if (!to) { alert('Введіть місто призначення'); return; }
+    try {
+      const res = await fetch('https://web-production-a94ea.up.railway.app/booking', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name, phone, from_city: from, to_city: to, date, time, car_class: carClass, price})
+      });
+      const data = await res.json();
+      if (data.ok) {
+        alert('✅ Заявку прийнято!\n\nДля відстеження статусу підпишіться: @transferkh_bot');
+      }
+    } catch(e) {
+      alert('Помилка. Зателефонуйте нам.');
+    }
+  }
+
+  document.getElementById('date').valueAsDate = new Date();
+  let menuOpen = false;
+  document.getElementById('burger').addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    document.getElementById('mobileMenu').style.display = menuOpen ? 'block' : 'none';
+    document.getElementById('burger').style.opacity = menuOpen ? '0.6' : '1';
+  });
+  function closeMenu() {
+    menuOpen = false;
+    document.getElementById('mobileMenu').style.display = 'none';
+    document.getElementById('burger').style.opacity = '1';
+  }
+
+  function openCallback() {
+    document.getElementById('callbackModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCallback() {
+    document.getElementById('callbackModal').style.display = 'none';
+    document.body.style.overflow = '';
+    document.getElementById('cb-success').style.display = 'none';
+    document.getElementById('cb-name').value = '';
+    document.getElementById('cb-phone').value = '';
+  }
+  async function sendCallback() {
+    const name = document.getElementById('cb-name').value || 'не вказано';
+    const phone = document.getElementById('cb-phone').value;
+    if (!phone) { alert('Введіть номер телефону'); return; }
+    const token = "8949582862:AAHtkWFYkgfTk0q2ZyaWaplG5geP7BT3gOo";
+    const chatIds = ["1828853403", "566477698", "1106261803"];
+    const text = "📞 Зворотній зв%27язок!%0A%0A👤 Імʼя: " + name + "%0A📱 Телефон: " + phone;
+    chatIds.forEach(id => fetch("https://api.telegram.org/bot" + token + "/sendMessage?chat_id=" + id + "&text=" + text));
+    document.getElementById('cb-success').style.display = 'block';
+    setTimeout(closeCallback, 3000);
+  }
+  document.getElementById('callbackModal').addEventListener('click', function(e) { if (e.target === this) closeCallback(); });
+</script>
+</body>
+</html>
