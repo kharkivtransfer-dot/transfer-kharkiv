@@ -368,6 +368,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         <label>Коментар</label>
         <textarea id="comment" rows="3" placeholder="Наприклад: багато багажу, дитяче крісло, зустріч в аеропорту" style="width:100%;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:12px;font-family:var(--font-b);font-size:14px;color:var(--ink);background:var(--surface);resize:none;outline:none;transition:.3s;box-sizing:border-box;line-height:1.6;"></textarea>
       </div>
+      <input type="text" name="website" id="hp_field" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true">
       <button class="btn btn-primary" onclick="bookNow()">Замовити поїздку</button>
     </div>
   </div>
@@ -741,7 +742,8 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
     const to = document.getElementById('to').value || '';
     const date = document.getElementById('date').value || '';
     const time = document.getElementById('time').value || '';
-    const carClass = 'Комфорт';
+    const activeClass = document.querySelector('.class-pick button.active');
+    const carClass = activeClass ? activeClass.dataset.cls : 'Комфорт';
     const price = document.getElementById('estVal').textContent.replace(/[^0-9]/g,'') || '0';
     const comment = document.getElementById('comment').value || '';
     const pets = document.getElementById('pets').checked;
@@ -752,7 +754,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
       const res = await fetch('https://web-production-a94ea.up.railway.app/booking', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({name, phone, from_city: from, to_city: to, date, time, car_class: carClass, price, comment, pets})
+        body: JSON.stringify({name, phone, from_city: from, to_city: to, date, time, car_class: carClass, price, comment, pets, honeypot: document.getElementById('hp_field').value})
       });
       const data = await res.json();
       if (data.ok) {
@@ -803,10 +805,13 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
     const name = document.getElementById('cb-name').value || 'не вказано';
     const phone = document.getElementById('cb-phone').value;
     if (!phone) { alert('Введіть номер телефону'); return; }
-    const token = "8949582862:AAHtkWFYkgfTk0q2ZyaWaplG5geP7BT3gOo";
-    const chatIds = ["1828853403", "566477698", "1106261803"];
-    const text = "📞 Зворотній зв%27язок!%0A%0A👤 Імʼя: " + name + "%0A📱 Телефон: " + phone;
-    chatIds.forEach(id => fetch("https://api.telegram.org/bot" + token + "/sendMessage?chat_id=" + id + "&text=" + text));
+    try {
+      await fetch('https://web-production-a94ea.up.railway.app/callback', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name, phone, honeypot: ''})
+      });
+    } catch(e) {}
     document.getElementById('cb-success').style.display = 'block';
     setTimeout(closeCallback, 3000);
   }
