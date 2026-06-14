@@ -728,7 +728,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
       note.textContent = '* Фіксована ціна за маршрут';
     } else {
       estEl.innerHTML = '—';
-      note.textContent = 'Уточнюйте точну ціну у оператора: +38 063 309 49 49';
+      note.innerHTML = 'Уточнюйте ціну у оператора:<br><a href="tel:+380633094949" style="color:var(--blue);font-weight:900;font-size:15px;">+38 063 309 49 49</a>';
     }
   }
   document.getElementById('from').addEventListener('input', calc);
