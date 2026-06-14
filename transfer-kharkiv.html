@@ -683,14 +683,54 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
   document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
 
 
-  const distEl = document.getElementById('dist');
-  const estEl = document.getElementById('estVal');
-  function calc() {
-    const km = Math.max(0, +distEl.value || 0);
-    const price = Math.round(km * 28);
-    estEl.innerHTML = price.toLocaleString('uk') + ' <small>грн</small>';
+  const PRICES = {
+    'харків-полтава': 4000, 'харків-кременчук': 7000, 'харків-кременчуг': 7000,
+    'харків-кропивницький': 11000, 'харків-київ': 14000, 'харків-житомир': 17500,
+    'харків-рівне': 22700, 'харків-львів': 29500, 'харків-луцьк': 25200,
+    'харків-умань': 15700, 'харків-вінниця': 21000, 'харків-хмельницький': 23500,
+    'харків-тернопіль': 26600, 'харків-буковель': 35000,
+    'харків-івано-франківськ': 30800, 'харків-чернівці': 29400,
+    'харків-одеса': 19000, 'харків-миколаїв': 15400, 'харків-кривий ріг': 10500,
+    'харків-дніпро': 6200, "харків-слов'янськ": 10000,
+    'харків-старий салтів': 2000, 'харків-хатомля': 3000, 'харків-мартове': 2700,
+    'харків-печеніги': 2100, 'харків-шевченкове': 3000, 'харків-балаклія': 3000,
+    'харків-ізюм': 4000, 'харків-барвенкове': 6000
+  };
+  const EXPENSIVE_BACK = new Set([
+    'харків-кропивницький','харків-київ','харків-житомир','харків-рівне',
+    'харків-львів','харків-луцьк','харків-умань','харків-вінниця',
+    'харків-хмельницький','харків-тернопіль','харків-буковель',
+    'харків-івано-франківськ','харків-чернівці','харків-одеса','харків-миколаїв'
+  ]);
+  function normCity(s) {
+    return s.toLowerCase().trim()
+      .replace(/ї/g,'і').replace(/є/g,'е').replace(/й/g,'й')
+      .replace(/\s+/g,' ');
   }
-  distEl.addEventListener('input', calc); calc();
+  function getPrice(from, to) {
+    const f = normCity(from), t = normCity(to);
+    const k1 = f+'-'+t, k2 = t+'-'+f;
+    if (PRICES[k1] !== undefined) return PRICES[k1];
+    if (PRICES[k2] !== undefined) return PRICES[k2] + (EXPENSIVE_BACK.has(k2) ? 1000 : 0);
+    return null;
+  }
+  function calc() {
+    const from = (document.getElementById('from').value||'').trim();
+    const to = (document.getElementById('to').value||'').trim();
+    const estEl = document.getElementById('estVal');
+    const note = document.getElementById('priceNote');
+    if (!from || !to) { estEl.innerHTML='—'; note.textContent='Введіть маршрут для розрахунку вартості'; return; }
+    const price = getPrice(from, to);
+    if (price !== null) {
+      estEl.innerHTML = price.toLocaleString('uk') + ' <small>грн</small>';
+      note.textContent = '* Фіксована ціна за маршрут';
+    } else {
+      estEl.innerHTML = '—';
+      note.textContent = 'Уточнюйте точну ціну у оператора: +38 063 309 49 49';
+    }
+  }
+  document.getElementById('from').addEventListener('input', calc);
+  document.getElementById('to').addEventListener('input', calc);
 
   async function bookNow() {
     const name = document.getElementById('name').value || '';
