@@ -350,12 +350,14 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         <div class="field"><label>Дата</label><input type="date" id="date"></div>
         <div class="field"><label>Час</label><input type="time" id="time"></div>
       </div>
-      <div class="field"><label>Орієнтовна відстань, км</label><input type="number" id="dist" value="100" min="1"></div>
-      <div class="estimate">
-        <span class="lbl">Приблизна вартість*</span>
-        <span class="val" id="estVal">2 300 <small>грн</small></span>
+      <div style="background:rgba(43,87,200,.06);border-radius:14px;padding:14px 18px;margin-bottom:14px;">
+        <p style="font-family:var(--font-b);font-size:15px;color:var(--blue);font-weight:600;margin:0;line-height:1.5;">Поїздки від 25 гривень за км по Україні на максимально комфортному автомобілі</p>
       </div>
-      <p style="font-size:11px;color:var(--grey-2);margin-bottom:12px;">* Точна вартість узгоджується з оператором після підтвердження заявки</p>
+      <div class="estimate">
+        <span class="lbl">Вартість поїздки</span>
+        <span class="val" id="estVal" style="font-size:20px;">—</span>
+      </div>
+      <p style="font-size:11px;color:var(--grey-2);margin-bottom:12px;" id="priceNote">Введіть маршрут для розрахунку вартості</p>
       <label style="display:flex;align-items:center;gap:12px;font-family:var(--font-b);font-size:16px;color:var(--ink);margin-bottom:14px;cursor:pointer;">
         <input type="checkbox" id="pets" style="width:22px;height:22px;accent-color:var(--blue);cursor:pointer;flex-shrink:0;">
         🐾 Є тварини (домашні улюбленці)
@@ -698,7 +700,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
     const date = document.getElementById('date').value || '';
     const time = document.getElementById('time').value || '';
     const carClass = 'Комфорт';
-    const price = document.getElementById('estVal').textContent.replace(/[^0-9]/g,'');
+    const price = document.getElementById('estVal').textContent.replace(/[^0-9]/g,'') || '0';
     const comment = document.getElementById('comment').value || '';
     const pets = document.getElementById('pets').checked;
     if (!phone) { alert('Введіть номер телефону'); return; }
