@@ -357,7 +357,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         <span class="lbl">Вартість поїздки</span>
         <span class="val" id="estVal" style="font-size:20px;">—</span>
       </div>
-      <p style="font-size:11px;color:var(--grey-2);margin-bottom:12px;" id="priceNote">Введіть маршрут для розрахунку вартості</p>
+      <p style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:12px;" id="priceNote">Введіть маршрут для розрахунку вартості</p>
       <label style="display:flex;align-items:center;gap:12px;font-family:var(--font-b);font-size:16px;color:var(--ink);margin-bottom:14px;cursor:pointer;">
         <input type="checkbox" id="pets" style="width:22px;height:22px;accent-color:var(--blue);cursor:pointer;flex-shrink:0;">
         🐾 Є тварини (домашні улюбленці)
@@ -704,8 +704,8 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
   ]);
   function normCity(s) {
     return s.toLowerCase().trim()
-      .replace(/ї/g,'і').replace(/є/g,'е').replace(/й/g,'й')
-      .replace(/\s+/g,' ');
+      .replace(/харьков/g,'харків').replace(/киев/g,'київ')
+      .replace(/днепр$/g,'дніпро').replace(/\s+/g,' ');
   }
   function getPrice(from, to) {
     const f = normCity(from), t = normCity(to);
