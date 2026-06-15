@@ -321,6 +321,21 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
     }
   ]
 }
+
+  // Автозаповнення форми з маршрутних сторінок
+  (function(){
+    try {
+      const tf = sessionStorage.getItem('tf');
+      if (tf) {
+        const d = JSON.parse(tf);
+        sessionStorage.removeItem('tf');
+        document.getElementById('from').value = d.from || '';
+        document.getElementById('to').value = d.to || '';
+        calc();
+        setTimeout(() => document.getElementById('booking').scrollIntoView({behavior:'smooth'}), 300);
+      }
+    } catch(e) {}
+  })();
 </script>
 </head>
 <body>
