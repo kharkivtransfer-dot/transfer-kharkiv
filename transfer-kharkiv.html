@@ -322,20 +322,6 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
   ]
 }
 
-  // Автозаповнення форми з маршрутних сторінок
-  (function(){
-    try {
-      const tf = sessionStorage.getItem('tf');
-      if (tf) {
-        const d = JSON.parse(tf);
-        sessionStorage.removeItem('tf');
-        document.getElementById('from').value = d.from || '';
-        document.getElementById('to').value = d.to || '';
-        calc();
-        setTimeout(() => document.getElementById('booking').scrollIntoView({behavior:'smooth'}), 300);
-      }
-    } catch(e) {}
-  })();
 </script>
 </head>
 <body>
@@ -986,5 +972,20 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
     <button onclick="document.getElementById('successModal').style.display='none'" style="font-family:var(--font-b);font-size:14px;color:var(--grey);background:none;border:none;cursor:pointer;padding:8px;">Закрити</button>
   </div>
 </div>
+<script>
+  window.addEventListener('DOMContentLoaded', function(){
+    try {
+      const tf = sessionStorage.getItem('tf');
+      if (tf) {
+        const d = JSON.parse(tf);
+        sessionStorage.removeItem('tf');
+        document.getElementById('from').value = d.from || '';
+        document.getElementById('to').value = d.to || '';
+        calc();
+        setTimeout(() => document.getElementById('booking').scrollIntoView({behavior:'smooth'}), 300);
+      }
+    } catch(e) {}
+  });
+</script>
 </body>
 </html>
