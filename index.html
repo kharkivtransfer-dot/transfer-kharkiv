@@ -263,6 +263,12 @@
     .class-pick button{flex:1 1 calc(50% - 4px)}
   }
 textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--font-b)}
+
+  .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(100px);background:#1a1a2e;color:#fff;padding:16px 28px;border-radius:16px;font-size:15px;font-weight:600;box-shadow:0 8px 32px rgba(0,0,0,.25);z-index:9999;opacity:0;transition:.4s cubic-bezier(.34,1.56,.64,1);pointer-events:none;white-space:nowrap;display:flex;align-items:center;gap:10px}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .toast.error{background:linear-gradient(135deg,#e53935,#c62828)}
+  .toast.success{background:linear-gradient(135deg,#2e7d32,#1b5e20)}
+  .toast.warn{background:linear-gradient(135deg,#e65100,#bf360c)}
 </style>
 <script type="application/ld+json">
 {
@@ -908,9 +914,9 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
     const price = document.getElementById('estVal').textContent.replace(/[^0-9]/g,'') || '0';
     const comment = document.getElementById('comment').value || '';
     const pets = document.getElementById('pets').checked;
-    if (!phone) { alert('Введіть номер телефону'); return; }
-    if (!from) { alert('Введіть місто відправлення'); return; }
-    if (!to) { alert('Введіть місто призначення'); return; }
+    if (!phone) { showToast('Введіть номер телефону', 'warn'); return; }
+    if (!from) { showToast('Введіть місто відправлення', 'warn'); return; }
+    if (!to) { showToast('Введіть місто призначення', 'warn'); return; }
     try {
       const res = await fetch('https://web-production-a94ea.up.railway.app/booking', {
         method: 'POST',
@@ -934,7 +940,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         document.getElementById('successModal').style.display = 'flex';
       }
     } catch(e) {
-      alert('Помилка. Зателефонуйте нам.');
+      showToast('Помилка. Зателефонуйте нам: +38 063 309 49 49', 'error');
     }
   }
 
@@ -965,7 +971,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
   async function sendCallback() {
     const name = document.getElementById('cb-name').value || 'не вказано';
     const phone = document.getElementById('cb-phone').value;
-    if (!phone) { alert('Введіть номер телефону'); return; }
+    if (!phone) { showToast('Введіть номер телефону', 'warn'); return; }
     try {
       await fetch('https://web-production-a94ea.up.railway.app/callback', {
         method: 'POST',
@@ -1012,6 +1018,18 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
       }
     } catch(e) {}
   });
+</script>
+
+<div class="toast" id="toast"></div>
+<script>
+function showToast(msg, type='error') {
+  const t = document.getElementById('toast');
+  t.className = 'toast ' + type;
+  t.innerHTML = (type==='error' ? '❌ ' : type==='success' ? '✅ ' : '⚠️ ') + msg;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+}
 </script>
 </body>
 </html>
