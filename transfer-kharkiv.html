@@ -935,7 +935,8 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         document.getElementById('time').value = '';
         document.getElementById('comment').value = '';
         document.getElementById('pets').checked = false;
-        document.getElementById('dist').value = 100;
+        const distEl = document.getElementById('dist');
+        if (distEl) distEl.value = 100;
         calc();
         // Показуємо модалку
         document.getElementById('successModal').style.display = 'flex';
