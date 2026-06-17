@@ -903,30 +903,37 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
   document.getElementById('to').addEventListener('input', calc);
 
   async function bookNow() {
-    const name = document.getElementById('name').value || '';
-    const phone = document.getElementById('phone').value || '';
-    const from = document.getElementById('from').value || '';
-    const to = document.getElementById('to').value || '';
-    const date = document.getElementById('date').value || '';
-    const time = document.getElementById('time').value || '';
-    const activeClass = document.querySelector('.class-pick button.active');
-    const carClass = activeClass ? activeClass.dataset.cls : 'Комфорт';
-    const price = document.getElementById('estVal').textContent.replace(/[^0-9]/g,'') || '0';
-    const comment = document.getElementById('comment').value || '';
-    const pets = document.getElementById('pets').checked;
+    const name = (document.getElementById('name').value || '').trim();
+    const phone = (document.getElementById('phone').value || '').replace(/[^\d]/g,'');
+    const from = (document.getElementById('from').value || '').trim();
+    const to = (document.getElementById('to').value || '').trim();
+    const date = (document.getElementById('date').value || '').trim();
+    const time = (document.getElementById('time').value || '').trim();
+    const carClass = 'Комфорт';
+    const estEl = document.getElementById('estVal');
+    const price = estEl ? estEl.textContent.replace(/[^0-9]/g,'') || '0' : '0';
+    const comment = (document.getElementById('comment').value || '').trim();
+    const pets = document.getElementById('pets') ? document.getElementById('pets').checked : false;
+    const hpEl = document.getElementById('hp_field');
+    const honeypot = hpEl ? hpEl.value : '';
+
     if (!phone) { showToast('Введіть номер телефону', 'warn'); return; }
     if (!from) { showToast('Введіть місто відправлення', 'warn'); return; }
     if (!to) { showToast('Введіть місто призначення', 'warn'); return; }
+    if (!date) { showToast('Введіть дату поїздки', 'warn'); return; }
+    if (!time) { showToast('Введіть час поїздки', 'warn'); return; }
+
+    const btn = document.querySelector('.booking .btn-primary');
+    if (btn) { btn.disabled = true; btn.textContent = 'Відправляємо...'; }
+
     try {
       const res = await fetch('https://web-production-a94ea.up.railway.app/booking', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({name, phone, from_city: from, to_city: to, date, time, car_class: carClass, price, comment, pets, honeypot: document.getElementById('hp_field').value})
+        body: JSON.stringify({name, phone, from_city: from, to_city: to, date, time, car_class: carClass, price, comment, pets, honeypot})
       });
       const data = await res.json();
-      console.log('API response:', res.status, data);
       if (data.ok) {
-        // Очищаємо поля
         document.getElementById('name').value = '';
         document.getElementById('phone').value = '';
         document.getElementById('from').value = '';
@@ -934,18 +941,20 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         document.getElementById('date').value = '';
         document.getElementById('time').value = '';
         document.getElementById('comment').value = '';
-        document.getElementById('pets').checked = false;
+        if (document.getElementById('pets')) document.getElementById('pets').checked = false;
         const distEl = document.getElementById('dist');
         if (distEl) distEl.value = 100;
-        calc();
-        // Показуємо модалку
-        document.getElementById('successModal').style.display = 'flex';
+        if (typeof calc === 'function') calc();
+        const modal = document.getElementById('successModal');
+        if (modal) modal.style.display = 'flex';
       } else {
         showToast('Помилка: ' + (data.detail || 'Зателефонуйте нам: +38 063 309 49 49'), 'error');
       }
     } catch(e) {
-      console.error('Fetch error:', e);
+      console.error('Booking error:', e);
       showToast('Помилка. Зателефонуйте нам: +38 063 309 49 49', 'error');
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = 'Замовити поїздку'; }
     }
   }
 
