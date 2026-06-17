@@ -396,10 +396,31 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         <div class="stat"><div class="num"><i>4.9</i>/5</div><div class="lbl">середня оцінка</div></div>
         <div class="stat"><div class="num"><i>24</i>/7</div><div class="lbl">на зв'язку</div></div>
       </div>
-      <div style="margin-top:20px;">
-        <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(43,87,200,.08);border:1px solid rgba(43,87,200,.15);border-radius:100px;padding:8px 18px;font-size:13px;color:var(--blue);font-weight:600;letter-spacing:.02em;">
-          <span style="font-size:15px;">✦</span> Км від 25 грн · фіксована ціна за маршрут
-        </span>
+      <div style="margin-top:24px;display:inline-block;position:relative;">
+        <div style="
+          position:relative;
+          display:inline-flex;
+          flex-direction:column;
+          align-items:center;
+          justify-content:center;
+          width:130px;height:130px;
+          background:linear-gradient(135deg,#FF6B35,#FF3D00);
+          border-radius:50% 44% 52% 48% / 48% 50% 44% 52%;
+          box-shadow:0 8px 32px rgba(255,61,0,.35);
+          transform:rotate(-8deg);
+          animation:wobble 3s ease-in-out infinite;
+          cursor:default;
+        ">
+          <span style="color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85;transform:rotate(8deg)">від</span>
+          <span style="color:#fff;font-size:32px;font-weight:900;line-height:1;transform:rotate(8deg)">25₴</span>
+          <span style="color:#fff;font-size:11px;font-weight:700;letter-spacing:.04em;transform:rotate(8deg)">/км</span>
+        </div>
+        <style>
+          @keyframes wobble {
+            0%,100%{border-radius:50% 44% 52% 48% / 48% 50% 44% 52%;transform:rotate(-8deg)}
+            50%{border-radius:46% 54% 48% 52% / 52% 46% 54% 48%;transform:rotate(-6deg) scale(1.04)}
+          }
+        </style>
       </div>
     </div>
 
