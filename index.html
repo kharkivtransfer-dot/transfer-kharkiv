@@ -924,6 +924,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         body: JSON.stringify({name, phone, from_city: from, to_city: to, date, time, car_class: carClass, price, comment, pets, honeypot: document.getElementById('hp_field').value})
       });
       const data = await res.json();
+      console.log('API response:', res.status, data);
       if (data.ok) {
         // Очищаємо поля
         document.getElementById('name').value = '';
@@ -938,8 +939,11 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         calc();
         // Показуємо модалку
         document.getElementById('successModal').style.display = 'flex';
+      } else {
+        showToast('Помилка: ' + (data.detail || 'Зателефонуйте нам: +38 063 309 49 49'), 'error');
       }
     } catch(e) {
+      console.error('Fetch error:', e);
       showToast('Помилка. Зателефонуйте нам: +38 063 309 49 49', 'error');
     }
   }
