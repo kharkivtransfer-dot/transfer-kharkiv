@@ -5,7 +5,7 @@
   <meta name="google-site-verification" content="9wv2KwgFpb9iJ6Z-d6mzMULM587FHTMwtaD0Uju39Es" />
   <link rel="icon" type="image/png" href="img/favicon.png">
   <meta name="description" content="Міжміське таксі з Харкова до Києва, Дніпра, Львова, Одеси, Запоріжжя, Полтави, Ізюма, Краматорська. Фіксована ціна від 28 грн/км. Замовити: +38 063 309 49 49">
-  <meta name="keywords" content="міжміське таксі Харків, таксі Харків Київ, трансфер Харків, таксі по Україні, міжміські перевезення Харків">
+  <meta name="keywords" content="міжміське таксі Харків, таксі Харків Київ, трансфер Харків, таксі по Україні, міжміські перевезення Харків, такси Харьков, такси Харьков Киев, трансфер Харьков, межгородское такси Харьков, такси по Украине">
   <meta property="og:title" content="Міжміське таксі Харків — фіксована ціна, досвідчені водії">
   <meta property="og:description" content="Комфортні поїздки між містами. Фіксована ціна, досвідчені водії. +38 063 309 49 49">
   <meta property="og:url" content="https://transferkharkiv.com.ua">
@@ -269,6 +269,13 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
   .toast.error{background:linear-gradient(135deg,#e53935,#c62828)}
   .toast.success{background:linear-gradient(135deg,#2e7d32,#1b5e20)}
   .toast.warn{background:linear-gradient(135deg,#e65100,#bf360c)}
+
+  .ac-wrap{position:relative}
+  .ac-list{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:1000;max-height:200px;overflow-y:auto;display:none}
+  .ac-list.show{display:block}
+  .ac-item{padding:10px 16px;cursor:pointer;font-size:14px;color:var(--ink);border-bottom:1px solid var(--line-2)}
+  .ac-item:last-child{border-bottom:none}
+  .ac-item:hover{background:var(--bg)}
 </style>
 <script type="application/ld+json">
 {
@@ -329,6 +336,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
 }
 
 </script>
+<script src="/cities.js"></script>
 </head>
 <body>
 
@@ -435,8 +443,14 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
       <p class="bk-sub">Дізнайтесь вартість маршруту за 15 секунд</p>
       <div class="field"><label>Ваше ім'я</label><input type="text" id="name" placeholder="Іван Петренко"></div>
       <div class="field"><label>Номер телефону</label><input type="tel" id="phone" placeholder="+38 (0__) ___-__-__"></div>
-      <div class="field"><label>Звідки</label><input type="text" id="from" placeholder="Місто, адреса подачі"></div>
-      <div class="field"><label>Куди</label><input type="text" id="to" placeholder="Місто, адреса призначення"></div>
+      <div class="field"><label>Звідки</label><div class="ac-wrap">
+  <input type="text" id="from" placeholder="Місто, адреса подачі" autocomplete="off" oninput="acInput(this,'ac-from')">
+  <div class="ac-list" id="ac-from"></div>
+</div></div>
+      <div class="field"><label>Куди</label><div class="ac-wrap">
+  <input type="text" id="to" placeholder="Місто, адреса призначення" autocomplete="off" oninput="acInput(this,'ac-to')">
+  <div class="ac-list" id="ac-to"></div>
+</div></div>
       <div class="field-row">
         <div class="field"><label>Дата</label><input type="date" id="date"></div>
         <div class="field"><label>Час</label><input type="time" id="time"></div>
@@ -1046,6 +1060,27 @@ function showToast(msg, type='error') {
   clearTimeout(window._toastTimer);
   window._toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
 }
+
+  function acInput(input, listId) {
+    const val = input.value.trim().toLowerCase();
+    const list = document.getElementById(listId);
+    if (!val || val.length < 1 || typeof UA_CITIES === 'undefined') { list.classList.remove('show'); return; }
+    const matches = UA_CITIES.filter(c => c.toLowerCase().startsWith(val)).slice(0, 8);
+    if (!matches.length) { list.classList.remove('show'); return; }
+    list.innerHTML = matches.map(c => `<div class="ac-item" onmousedown="acSelect('${input.id}','${listId}','${c}')">${c}</div>`).join('');
+    list.classList.add('show');
+  }
+  function acSelect(inputId, listId, val) {
+    document.getElementById(inputId).value = val;
+    document.getElementById(listId).classList.remove('show');
+    calc();
+  }
+  document.addEventListener('click', e => {
+    document.querySelectorAll('.ac-list').forEach(l => {
+      if (!l.previousElementSibling.contains(e.target)) l.classList.remove('show');
+    });
+  });
+
 </script>
 </body>
 </html>
