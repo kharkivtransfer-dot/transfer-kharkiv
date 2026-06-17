@@ -911,7 +911,8 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
     const time = (document.getElementById('time').value || '').trim();
     const carClass = 'Комфорт';
     const estEl = document.getElementById('estVal');
-    const price = estEl ? estEl.textContent.replace(/[^0-9]/g,'') || '0' : '0';
+    const estRaw = estEl ? estEl.textContent.trim() : '';
+    const price = estRaw && estRaw !== '—' ? estRaw.replace(/[^0-9]/g,'') || '0' : '0';
     const comment = (document.getElementById('comment').value || '').trim();
     const pets = document.getElementById('pets') ? document.getElementById('pets').checked : false;
     const hpEl = document.getElementById('hp_field');
@@ -946,7 +947,8 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         if (distEl) distEl.value = 100;
         if (typeof calc === 'function') calc();
         const modal = document.getElementById('successModal');
-        if (modal) modal.style.display = 'flex';
+        console.log('Modal element:', modal);
+        if (modal) { modal.style.display = 'flex'; console.log('Modal shown'); } else { console.error('Modal not found!'); }
       } else {
         showToast('Помилка: ' + (data.detail || 'Зателефонуйте нам: +38 063 309 49 49'), 'error');
       }
