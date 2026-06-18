@@ -263,6 +263,11 @@
     .foot-grid{grid-template-columns:1fr}
     .foot-bottom{flex-direction:column;align-items:flex-start;gap:12px}
   }
+  @media(max-width:480px){
+    .callback-btn .cb-text{display:none}
+    .callback-btn{padding:10px 12px !important;min-width:40px;justify-content:center}
+    .nav{height:60px}
+  }
   @media(max-width:400px){
     .hero h1{font-size:30px}
     .booking{padding:20px 16px}
@@ -358,9 +363,9 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
     </ul>
     <div class="nav-cta">
       <a href="tel:+380633094949" class="nav-phone nav-phone-el">+38 063 309 49 49</a>
-      <button onclick="openCallback()" class="callback-btn" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-b);font-weight:900;font-size:13px;padding:10px 14px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(40,167,69,.28);transition:.3s;white-space:nowrap;">
+      <button onclick="openCallback()" class="callback-btn" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-b);font-weight:900;font-size:13px;padding:10px 14px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(40,167,69,.28);transition:.3s;white-space:nowrap;flex-shrink:0;">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7A2 2 0 0122 16.9z"/></svg>
-        Зворотній зв'язок
+        <span class="cb-text">Зворотній зв'язок</span>
       </button>
       <a href="#booking" class="btn btn-primary">Замовити поїздку</a>
       <button class="burger" id="burger" style="margin-left:-8px;"><span></span><span></span><span></span></button>
