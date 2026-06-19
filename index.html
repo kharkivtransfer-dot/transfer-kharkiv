@@ -408,7 +408,34 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
   </div>
   <div class="wrap">
     <div class="hero-copy reveal">
-      <a href="tel:+380633094949" style="display:block;font-family:var(--font-b);font-weight:700;font-size:20px;color:var(--ink);text-decoration:none;margin-bottom:10px;">📞 +38 063 309 49 49</a>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px;flex-wrap:wrap;">
+        <a href="tel:+380633094949" style="display:inline-block;font-family:var(--font-b);font-weight:700;font-size:20px;color:var(--ink);text-decoration:none;">📞 +38 063 309 49 49</a>
+        <div style="
+          position:relative;
+          display:inline-flex;
+          flex-direction:column;
+          align-items:center;
+          justify-content:center;
+          width:78px;height:78px;
+          background:linear-gradient(135deg,#FF6B35,#FF3D00);
+          border-radius:50% 44% 52% 48% / 48% 50% 44% 52%;
+          box-shadow:0 6px 20px rgba(255,61,0,.35);
+          transform:rotate(-8deg);
+          animation:wobble 3s ease-in-out infinite;
+          cursor:default;
+          flex-shrink:0;
+        ">
+          <span style="color:#fff;font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.85;transform:rotate(8deg);line-height:1;">від</span>
+          <span style="color:#fff;font-size:19px;font-weight:900;line-height:1.1;transform:rotate(8deg);">25₴</span>
+          <span style="color:#fff;font-size:8px;font-weight:700;letter-spacing:.03em;transform:rotate(8deg);line-height:1;">/км</span>
+        </div>
+        <style>
+          @keyframes wobble {
+            0%,100%{border-radius:50% 44% 52% 48% / 48% 50% 44% 52%;transform:rotate(-8deg)}
+            50%{border-radius:46% 54% 48% 52% / 52% 46% 54% 48%;transform:rotate(-6deg) scale(1.04)}
+          }
+        </style>
+      </div>
       <span class="eyebrow">Міжміське таксі · Україна та Європа</span>
       <h1>Міжміське таксі —<br>по <em>Україні та Європі</em></h1>
       <p class="hero-sub">Заберемо з будь-якої точки й довеземо просто до дверей — у будь-якому місті України або країні Європи. Фіксована ціна за маршрут, без прихованих доплат.</p>
@@ -420,32 +447,6 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         <div class="stat"><div class="num"><i>200</i>+</div><div class="lbl">міст України</div></div>
         <div class="stat"><div class="num"><i>4.9</i>/5</div><div class="lbl">середня оцінка</div></div>
         <div class="stat"><div class="num"><i>24</i>/7</div><div class="lbl">на зв'язку</div></div>
-      </div>
-      <div style="margin-top:24px;display:inline-block;position:relative;">
-        <div style="
-          position:relative;
-          display:inline-flex;
-          flex-direction:column;
-          align-items:center;
-          justify-content:center;
-          width:130px;height:130px;
-          background:linear-gradient(135deg,#FF6B35,#FF3D00);
-          border-radius:50% 44% 52% 48% / 48% 50% 44% 52%;
-          box-shadow:0 8px 32px rgba(255,61,0,.35);
-          transform:rotate(-8deg);
-          animation:wobble 3s ease-in-out infinite;
-          cursor:default;
-        ">
-          <span style="color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85;transform:rotate(8deg)">від</span>
-          <span style="color:#fff;font-size:32px;font-weight:900;line-height:1;transform:rotate(8deg)">25₴</span>
-          <span style="color:#fff;font-size:11px;font-weight:700;letter-spacing:.04em;transform:rotate(8deg)">/км</span>
-        </div>
-        <style>
-          @keyframes wobble {
-            0%,100%{border-radius:50% 44% 52% 48% / 48% 50% 44% 52%;transform:rotate(-8deg)}
-            50%{border-radius:46% 54% 48% 52% / 52% 46% 54% 48%;transform:rotate(-6deg) scale(1.04)}
-          }
-        </style>
       </div>
     </div>
 
