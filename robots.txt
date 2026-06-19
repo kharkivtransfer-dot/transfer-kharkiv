@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://transferkharkiv.com.ua/sitemap.xml
