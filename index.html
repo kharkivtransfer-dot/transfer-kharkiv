@@ -376,7 +376,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         <span class="cb-text">Зворотній зв'язок</span>
       </button>
       <a href="#booking" class="btn btn-primary">Замовити поїздку</a>
-      <button class="burger" id="burger" style="margin-left:-8px;"><span></span><span></span><span></span></button>
+      <button class="burger" id="burger" aria-label="Відкрити меню" style="margin-left:-8px;"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -468,19 +468,19 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
     <div class="booking reveal" id="booking">
       <h3>Замовити поїздку</h3>
       <p class="bk-sub">Дізнайтесь вартість маршруту за 15 секунд</p>
-      <div class="field"><label>Ваше ім'я</label><input type="text" id="name" placeholder="Іван Петренко"></div>
-      <div class="field"><label>Номер телефону</label><input type="tel" id="phone" placeholder="+38 (0__) ___-__-__"></div>
-      <div class="field"><label>Звідки</label><div class="ac-wrap">
+      <div class="field"><label for="name">Ваше ім'я</label><input type="text" id="name" placeholder="Іван Петренко"></div>
+      <div class="field"><label for="phone">Номер телефону</label><input type="tel" id="phone" placeholder="+38 (0__) ___-__-__"></div>
+      <div class="field"><label for="from">Звідки</label><div class="ac-wrap">
   <input type="text" id="from" placeholder="Місто, адреса подачі" autocomplete="off" oninput="acInput(this,'ac-from')">
   <div class="ac-list" id="ac-from"></div>
 </div></div>
-      <div class="field"><label>Куди</label><div class="ac-wrap">
+      <div class="field"><label for="to">Куди</label><div class="ac-wrap">
   <input type="text" id="to" placeholder="Місто, адреса призначення" autocomplete="off" oninput="acInput(this,'ac-to')">
   <div class="ac-list" id="ac-to"></div>
 </div></div>
       <div class="field-row">
-        <div class="field"><label>Дата</label><input type="date" id="date"></div>
-        <div class="field"><label>Час</label><input type="time" id="time"></div>
+        <div class="field"><label for="date">Дата</label><input type="date" id="date"></div>
+        <div class="field"><label for="time">Час</label><input type="time" id="time"></div>
       </div>
       <div style="background:rgba(43,87,200,.06);border-radius:14px;padding:14px 18px;margin-bottom:14px;">
         <p style="font-family:var(--font-b);font-size:15px;color:var(--blue);font-weight:600;margin:0;line-height:1.5;">Поїздки від 25 гривень за км по Україні на максимально комфортному автомобілі</p>
@@ -497,7 +497,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         🐾 Є тварини (домашні улюбленці)
       </label>
       <div class="field">
-        <label>Коментар</label>
+        <label for="comment">Коментар</label>
         <textarea id="comment" rows="3" placeholder="Наприклад: багато багажу, дитяче крісло, зустріч в аеропорту. Якщо є тварини — вкажіть вид і вагу" style="width:100%;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:12px;font-family:var(--font-b);font-size:14px;color:var(--ink);background:var(--surface);resize:none;outline:none;transition:.3s;box-sizing:border-box;line-height:1.6;"></textarea>
       </div>
       <input type="text" name="website" id="hp_field" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true">
@@ -853,16 +853,16 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
 <!-- CALLBACK MODAL -->
 <div id="callbackModal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(14,27,48,.5);backdrop-filter:blur(6px);align-items:center;justify-content:center;">
   <div style="background:#fff;border-radius:24px;padding:40px;width:100%;max-width:420px;margin:20px;box-shadow:0 40px 80px rgba(16,42,90,.18);position:relative;">
-    <button onclick="closeCallback()" style="position:absolute;top:18px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--grey);">✕</button>
+    <button onclick="closeCallback()" aria-label="Закрити форму" style="position:absolute;top:18px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--grey);">✕</button>
     <h3 style="font-family:var(--font-d);font-size:26px;margin-bottom:8px;">Зворотній зв'язок</h3>
     <p style="color:var(--grey);font-size:15px;margin-bottom:24px;">Залиште номер — менеджер зателефонує протягом 5 хвилин</p>
     <div style="margin-bottom:14px;">
       <label style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:900;display:block;margin-bottom:7px;">Ваше ім'я</label>
-      <input id="cb-name" type="text" placeholder="Іван Петренко" style="width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;padding:14px 16px;border-radius:12px;outline:none;box-sizing:border-box;">
+      <input id="cb-name" type="text" aria-label="Ваше ім'я" placeholder="Іван Петренко" style="width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;padding:14px 16px;border-radius:12px;outline:none;box-sizing:border-box;">
     </div>
     <div style="margin-bottom:24px;">
       <label style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:900;display:block;margin-bottom:7px;">Номер телефону</label>
-      <input id="cb-phone" type="tel" placeholder="+38 (0__) ___-__-__" style="width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;padding:14px 16px;border-radius:12px;outline:none;box-sizing:border-box;">
+      <input id="cb-phone" type="tel" aria-label="Номер телефону" placeholder="+38 (0__) ___-__-__" style="width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;padding:14px 16px;border-radius:12px;outline:none;box-sizing:border-box;">
     </div>
     <button onclick="sendCallback()" style="width:100%;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:900;font-size:15px;padding:16px;border-radius:100px;border:none;cursor:pointer;">Відправити</button>
     <p id="cb-success" style="display:none;text-align:center;color:var(--blue);font-weight:600;margin-top:16px;">✓ Дякуємо! Менеджер зв'яжеться з Вами протягом 5 хвилин.</p>
