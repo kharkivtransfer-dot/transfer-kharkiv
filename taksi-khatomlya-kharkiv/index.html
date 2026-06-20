@@ -14,98 +14,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Таксі Хатомля — Харків","provider":{"@type":"LocalBusiness","name":"Transfer Kharkiv","telephone":"+380633094949","url":"https://transferkharkiv.com.ua"},"offers":{"@type":"Offer","price":"3000","priceCurrency":"UAH"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Скільки коштує таксі Хатомля — Харків?","acceptedAnswer":{"@type":"Answer","text":"Фіксована ціна 3 000 грн за весь автомобіль до 3 пасажирів."}},{"@type":"Question","name":"Як замовити таксі Хатомля — Харків?","acceptedAnswer":{"@type":"Answer","text":"Онлайн на сайті, телефон +38 063 309 49 49, або Telegram @transferkh_bot."}}]}]}
 </script>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{overflow-x:hidden;max-width:100%}
-body{background:#EEF2F7;color:#0E1B30;font-family:'Manrope',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.15}
-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(14,27,48,.08);box-shadow:0 4px 20px rgba(16,42,90,.06)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
-.logo b{font-family:'Playfair Display',serif;font-size:22px;letter-spacing:.04em;font-weight:600;color:#0E1B30;white-space:nowrap}
-.logo span{display:block;font-size:10px;letter-spacing:.4em;color:#2B57C8;font-weight:900}
-.nav-phone{font-weight:800;font-size:14px;color:#0E1B30;white-space:nowrap;flex-shrink:0}
-.btn{display:inline-flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-weight:800;font-size:13px;padding:10px 18px;border-radius:100px;border:none;cursor:pointer;transition:.25s;white-space:nowrap;text-decoration:none;flex-shrink:0}
-.btn-p{background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;box-shadow:0 6px 20px rgba(43,87,200,.28)}
-.btn-p:hover{transform:translateY(-1px)}
-.btn-g{background:linear-gradient(135deg,#2ecc71,#25A847);color:#fff;box-shadow:0 6px 20px rgba(37,168,71,.25)}
-.btn-g:hover{transform:translateY(-1px)}
-.btn-ghost{background:rgba(14,27,48,.06);color:#0E1B30;border:1.5px solid rgba(14,27,48,.12)}
-.hero{padding:88px 0 48px;background:linear-gradient(160deg,#F2F5FA 0%,#E8EFF8 100%)}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#2B57C8;font-weight:900;display:inline-flex;align-items:center;gap:10px;margin-bottom:14px}
-.eyebrow::before{content:"";width:24px;height:2px;background:#2B57C8;border-radius:2px}
-.hero h1{font-size:clamp(28px,4vw,52px);margin-bottom:14px;color:#0E1B30}
-.hero h1 em{font-style:italic;color:#2B57C8}
-.hero-sub{font-size:15px;color:#5E6B7E;margin-bottom:24px;line-height:1.7}
-.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
-.card{background:#fff;border:1px solid rgba(14,27,48,.08);border-radius:20px;padding:28px;box-shadow:0 20px 50px rgba(16,42,90,.1)}
-.card-label{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:4px;color:#0E1B30}
-.card-sub{font-size:12px;color:#5E6B7E;margin-bottom:20px}
-.price-big{font-family:'Playfair Display',serif;font-size:46px;color:#2B57C8;line-height:1;margin-bottom:4px}
-.price-big small{font-size:16px;color:#5E6B7E;font-family:'Manrope',sans-serif;font-weight:400}
-.price-note{font-size:12px;color:#5E6B7E;margin-bottom:20px}
-.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
-.fact{background:#EEF2F7;border-radius:10px;padding:12px;text-align:center}
-.fact b{display:block;font-size:16px;color:#2B57C8;font-weight:900}
-.fact span{font-size:11px;color:#5E6B7E}
-.section{padding:56px 0}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.info-card{background:#fff;border:1px solid rgba(14,27,48,.06);border-radius:16px;padding:28px;box-shadow:0 8px 24px rgba(16,42,90,.06)}
-.info-card h2{font-size:22px;margin-bottom:16px}
-.info-card p{color:#5E6B7E;font-size:14px;line-height:1.8;margin-bottom:14px}
-.check-list{list-style:none}
-.check-list li{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(14,27,48,.06);color:#5E6B7E;font-size:14px;align-items:flex-start}
-.check-list li::before{content:"✓";color:#2B57C8;font-weight:900;flex-shrink:0}
-.contact-btns{margin-top:20px;display:flex;flex-direction:column;gap:10px}
-.faq-section{padding:0 0 56px}
-.faq-title{font-size:28px;margin-bottom:24px}
-details{background:#fff;border:1px solid rgba(14,27,48,.06);border-radius:12px;padding:18px 20px;margin-bottom:8px}
-details[open]{border-color:#2B57C8;box-shadow:0 0 0 3px rgba(43,87,200,.07)}
-summary{font-weight:700;cursor:pointer;font-size:14px;list-style:none;display:flex;justify-content:space-between;align-items:center;color:#0E1B30;gap:12px}
-summary::after{content:"＋";color:#2B57C8;font-size:18px;font-weight:300;flex-shrink:0}
-details[open] summary::after{content:"－"}
-details p{margin-top:12px;color:#5E6B7E;line-height:1.7;font-size:14px}
-.cta-box{background:linear-gradient(135deg,#1a1a2e,#2B57C8);border-radius:20px;padding:56px 32px;text-align:center;color:#fff;margin:0 0 56px}
-.cta-box h2{color:#fff;font-size:30px;margin-bottom:10px}
-.cta-box p{opacity:.8;margin-bottom:24px;font-size:15px}
-.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-white{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3)}
-footer{background:#0E1B30;color:rgba(255,255,255,.45);padding:24px 0;text-align:center;font-size:13px}
-footer a{color:rgba(255,255,255,.7)}
-@media(max-width:768px){
-  .nav{height:56px}
-  .nav-phone{font-size:11px;white-space:nowrap;flex-shrink:0}
-  .btn{font-size:11px;padding:8px 12px;white-space:nowrap;flex-shrink:0}
-  .logo b{font-size:17px}
-  .logo span{font-size:9px}
-  .btn{font-size:12px;padding:9px 14px}
-  .hero{padding:72px 0 36px}
-  .hero-grid{grid-template-columns:1fr;gap:24px}
-  .hero h1{font-size:28px}
-  .hero-sub{font-size:14px}
-  .hero-btns{flex-direction:column}
-  .hero-btns .btn{width:100%;justify-content:center;padding:14px}
-  .card{padding:20px}
-  .price-big{font-size:36px}
-  .two-col{grid-template-columns:1fr;gap:16px}
-  .info-card{padding:20px}
-  .section{padding:36px 0}
-  .faq-section{padding:0 0 36px}
-  .cta-box{padding:36px 20px;border-radius:16px}
-  .cta-box h2{font-size:24px}
-  .cta-btns{flex-direction:column;align-items:stretch}
-  .cta-btns .btn{width:100%;justify-content:center;padding:14px}
-}
-@media(max-width:420px){
-  .logo b{font-size:16px}
-  .nav-phone{display:none}
-  .hero h1{font-size:24px}
-  .facts{grid-template-columns:1fr 1fr}
-  .fact:last-child{grid-column:span 2}
-}
-</style>
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <header>
@@ -223,13 +132,6 @@ footer a{color:rgba(255,255,255,.7)}
     <a href="/">← Головна Transfer Kharkiv</a> &nbsp;·&nbsp; +38 063 309 49 49 &nbsp;·&nbsp; info@transfer.kh.ua
   </div>
 </footer>
-
-<div id="seo-keywords" style="display:none" aria-hidden="true">
-такси Хатомля Харьков, таксі Хатомля Харків, трансфер Хатомля Харьков,
-перевозки Хатомля Харьков, заказать такси Хатомля Харьков, замовити таксі Хатомля Харків,
-стоимость такси Хатомля Харьков 3 000 грн, межгородское такси Хатомля Харьков,
-такси Хатомля Харьков 2026, як дістатися Хатомля Харків
-</div>
 
 <script>
 function go(){sessionStorage.setItem('tf',JSON.stringify({from:'Хатомля',to:'Харків'}));window.location='/';return false;}
