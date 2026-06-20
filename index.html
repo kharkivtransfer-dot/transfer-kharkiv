@@ -362,7 +362,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
 <header id="hdr">
   <div class="wrap nav">
     <a href="#" class="logo"><b>TRANSFER</b><span>KHARKIV</span></a>
-    <button onclick="openCallback()" class="mobile-callback" style="display:none;align-items:center;gap:6px;font-family:var(--font-b);font-weight:900;font-size:12px;padding:9px 12px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;white-space:nowrap;margin-left:auto;">📞 Зворотній зв'язок</button>
+    <button data-action="openCallback" class="mobile-callback" style="display:none;align-items:center;gap:6px;font-family:var(--font-b);font-weight:900;font-size:12px;padding:9px 12px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;white-space:nowrap;margin-left:auto;">📞 Зворотній зв'язок</button>
     <ul class="nav-links">
       
       <li><a href="#services">Послуги</a></li>
@@ -371,7 +371,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
     </ul>
     <div class="nav-cta">
       <a href="tel:+380633094949" class="nav-phone nav-phone-el">+38 063 309 49 49</a>
-      <button onclick="openCallback()" class="callback-btn" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-b);font-weight:900;font-size:13px;padding:10px 14px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(40,167,69,.28);transition:.3s;white-space:nowrap;flex-shrink:0;">
+      <button data-action="openCallback" class="callback-btn" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-b);font-weight:900;font-size:13px;padding:10px 14px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(40,167,69,.28);transition:.3s;white-space:nowrap;flex-shrink:0;">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7A2 2 0 0122 16.9z"/></svg>
         <span class="cb-text">Зворотній зв'язок</span>
       </button>
@@ -384,13 +384,13 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
 <div id="mobileMenu" style="display:none;position:fixed;top:84px;left:0;right:0;z-index:999;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:20px 24px;box-shadow:0 20px 40px rgba(16,42,90,.12);">
   <div style="display:flex;flex-direction:column;gap:12px;">
     
-    <a href="#services" onclick="closeMenu()" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Послуги</a>
-    <a href="#why" onclick="closeMenu()" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Про нас</a>
-    <a href="#fleet" onclick="closeMenu()" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Автопарк</a>
+    <a href="#services" data-action="closeMenu" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Послуги</a>
+    <a href="#why" data-action="closeMenu" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Про нас</a>
+    <a href="#fleet" data-action="closeMenu" style="font-family:var(--font-b);font-weight:600;font-size:16px;color:var(--navy);padding:12px 0;border-bottom:1px solid var(--line-2);">Автопарк</a>
     <a href="tel:+380633094949" style="font-family:var(--font-b);font-weight:900;font-size:16px;color:var(--blue);padding:12px 0;border-bottom:1px solid var(--line-2);">+38 063 309 49 49</a>
     <div style="display:flex;gap:12px;margin-top:4px;">
-      <button onclick="closeMenu();openCallback();" style="flex:1;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;font-family:var(--font-b);font-weight:900;font-size:14px;padding:14px;border-radius:100px;border:none;cursor:pointer;">📞 Зворотній зв'язок</button>
-      <a href="#booking" onclick="closeMenu()" style="flex:1;background:linear-gradient(135deg,#3B6BE0,var(--blue));color:#fff;font-family:var(--font-b);font-weight:900;font-size:14px;padding:14px;border-radius:100px;text-align:center;">Замовити поїздку</a>
+      <button data-action="closeMenuOpenCallback" style="flex:1;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;font-family:var(--font-b);font-weight:900;font-size:14px;padding:14px;border-radius:100px;border:none;cursor:pointer;">📞 Зворотній зв'язок</button>
+      <a href="#booking" data-action="closeMenu" style="flex:1;background:linear-gradient(135deg,#3B6BE0,var(--blue));color:#fff;font-family:var(--font-b);font-weight:900;font-size:14px;padding:14px;border-radius:100px;text-align:center;">Замовити поїздку</a>
     </div>
   </div>
 </div>
@@ -501,7 +501,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         <textarea id="comment" rows="3" placeholder="Наприклад: багато багажу, дитяче крісло, зустріч в аеропорту. Якщо є тварини — вкажіть вид і вагу" style="width:100%;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:12px;font-family:var(--font-b);font-size:14px;color:var(--ink);background:var(--surface);resize:none;outline:none;transition:.3s;box-sizing:border-box;line-height:1.6;"></textarea>
       </div>
       <input type="text" name="website" id="hp_field" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" aria-hidden="true">
-      <button class="btn btn-primary" onclick="bookNow()">Замовити поїздку</button>
+      <button class="btn btn-primary" data-action="bookNow">Замовити поїздку</button>
     </div>
   </div>
 </section>
@@ -712,18 +712,18 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
   <div class="wrap">
     <h2 style="font-family:var(--font-d);font-size:22px;color:var(--ink);margin-bottom:20px;">Популярні маршрути з Харкова</h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-      <a href="#booking" onclick="fillRoute('Харків','Київ')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Київ</a>
-      <a href="#booking" onclick="fillRoute('Харків','Дніпро')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Дніпро</a>
-      <a href="#booking" onclick="fillRoute('Харків','Львів')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Львів</a>
-      <a href="#booking" onclick="fillRoute('Харків','Одеса')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Одеса</a>
-      <a href="#booking" onclick="fillRoute('Харків','Запоріжжя')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Запоріжжя</a>
-      <a href="#booking" onclick="fillRoute('Харків','Полтава')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Полтава</a>
-      <a href="#booking" onclick="fillRoute('Харків','Ізюм')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Ізюм</a>
-      <a href="#booking" onclick="fillRoute('Харків','Краматорськ')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Краматорськ</a>
-      <a href="#booking" onclick="fillRoute('Харків','Кропивницький')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Кропивницький</a>
-      <a href="#booking" onclick="fillRoute('Харків','Вінниця')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Вінниця</a>
-      <a href="#booking" onclick="fillRoute('Харків','Суми')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Суми</a>
-      <a href="#booking" onclick="fillRoute('Харків','Варшава')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Варшава</a>
+      <a href="#booking" data-action="fillRoute" data-from="Харків" data-to="Київ" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Київ</a>
+      <a href="#booking" data-action="fillRoute" data-from="Харків" data-to="Дніпро" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Дніпро</a>
+      <a href="#booking" data-action="fillRoute" data-from="Харків" data-to="Львів" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Львів</a>
+      <a href="#booking" data-action="fillRoute" data-from="Харків" data-to="Одеса" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Одеса</a>
+      <a href="#booking" data-action="fillRoute" data-from="Харків" data-to="Запоріжжя" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Запоріжжя</a>
+      <a href="#booking" data-action="fillRoute" data-from="Харків" data-to="Полтава" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Полтава</a>
+      <a href="#booking" data-action="fillRoute" data-from="Харків" data-to="Ізюм" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Ізюм</a>
+      <a href="#booking" data-action="fillRoute" data-from="Харків" data-to="Краматорськ" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Краматорськ</a>
+      <a href="#booking" data-action="fillRoute" data-from="Харків" data-to="Кропивницький" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Кропивницький</a>
+      <a href="#booking" data-action="fillRoute" data-from="Харків" data-to="Вінниця" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Вінниця</a>
+      <a href="#booking" data-action="fillRoute" data-from="Харків" data-to="Суми" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Суми</a>
+      <a href="#booking" data-action="fillRoute" data-from="Харків" data-to="Варшава" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Харків → Варшава</a>
     </div>
   </div>
 </section>
@@ -731,18 +731,18 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
   <div class="wrap">
     <h2 style="font-family:var(--font-d);font-size:22px;color:var(--ink);margin-bottom:20px;">Популярні маршрути з Києва</h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-      <a href="#booking" onclick="fillRoute('Київ','Харків')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Харків</a>
-      <a href="#booking" onclick="fillRoute('Київ','Дніпро')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Дніпро</a>
-      <a href="#booking" onclick="fillRoute('Київ','Львів')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Львів</a>
-      <a href="#booking" onclick="fillRoute('Київ','Одеса')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Одеса</a>
-      <a href="#booking" onclick="fillRoute('Київ','Запоріжжя')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Запоріжжя</a>
-      <a href="#booking" onclick="fillRoute('Київ','Полтава')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Полтава</a>
-      <a href="#booking" onclick="fillRoute('Київ','Вінниця')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Вінниця</a>
-      <a href="#booking" onclick="fillRoute('Київ','Суми')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Суми</a>
-      <a href="#booking" onclick="fillRoute('Київ','Кропивницький')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Кропивницький</a>
-      <a href="#booking" onclick="fillRoute('Київ','Краматорськ')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Краматорськ</a>
-      <a href="#booking" onclick="fillRoute('Київ','Варшава')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Варшава</a>
-      <a href="#booking" onclick="fillRoute('Київ','Краків')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Краків</a>
+      <a href="#booking" data-action="fillRoute" data-from="Київ" data-to="Харків" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Харків</a>
+      <a href="#booking" data-action="fillRoute" data-from="Київ" data-to="Дніпро" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Дніпро</a>
+      <a href="#booking" data-action="fillRoute" data-from="Київ" data-to="Львів" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Львів</a>
+      <a href="#booking" data-action="fillRoute" data-from="Київ" data-to="Одеса" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Одеса</a>
+      <a href="#booking" data-action="fillRoute" data-from="Київ" data-to="Запоріжжя" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Запоріжжя</a>
+      <a href="#booking" data-action="fillRoute" data-from="Київ" data-to="Полтава" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Полтава</a>
+      <a href="#booking" data-action="fillRoute" data-from="Київ" data-to="Вінниця" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Вінниця</a>
+      <a href="#booking" data-action="fillRoute" data-from="Київ" data-to="Суми" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Суми</a>
+      <a href="#booking" data-action="fillRoute" data-from="Київ" data-to="Кропивницький" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Кропивницький</a>
+      <a href="#booking" data-action="fillRoute" data-from="Київ" data-to="Краматорськ" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Краматорськ</a>
+      <a href="#booking" data-action="fillRoute" data-from="Київ" data-to="Варшава" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Варшава</a>
+      <a href="#booking" data-action="fillRoute" data-from="Київ" data-to="Краків" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Київ → Краків</a>
     </div>
   </div>
 </section>
@@ -750,18 +750,18 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
   <div class="wrap">
     <h2 style="font-family:var(--font-d);font-size:22px;color:var(--ink);margin-bottom:20px;">Популярні маршрути з Одеси</h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-      <a href="#booking" onclick="fillRoute('Одеса','Харків')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Харків</a>
-      <a href="#booking" onclick="fillRoute('Одеса','Київ')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Київ</a>
-      <a href="#booking" onclick="fillRoute('Одеса','Дніпро')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Дніпро</a>
-      <a href="#booking" onclick="fillRoute('Одеса','Львів')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Львів</a>
-      <a href="#booking" onclick="fillRoute('Одеса','Запоріжжя')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Запоріжжя</a>
-      <a href="#booking" onclick="fillRoute('Одеса','Миколаїв')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Миколаїв</a>
-      <a href="#booking" onclick="fillRoute('Одеса','Вінниця')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Вінниця</a>
-      <a href="#booking" onclick="fillRoute('Одеса','Кропивницький')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Кропивницький</a>
-      <a href="#booking" onclick="fillRoute('Одеса','Полтава')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Полтава</a>
-      <a href="#booking" onclick="fillRoute('Одеса','Суми')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Суми</a>
-      <a href="#booking" onclick="fillRoute('Одеса','Варшава')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Варшава</a>
-      <a href="#booking" onclick="fillRoute('Одеса','Краків')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Краків</a>
+      <a href="#booking" data-action="fillRoute" data-from="Одеса" data-to="Харків" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Харків</a>
+      <a href="#booking" data-action="fillRoute" data-from="Одеса" data-to="Київ" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Київ</a>
+      <a href="#booking" data-action="fillRoute" data-from="Одеса" data-to="Дніпро" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Дніпро</a>
+      <a href="#booking" data-action="fillRoute" data-from="Одеса" data-to="Львів" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Львів</a>
+      <a href="#booking" data-action="fillRoute" data-from="Одеса" data-to="Запоріжжя" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Запоріжжя</a>
+      <a href="#booking" data-action="fillRoute" data-from="Одеса" data-to="Миколаїв" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Миколаїв</a>
+      <a href="#booking" data-action="fillRoute" data-from="Одеса" data-to="Вінниця" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Вінниця</a>
+      <a href="#booking" data-action="fillRoute" data-from="Одеса" data-to="Кропивницький" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Кропивницький</a>
+      <a href="#booking" data-action="fillRoute" data-from="Одеса" data-to="Полтава" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Полтава</a>
+      <a href="#booking" data-action="fillRoute" data-from="Одеса" data-to="Суми" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Суми</a>
+      <a href="#booking" data-action="fillRoute" data-from="Одеса" data-to="Варшава" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Варшава</a>
+      <a href="#booking" data-action="fillRoute" data-from="Одеса" data-to="Краків" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Одеса → Краків</a>
     </div>
   </div>
 </section>
@@ -769,18 +769,18 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
   <div class="wrap">
     <h2 style="font-family:var(--font-d);font-size:22px;color:var(--ink);margin-bottom:20px;">Популярні маршрути з Дніпра</h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-      <a href="#booking" onclick="fillRoute('Дніпро','Харків')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Харків</a>
-      <a href="#booking" onclick="fillRoute('Дніпро','Київ')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Київ</a>
-      <a href="#booking" onclick="fillRoute('Дніпро','Львів')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Львів</a>
-      <a href="#booking" onclick="fillRoute('Дніпро','Одеса')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Одеса</a>
-      <a href="#booking" onclick="fillRoute('Дніпро','Запоріжжя')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Запоріжжя</a>
-      <a href="#booking" onclick="fillRoute('Дніпро','Полтава')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Полтава</a>
-      <a href="#booking" onclick="fillRoute('Дніпро','Кривий Ріг')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Кривий Ріг</a>
-      <a href="#booking" onclick="fillRoute('Дніпро','Вінниця')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Вінниця</a>
-      <a href="#booking" onclick="fillRoute('Дніпро','Кропивницький')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Кропивницький</a>
-      <a href="#booking" onclick="fillRoute('Дніпро','Суми')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Суми</a>
-      <a href="#booking" onclick="fillRoute('Дніпро','Варшава')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Варшава</a>
-      <a href="#booking" onclick="fillRoute('Дніпро','Краків')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Краків</a>
+      <a href="#booking" data-action="fillRoute" data-from="Дніпро" data-to="Харків" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Харків</a>
+      <a href="#booking" data-action="fillRoute" data-from="Дніпро" data-to="Київ" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Київ</a>
+      <a href="#booking" data-action="fillRoute" data-from="Дніпро" data-to="Львів" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Львів</a>
+      <a href="#booking" data-action="fillRoute" data-from="Дніпро" data-to="Одеса" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Одеса</a>
+      <a href="#booking" data-action="fillRoute" data-from="Дніпро" data-to="Запоріжжя" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Запоріжжя</a>
+      <a href="#booking" data-action="fillRoute" data-from="Дніпро" data-to="Полтава" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Полтава</a>
+      <a href="#booking" data-action="fillRoute" data-from="Дніпро" data-to="Кривий Ріг" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Кривий Ріг</a>
+      <a href="#booking" data-action="fillRoute" data-from="Дніпро" data-to="Вінниця" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Вінниця</a>
+      <a href="#booking" data-action="fillRoute" data-from="Дніпро" data-to="Кропивницький" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Кропивницький</a>
+      <a href="#booking" data-action="fillRoute" data-from="Дніпро" data-to="Суми" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Суми</a>
+      <a href="#booking" data-action="fillRoute" data-from="Дніпро" data-to="Варшава" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Варшава</a>
+      <a href="#booking" data-action="fillRoute" data-from="Дніпро" data-to="Краків" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Дніпро → Краків</a>
     </div>
   </div>
 </section>
@@ -788,18 +788,18 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
   <div class="wrap">
     <h2 style="font-family:var(--font-d);font-size:22px;color:var(--ink);margin-bottom:20px;">Популярні маршрути зі Львова</h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-      <a href="#booking" onclick="fillRoute('Львів','Харків')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Харків</a>
-      <a href="#booking" onclick="fillRoute('Львів','Київ')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Київ</a>
-      <a href="#booking" onclick="fillRoute('Львів','Дніпро')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Дніпро</a>
-      <a href="#booking" onclick="fillRoute('Львів','Одеса')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Одеса</a>
-      <a href="#booking" onclick="fillRoute('Львів','Запоріжжя')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Запоріжжя</a>
-      <a href="#booking" onclick="fillRoute('Львів','Вінниця')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Вінниця</a>
-      <a href="#booking" onclick="fillRoute('Львів','Івано-Франківськ')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Івано-Франківськ</a>
-      <a href="#booking" onclick="fillRoute('Львів','Тернопіль')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Тернопіль</a>
-      <a href="#booking" onclick="fillRoute('Львів','Хмельницький')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Хмельницький</a>
-      <a href="#booking" onclick="fillRoute('Львів','Варшава')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Варшава</a>
-      <a href="#booking" onclick="fillRoute('Львів','Краків')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Краків</a>
-      <a href="#booking" onclick="fillRoute('Львів','Відень')" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Відень</a>
+      <a href="#booking" data-action="fillRoute" data-from="Львів" data-to="Харків" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Харків</a>
+      <a href="#booking" data-action="fillRoute" data-from="Львів" data-to="Київ" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Київ</a>
+      <a href="#booking" data-action="fillRoute" data-from="Львів" data-to="Дніпро" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Дніпро</a>
+      <a href="#booking" data-action="fillRoute" data-from="Львів" data-to="Одеса" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Одеса</a>
+      <a href="#booking" data-action="fillRoute" data-from="Львів" data-to="Запоріжжя" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Запоріжжя</a>
+      <a href="#booking" data-action="fillRoute" data-from="Львів" data-to="Вінниця" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Вінниця</a>
+      <a href="#booking" data-action="fillRoute" data-from="Львів" data-to="Івано-Франківськ" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Івано-Франківськ</a>
+      <a href="#booking" data-action="fillRoute" data-from="Львів" data-to="Тернопіль" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Тернопіль</a>
+      <a href="#booking" data-action="fillRoute" data-from="Львів" data-to="Хмельницький" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Хмельницький</a>
+      <a href="#booking" data-action="fillRoute" data-from="Львів" data-to="Варшава" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Варшава</a>
+      <a href="#booking" data-action="fillRoute" data-from="Львів" data-to="Краків" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Краків</a>
+      <a href="#booking" data-action="fillRoute" data-from="Львів" data-to="Відень" style="text-decoration:none;color:var(--grey);font-size:14px;padding:10px;border:1px solid var(--line-2);border-radius:10px;text-align:center;cursor:pointer;">Львів → Відень</a>
     </div>
   </div>
 </section>
@@ -808,7 +808,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
     <div class="foot-grid">
       <div class="foot-about">
         <a href="#" class="logo"><b>TRANSFER</b><span>KHARKIV</span></a>
-    <button onclick="openCallback()" class="mobile-callback" style="display:none;align-items:center;gap:6px;font-family:var(--font-b);font-weight:900;font-size:12px;padding:9px 12px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;white-space:nowrap;margin-left:auto;">📞 Зворотній зв'язок</button>
+    <button data-action="openCallback" class="mobile-callback" style="display:none;align-items:center;gap:6px;font-family:var(--font-b);font-weight:900;font-size:12px;padding:9px 12px;border-radius:100px;border:none;background:linear-gradient(135deg,#34C759,#28A745);color:#fff;cursor:pointer;white-space:nowrap;margin-left:auto;">📞 Зворотній зв'язок</button>
         <p>Міжміське таксі · Україна та Європа. Заберемо з будь-якої точки й довеземо у будь-яке місто — з 2018 року.</p>
       </div>
       <div>
@@ -853,7 +853,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
 <!-- CALLBACK MODAL -->
 <div id="callbackModal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(14,27,48,.5);backdrop-filter:blur(6px);align-items:center;justify-content:center;">
   <div style="background:#fff;border-radius:24px;padding:40px;width:100%;max-width:420px;margin:20px;box-shadow:0 40px 80px rgba(16,42,90,.18);position:relative;">
-    <button onclick="closeCallback()" aria-label="Закрити форму" style="position:absolute;top:18px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--grey);">✕</button>
+    <button data-action="closeCallback" aria-label="Закрити форму" style="position:absolute;top:18px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--grey);">✕</button>
     <h3 style="font-family:var(--font-d);font-size:26px;margin-bottom:8px;">Зворотній зв'язок</h3>
     <p style="color:var(--grey);font-size:15px;margin-bottom:24px;">Залиште номер — менеджер зателефонує протягом 5 хвилин</p>
     <div style="margin-bottom:14px;">
@@ -864,7 +864,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
       <label style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:900;display:block;margin-bottom:7px;">Номер телефону</label>
       <input id="cb-phone" type="tel" aria-label="Номер телефону" placeholder="+38 (0__) ___-__-__" style="width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;padding:14px 16px;border-radius:12px;outline:none;box-sizing:border-box;">
     </div>
-    <button onclick="sendCallback()" style="width:100%;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:900;font-size:15px;padding:16px;border-radius:100px;border:none;cursor:pointer;">Відправити</button>
+    <button data-action="sendCallback" style="width:100%;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:900;font-size:15px;padding:16px;border-radius:100px;border:none;cursor:pointer;">Відправити</button>
     <p id="cb-success" style="display:none;text-align:center;color:var(--blue);font-weight:600;margin-top:16px;">✓ Дякуємо! Менеджер зв'яжеться з Вами протягом 5 хвилин.</p>
   </div>
 </div>
@@ -1075,7 +1075,7 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
       @transferkh_bot
     </a>
     <br>
-    <button onclick="document.getElementById('successModal').style.display='none'" style="font-family:var(--font-b);font-size:14px;color:var(--grey);background:none;border:none;cursor:pointer;padding:8px;">Закрити</button>
+    <button data-action="closeSuccessModal" style="font-family:var(--font-b);font-size:14px;color:var(--grey);background:none;border:none;cursor:pointer;padding:8px;">Закрити</button>
   </div>
 </div>
 <script>
@@ -1127,5 +1127,21 @@ function showToast(msg, type='error') {
 
 </script>
 <script src="/cities.js"></script>
+
+<script>
+document.addEventListener('click', function(e) {
+  var el = e.target.closest('[data-action]');
+  if (!el) return;
+  var action = el.dataset.action;
+  if (action === 'fillRoute') fillRoute(el.dataset.from, el.dataset.to);
+  else if (action === 'bookNow') bookNow();
+  else if (action === 'openCallback') openCallback();
+  else if (action === 'closeCallback') closeCallback();
+  else if (action === 'closeMenu') closeMenu();
+  else if (action === 'closeMenuOpenCallback') { closeMenu(); openCallback(); }
+  else if (action === 'closeSuccessModal') document.getElementById('successModal').style.display = 'none';
+  else if (action === 'sendCallback') sendCallback();
+});
+</script>
 </body>
 </html>
