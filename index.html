@@ -991,8 +991,10 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({name, phone, from_city: from, to_city: to, date, time, car_class: carClass, price, comment, pets, honeypot})
       });
-      const data = await res.json();
-      if (data.ok) {
+      let data = null;
+      try { data = await res.json(); } catch (_) { data = null; }
+
+      if (res.ok && data && data.ok) {
         document.getElementById('name').value = '';
         document.getElementById('phone').value = '';
         document.getElementById('from').value = '';
@@ -1007,12 +1009,19 @@ textarea::placeholder{color:#B0BAC9;opacity:1;font-size:14px;font-family:var(--f
         const modal = document.getElementById('successModal');
         console.log('Modal element:', modal);
         if (modal) { modal.style.display = 'flex'; console.log('Modal shown'); } else { console.error('Modal not found!'); }
+      } else if (res.status === 429) {
+        showToast('Забагато спроб. Зачекайте хвилину і спробуйте ще раз, або зателефонуйте: +38 063 309 49 49', 'error');
+      } else if (res.status === 422) {
+        showToast('Перевірте правильність заповнення форми', 'warn');
+      } else if (res.status >= 500) {
+        showToast('Технічна помилка на сервері. Зателефонуйте нам: +38 063 309 49 49', 'error');
       } else {
-        showToast('Помилка: ' + (data.detail || 'Зателефонуйте нам: +38 063 309 49 49'), 'error');
+        const detail = data && typeof data.detail === 'string' ? data.detail : 'Зателефонуйте нам: +38 063 309 49 49';
+        showToast('Помилка: ' + detail, 'error');
       }
     } catch(e) {
       console.error('Booking error:', e);
-      showToast('Помилка. Зателефонуйте нам: +38 063 309 49 49', 'error');
+      showToast('Немає з\'єднання з сервером. Перевірте інтернет або зателефонуйте: +38 063 309 49 49', 'error');
     } finally {
       if (btn) { btn.disabled = false; btn.textContent = 'Замовити поїздку'; }
     }
