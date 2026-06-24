@@ -15,7 +15,10 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,2
 .btn-g{background:linear-gradient(135deg,#2ecc71,#25A847);color:#fff;box-shadow:0 6px 20px rgba(37,168,71,.25)}
 .btn-g:hover{transform:translateY(-1px)}
 .btn-ghost{background:rgba(14,27,48,.06);color:#0E1B30;border:1.5px solid rgba(14,27,48,.12)}
-.hero{padding:88px 0 48px;background:linear-gradient(160deg,#F2F5FA 0%,#E8EFF8 100%)}
+.hero{padding:88px 0 64px;background:linear-gradient(135deg,#EEF2F7 0%,#E4ECF7 40%,#EDF1F8 100%);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-120px;right:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(43,87,200,.08) 0%,transparent 70%);pointer-events:none;z-index:0}
+.hero::after{content:"";position:absolute;bottom:-80px;left:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(91,134,240,.06) 0%,transparent 70%);pointer-events:none;z-index:0}
+.hero .wrap{position:relative;z-index:1}
 .hero-grid{display:grid;grid-template-columns:55% 45%;gap:40px;align-items:start}
 .eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#2B57C8;font-weight:900;display:inline-flex;align-items:center;gap:10px;margin-bottom:14px}
 .eyebrow::before{content:"";width:24px;height:2px;background:#2B57C8;border-radius:2px}
@@ -23,19 +26,19 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,2
 .hero h1 em{font-style:italic;color:#2B57C8}
 .hero-sub{font-size:15px;color:#5E6B7E;margin-bottom:24px;line-height:1.7}
 .hero-btns{display:flex;gap:10px;flex-wrap:wrap}
-.card{background:#fff;border:1px solid rgba(14,27,48,.08);border-radius:24px;padding:36px;box-shadow:0 20px 50px rgba(16,42,90,.1);width:100%;box-sizing:border-box}
+.card{background:#fff;border:1px solid rgba(43,87,200,.12);border-radius:24px;padding:36px;box-shadow:0 24px 60px rgba(16,42,90,.12),0 0 0 1px rgba(43,87,200,.04);width:100%;box-sizing:border-box;backdrop-filter:blur(2px)}
 .card-label{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:4px;color:#0E1B30}
 .card-sub{font-size:12px;color:#5E6B7E;margin-bottom:20px}
 .price-big{font-family:'Playfair Display',serif;font-size:54px;color:#2B57C8;line-height:1;margin-bottom:4px}
 .price-big small{font-size:16px;color:#5E6B7E;font-family:'Manrope',sans-serif;font-weight:400}
 .price-note{font-size:12px;color:#5E6B7E;margin-bottom:20px}
 .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
-.fact{background:#EEF2F7;border-radius:10px;padding:12px;text-align:center}
+.fact{background:linear-gradient(135deg,#EEF4FF,#E4EDFF);border-radius:14px;padding:14px;text-align:center;border:1px solid rgba(43,87,200,.08)}
 .fact b{display:block;font-size:16px;color:#2B57C8;font-weight:900}
 .fact span{font-size:11px;color:#5E6B7E}
 .section{padding:56px 0}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.info-card{background:#fff;border:1px solid rgba(14,27,48,.06);border-radius:16px;padding:28px;box-shadow:0 8px 24px rgba(16,42,90,.06)}
+.info-card{background:#fff;border:1px solid rgba(43,87,200,.1);border-radius:20px;padding:32px;box-shadow:0 8px 32px rgba(16,42,90,.08);transition:.25s}.info-card:hover{box-shadow:0 12px 40px rgba(16,42,90,.12);transform:translateY(-2px)}
 .info-card h2{font-size:22px;margin-bottom:16px}
 .info-card p{color:#5E6B7E;font-size:14px;line-height:1.8;margin-bottom:14px}
 .check-list{list-style:none}
@@ -50,12 +53,12 @@ summary{font-weight:700;cursor:pointer;font-size:14px;list-style:none;display:fl
 summary::after{content:"＋";color:#2B57C8;font-size:18px;font-weight:300;flex-shrink:0}
 details[open] summary::after{content:"－"}
 details p{margin-top:12px;color:#5E6B7E;line-height:1.7;font-size:14px}
-.cta-box{background:linear-gradient(135deg,#1a1a2e,#2B57C8);border-radius:20px;padding:56px 32px;text-align:center;color:#fff;margin:0 0 56px}
+.cta-box{background:linear-gradient(135deg,#101E40,#1A3A8F,#2B57C8);border-radius:28px;padding:64px 40px;text-align:center;color:#fff;margin:0 0 56px;position:relative;overflow:hidden;box-shadow:0 32px 80px rgba(16,42,90,.3)}
 .cta-box h2{color:#fff;font-size:30px;margin-bottom:10px}
 .cta-box p{opacity:.8;margin-bottom:24px;font-size:15px}
 .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .btn-white{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3)}
-footer{background:#0E1B30;color:rgba(255,255,255,.45);padding:24px 0;text-align:center;font-size:13px}
+footer{background:linear-gradient(135deg,#091422,#0E1B30);color:rgba(255,255,255,.5);padding:36px 0;text-align:center;font-size:13px;border-top:1px solid rgba(255,255,255,.06)}
 footer a{color:rgba(255,255,255,.7)}
 @media(max-width:768px){
   .nav{height:56px}
