@@ -240,7 +240,7 @@
         <div style="font-family:var(--font-b);font-size:13px;color:#AAB6CC;margin-top:2px;">Підпишіться на бота — отримуйте сповіщення про підтвердження та статус замовлення</div>
       </div>
     </div>
-    <a href="https://t.me/transferkh_bot" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:900;font-size:14px;padding:12px 24px;border-radius:100px;white-space:nowrap;box-shadow:0 8px 24px rgba(43,87,200,.4);text-decoration:none;">
+    <a href="https://t.me/transferkh_bot" onclick="gtag('event','telegram_click',{method:'bot'})" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:900;font-size:14px;padding:12px 24px;border-radius:100px;white-space:nowrap;box-shadow:0 8px 24px rgba(43,87,200,.4);text-decoration:none;">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 4L3 11l5 2 2 6 3-4 5 4 3-15z"/></svg>
       @transferkh_bot
     </a>
@@ -834,6 +834,9 @@
     if (price !== null) {
       estEl.innerHTML = price.toLocaleString('uk') + ' <small>грн</small>';
       note.textContent = '* Фіксована ціна за маршрут';
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'view_item', {currency:'UAH', value:price, items:[{item_name:from+' → '+to}]});
+      }
     } else {
       estEl.innerHTML = '—';
       note.innerHTML = 'Уточнюйте ціну у оператора:<br><a href="tel:+380633094949" style="color:var(--blue);font-weight:900;font-size:15px;">+38 063 309 49 49</a>';
@@ -877,6 +880,14 @@
       try { data = await res.json(); } catch (_) { data = null; }
 
       if (res.ok && data && data.ok) {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'purchase', {
+            currency: 'UAH',
+            value: parseInt(price) || 0,
+            transaction_id: data.booking_id || '',
+            items: [{item_name: from + ' → ' + to}]
+          });
+        }
         document.getElementById('name').value = '';
         document.getElementById('phone').value = '';
         document.getElementById('from').value = '';
