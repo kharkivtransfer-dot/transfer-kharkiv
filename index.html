@@ -1138,5 +1138,39 @@ document.getElementById('exit-popup').addEventListener('click', function(e){
   if(e.target === this) closePopup();
 });
 </script>
+
+<!-- Meta Pixel Events -->
+<script>
+// Дзвінок → Contact
+document.querySelectorAll('a[href^="tel:"]').forEach(function(el){
+  el.addEventListener('click', function(){
+    fbq('track', 'Contact', {content_name: 'phone_call'});
+  });
+});
+// Зворотній зв'язок відкрити → InitiateCheckout
+document.querySelectorAll('[data-action="openCallback"]').forEach(function(el){
+  el.addEventListener('click', function(){
+    fbq('track', 'InitiateCheckout', {content_name: 'callback_open'});
+  });
+});
+// Замовити поїздку → Lead
+document.querySelectorAll('[data-action="bookNow"]').forEach(function(el){
+  el.addEventListener('click', function(){
+    fbq('track', 'Lead', {content_name: 'book_now'});
+  });
+});
+// Форма зворотного дзвінка відправлена → Contact (слухаємо кнопку submit в modal)
+document.addEventListener('DOMContentLoaded', function(){
+  var modal = document.getElementById('callbackModal');
+  if(modal){
+    var btn = modal.querySelector('button[type="submit"], .btn');
+    if(btn){
+      btn.addEventListener('click', function(){
+        fbq('track', 'Contact', {content_name: 'callback_submit'});
+      });
+    }
+  }
+});
+</script>
 </body>
 </html>

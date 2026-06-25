@@ -243,5 +243,21 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
 <script>
 function go(){sessionStorage.setItem('tf',JSON.stringify({from:'Одеса',to:'Варшава'}));window.location='/';return false;}
 </script>
+
+<!-- Meta Pixel Events -->
+<script>
+// Дзвінок → Contact
+document.querySelectorAll('a[href^="tel:"]').forEach(function(el){
+  el.addEventListener('click', function(){
+    fbq('track', 'Contact', {content_name: 'phone_call'});
+  });
+});
+// Замовити (go() → Telegram) → Lead
+document.querySelectorAll('a[onclick*="go()"]').forEach(function(el){
+  el.addEventListener('click', function(){
+    fbq('track', 'Lead', {content_name: 'order_button'});
+  });
+});
+</script>
 </body>
 </html>
