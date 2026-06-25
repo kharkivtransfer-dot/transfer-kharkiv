@@ -31,7 +31,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,2
 .hero h1 em{font-style:italic;color:#2B57C8}
 .hero-sub{font-size:15px;color:#5E6B7E;margin-bottom:24px;line-height:1.7}
 .hero-btns{display:flex;gap:10px;flex-wrap:wrap}
-.card{background:#fff;border:1px solid rgba(14,27,48,.08);border-radius:20px;padding:28px;box-shadow:0 20px 50px rgba(16,42,90,.1)}
+.card{background:#fff;border:1px solid rgba(14,27,48,.08);border-radius:20px;padding:28px;box-shadow:0 20px 50px rgba(16,42,90,.1);width:100%;box-sizing:border-box}
 .card-label{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:4px;color:#0E1B30}
 .card-sub{font-size:12px;color:#5E6B7E;margin-bottom:20px}
 .price-big{font-family:'Playfair Display',serif;font-size:54px;color:#2B57C8;line-height:1;margin-bottom:4px}
