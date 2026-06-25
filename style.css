@@ -19,6 +19,13 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,2
 .hero::before{content:"";position:absolute;top:-120px;right:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(43,87,200,.08) 0%,transparent 70%);pointer-events:none;z-index:0}
 .hero::after{content:"";position:absolute;bottom:-80px;left:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(91,134,240,.06) 0%,transparent 70%);pointer-events:none;z-index:0}
 .hero .wrap{position:relative;z-index:1;max-width:1280px}
+.hero-watermark{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-family:'Playfair Display',serif;font-size:clamp(60px,12vw,160px);font-weight:700;color:transparent;-webkit-text-stroke:1px rgba(43,87,200,.07);white-space:nowrap;pointer-events:none;z-index:0;letter-spacing:.02em;user-select:none;line-height:1}
+.hero-divider{width:48px;height:3px;background:linear-gradient(90deg,#2B57C8,#5B86F0);border-radius:2px;margin:20px 0 24px}
+.card-label{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;margin-bottom:4px;color:#0E1B30;letter-spacing:.01em}
+.price-big{font-family:'Playfair Display',serif;font-size:58px;color:#2B57C8;line-height:1;margin-bottom:4px;letter-spacing:-.02em}
+.fact{background:linear-gradient(135deg,#EEF4FF,#E4EDFF);border-radius:14px;padding:16px 12px;text-align:center;border:1px solid rgba(43,87,200,.08)}
+.fact b{font-size:16px;font-weight:800;color:#2B57C8;display:block}
+.fact span{font-size:11px;color:#5E6B7E;text-transform:uppercase;letter-spacing:.08em;margin-top:2px;display:block}
 .hero-grid{display:grid;grid-template-columns:45% 55%;gap:48px;align-items:center}
 .eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#2B57C8;font-weight:900;display:inline-flex;align-items:center;gap:10px;margin-bottom:14px}
 .eyebrow::before{content:"";width:24px;height:2px;background:#2B57C8;border-radius:2px}
