@@ -268,5 +268,44 @@ document.querySelectorAll('a[onclick*="go()"]').forEach(function(el){
   });
 });
 </script>
+<!-- Google Ads Conversion -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') { window.location = url; }
+  };
+  gtag('event', 'conversion', {
+    'send_to': 'AW-18237417258/nEcICOfW-MEcEKrOo_hD',
+    'event_callback': callback
+  });
+  return false;
+}
+// Вішаємо на всі tel: посилання
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      gtag_report_conversion(this.href);
+    });
+  });
+  // Кнопка Замовити (go())
+  document.querySelectorAll('a[onclick*="go()"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      gtag_report_conversion();
+    });
+  });
+  // Головна: bookNow
+  document.querySelectorAll('[data-action="bookNow"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      gtag_report_conversion();
+    });
+  });
+  // Головна: openCallback
+  document.querySelectorAll('[data-action="openCallback"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      gtag_report_conversion();
+    });
+  });
+});
+</script>
 </body>
 </html>
