@@ -460,8 +460,38 @@ window.addEventListener("scroll",()=>{
   const col = "rgb("+r+","+g+","+b+")";
   document.body.style.background = col;
   document.getElementById("bgCanvas").style.background = col;
-  // also update canvas fill in draw loop
   window._bgColor = [r,g,b];
+
+  // Adapt text colors based on background brightness
+  const brightness = (r*299 + g*587 + b*114) / 1000;
+  const isDark = brightness < 128;
+
+  const textMain = isDark ? "rgba(255,255,255,0.9)" : "rgba(10,13,40,0.9)";
+  const textSub = isDark ? "rgba(255,255,255,0.45)" : "rgba(10,13,40,0.5)";
+  const textMuted = isDark ? "rgba(255,255,255,0.25)" : "rgba(10,13,40,0.3)";
+  const borderCol = isDark ? "rgba(255,255,255,0.06)" : "rgba(10,13,40,0.08)";
+  const cardBg = isDark ? "rgba(255,255,255,0.02)" : "rgba(10,13,40,0.04)";
+  const svcBg = isDark ? "#0a0d1e" : "rgba(240,243,252,0.8)";
+
+  document.querySelectorAll("h1,h2,h3,.hero-title,.s-title,.cta-title,.ct-title,.rb-num,.hstat-value,.pc-val").forEach(el=>{
+    if(!el.style.webkitTextFillColor || el.style.webkitTextFillColor === "transparent") return;
+    el.style.color = textMain;
+  });
+  document.querySelectorAll("p,.hero-sub,.s-sub,.svc-desc,.pcard p,.ct-desc,.inc-item,.pc-note,.rb-label,.hstat-label,.back-link,.footer p").forEach(el=>{
+    el.style.color = textSub;
+  });
+  document.querySelectorAll(".pcard,.case-wrap,.hstat,.pc,.rb-item").forEach(el=>{
+    el.style.background = cardBg;
+    el.style.borderColor = borderCol;
+  });
+  document.querySelectorAll(".svc-card").forEach(el=>{
+    el.style.background = svcBg;
+  });
+  document.querySelectorAll(".svc-name,.pcard h3,.ct-title,.svc-num").forEach(el=>{
+    el.style.color = isDark ? "#fff" : "#0a0d28";
+  });
+  document.querySelector("footer").style.background = isDark ? "#060918" : "#e8ecf8";
+  document.querySelector("footer").style.borderColor = borderCol;
 });
 
 // Scroll reveal
