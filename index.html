@@ -730,7 +730,7 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     }
     function init(){
       dots = [];
-      var count = Math.floor(W * H / 8000);
+      var count = Math.floor(W * H / 22000);
       for(var i=0;i<count;i++){
         dots.push({
           x: Math.random()*W,
@@ -755,6 +755,12 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
         if(d.x > W+30) d.x = -30;
         if(d.y < -30) d.y = H+30;
         if(d.y > H+30) d.y = -30;
+        var sec = canvas.closest('section');
+        var rect = sec.querySelector('div').getBoundingClientRect();
+        var secRect = sec.getBoundingClientRect();
+        var zoneTop = rect.top - secRect.top - 20;
+        var zoneBot = rect.bottom - secRect.top + 20;
+        if(d.y > zoneTop && d.y < zoneBot) { d.y = zoneTop - 10; }
         var dx = d.x - mouse.x, dy = d.y - mouse.y;
         var dist = Math.sqrt(dx*dx+dy*dy);
         var alpha = dist < 100 ? d.alpha + (1-dist/100)*0.5 : d.alpha;
