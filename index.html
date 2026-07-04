@@ -703,12 +703,25 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     </section>
 
     
-<section style="padding:80px 28px;text-align:center;background-color:#eef1f9;background-image:repeating-linear-gradient(135deg,transparent,transparent 40px,rgba(26,54,126,0.03) 40px,rgba(26,54,126,0.03) 80px);position:relative;overflow:hidden;">
-  <div style="position:relative;z-index:1;max-width:680px;margin:0 auto;">
-    <p style="font-family:var(--font-b);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:16px;">СПІВПРАЦЯ</p>
-    <h2 style="font-size:clamp(28px,4vw,42px);margin-bottom:16px;">Шукаємо водіїв</h2>
-    <p style="font-size:16px;color:var(--grey);line-height:1.8;margin-bottom:36px;">Якщо ви хочете співпрацювати з нами — телефонуйте або пишіть у месенджери. Розглянемо всі пропозиції.</p>
-    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
+<section style="position:relative;padding:60px 28px;text-align:center;overflow:hidden;background-color:#e8ecf8;">
+  <!-- Анімовані смуги фону -->
+  <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(26,54,126,0.07) 0px,rgba(26,54,126,0.07) 2px,transparent 2px,transparent 40px);animation:stripeMove 8s linear infinite;"></div>
+  <style>
+    @keyframes stripeMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 80px 80px; }
+    }
+  </style>
+  <!-- Білий центральний блок -->
+  <div style="position:relative;z-index:1;max-width:720px;margin:0 auto;background:#fff;border-radius:24px;padding:56px 48px;box-shadow:0 8px 48px rgba(26,54,126,0.10);">
+    <!-- Фонові TK букви -->
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:24px;pointer-events:none;">
+      <span style="font-size:280px;font-weight:900;color:rgba(26,54,126,0.05);line-height:1;user-select:none;letter-spacing:-20px;">TK</span>
+    </div>
+    <p style="position:relative;font-family:var(--font-b);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:16px;">СПІВПРАЦЯ</p>
+    <h2 style="position:relative;font-size:clamp(28px,4vw,48px);margin-bottom:16px;color:var(--ink);">Шукаємо водіїв</h2>
+    <p style="position:relative;font-size:16px;color:var(--grey);line-height:1.8;margin-bottom:36px;">Якщо ви хочете співпрацювати з нами — телефонуйте або пишіть у месенджери. Розглянемо всі пропозиції.</p>
+    <div style="position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
       <a href="tel:+380633094949" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;font-family:var(--font-b);font-weight:800;font-size:15px;padding:14px 28px;border-radius:100px;text-decoration:none;">📞 Подзвонити</a>
       <a href="https://wa.me/380633094949" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-family:var(--font-b);font-weight:800;font-size:15px;padding:14px 28px;border-radius:100px;text-decoration:none;">WhatsApp</a>
       <a href="http://t.me/transferkharkiv" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#0088cc;color:#fff;font-family:var(--font-b);font-weight:800;font-size:15px;padding:14px 28px;border-radius:100px;text-decoration:none;">Telegram</a>
