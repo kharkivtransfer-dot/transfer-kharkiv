@@ -36,7 +36,7 @@ header.scrolled{background:rgba(6,9,24,0.9);backdrop-filter:blur(20px);border-bo
 
 /* === HERO === */
 .hero{min-height:100vh;position:relative;z-index:1;display:flex;align-items:center;padding:0 60px;}
-.hero-content{max-width:680px;}
+.hero-content{max-width:580px;}
 .hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(75,123,245,0.12);border:1px solid rgba(75,123,245,0.25);border-radius:100px;padding:8px 18px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4B7BF5;margin-bottom:36px;}
 .badge-dot{width:6px;height:6px;border-radius:50%;background:#4B7BF5;animation:badgePulse 2s ease-in-out infinite;box-shadow:0 0 0 0 rgba(75,123,245,0.4);}
 @keyframes badgePulse{0%,100%{box-shadow:0 0 0 0 rgba(75,123,245,0.4);}50%{box-shadow:0 0 0 8px rgba(75,123,245,0);}}
@@ -51,7 +51,7 @@ header.scrolled{background:rgba(6,9,24,0.9);backdrop-filter:blur(20px);border-bo
 .btn-ghost:hover{border-color:rgba(75,123,245,0.5);color:#fff;background:rgba(75,123,245,0.06);}
 
 /* hero floating stats */
-.hero-stats{position:absolute;right:80px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;}
+.hero-stats{position:absolute;right:40px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;max-width:220px;}
 .hstat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px);border-radius:20px;padding:20px 24px;min-width:200px;animation:floatStat 5s ease-in-out infinite;}
 .hstat:nth-child(2){animation-delay:-1.8s;}
 .hstat:nth-child(3){animation-delay:-3.5s;}
@@ -436,9 +436,28 @@ function draw(){
 resize(); initParticles(); draw();
 window.addEventListener("resize",()=>{resize();initParticles();});
 
-// Header scroll
+// Header scroll + background color shift
 window.addEventListener("scroll",()=>{
   document.getElementById("hdr").classList.toggle("scrolled",window.scrollY>30);
+  
+  const maxScroll = document.body.scrollHeight - window.innerHeight;
+  const progress = Math.min(window.scrollY / maxScroll, 1);
+  
+  // Dark #060918 -> mid #0d1535 -> light #eef1f9
+  let r, g, b;
+  if(progress < 0.5) {
+    const t = progress * 2;
+    r = Math.round(6 + (13-6)*t);
+    g = Math.round(9 + (21-9)*t);
+    b = Math.round(24 + (53-24)*t);
+  } else {
+    const t = (progress - 0.5) * 2;
+    r = Math.round(13 + (238-13)*t);
+    g = Math.round(21 + (241-21)*t);
+    b = Math.round(53 + (249-53)*t);
+  }
+  document.getElementById("bgCanvas").style.background = "rgb("+r+","+g+","+b+")";
+  document.body.style.background = "rgb("+r+","+g+","+b+")";
 });
 
 // Scroll reveal
