@@ -36,7 +36,7 @@ header.scrolled{background:rgba(6,9,24,0.9);backdrop-filter:blur(20px);border-bo
 
 /* === HERO === */
 .hero{min-height:100vh;position:relative;z-index:1;display:flex;align-items:center;padding:0 60px;}
-.hero-content{max-width:580px;}
+.hero-content{max-width:500px;}
 .hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(75,123,245,0.12);border:1px solid rgba(75,123,245,0.25);border-radius:100px;padding:8px 18px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4B7BF5;margin-bottom:36px;}
 .badge-dot{width:6px;height:6px;border-radius:50%;background:#4B7BF5;animation:badgePulse 2s ease-in-out infinite;box-shadow:0 0 0 0 rgba(75,123,245,0.4);}
 @keyframes badgePulse{0%,100%{box-shadow:0 0 0 0 rgba(75,123,245,0.4);}50%{box-shadow:0 0 0 8px rgba(75,123,245,0);}}
@@ -51,7 +51,7 @@ header.scrolled{background:rgba(6,9,24,0.9);backdrop-filter:blur(20px);border-bo
 .btn-ghost:hover{border-color:rgba(75,123,245,0.5);color:#fff;background:rgba(75,123,245,0.06);}
 
 /* hero floating stats */
-.hero-stats{position:absolute;right:40px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;max-width:220px;}
+.hero-stats{position:absolute;right:60px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;width:220px;}
 .hstat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px);border-radius:20px;padding:20px 24px;min-width:200px;animation:floatStat 5s ease-in-out infinite;}
 .hstat:nth-child(2){animation-delay:-1.8s;}
 .hstat:nth-child(3){animation-delay:-3.5s;}
@@ -185,7 +185,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2);}
 </header>
 
 <section class="hero">
-  <div class="container" style="display:flex;align-items:center;min-height:100vh;padding-top:80px;padding-bottom:80px;position:relative;">
+  <div class="container" style="display:grid;grid-template-columns:1fr 260px;gap:60px;align-items:center;min-height:100vh;padding-top:80px;padding-bottom:80px;">
     <div class="hero-content">
       <div class="hero-badge"><span class="badge-dot"></span>Digital Agency — з 2021 року</div>
       <h1 class="hero-title">
@@ -198,7 +198,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2);}
         <a href="#services" class="btn-ghost">Наші послуги</a>
       </div>
     </div>
-    <div class="hero-stats">
+    <div class="hero-stats" style="position:static;transform:none;">
       <div class="hstat">
         <div class="hstat-icon blue">&#9650;</div>
         <div class="hstat-label">Проєктів запущено</div>
@@ -379,7 +379,8 @@ function draw(){
   ctx.clearRect(0,0,W,H);
 
   // Background base
-  ctx.fillStyle = "#060918";
+  const bc = window._bgColor || [6,9,24];
+  ctx.fillStyle = "rgb("+bc[0]+","+bc[1]+","+bc[2]+")";
   ctx.fillRect(0,0,W,H);
 
   // Animated orbs
@@ -456,8 +457,11 @@ window.addEventListener("scroll",()=>{
     g = Math.round(21 + (241-21)*t);
     b = Math.round(53 + (249-53)*t);
   }
-  document.getElementById("bgCanvas").style.background = "rgb("+r+","+g+","+b+")";
-  document.body.style.background = "rgb("+r+","+g+","+b+")";
+  const col = "rgb("+r+","+g+","+b+")";
+  document.body.style.background = col;
+  document.getElementById("bgCanvas").style.background = col;
+  // also update canvas fill in draw loop
+  window._bgColor = [r,g,b];
 });
 
 // Scroll reveal
