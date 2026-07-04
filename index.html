@@ -703,8 +703,9 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     </section>
 
     
-<section style="background:#f8f8f8;padding:60px 28px;text-align:center;">
-  <div style="max-width:680px;margin:0 auto;">
+<section style="position:relative;padding:80px 28px;text-align:center;background:#fff;overflow:hidden;">
+  <canvas id="partnerCanvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"></canvas>
+  <div style="position:relative;z-index:1;max-width:680px;margin:0 auto;">
     <p style="font-family:var(--font-b);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:16px;">СПІВПРАЦЯ</p>
     <h2 style="font-size:clamp(28px,4vw,42px);margin-bottom:16px;">Шукаємо водіїв</h2>
     <p style="font-size:16px;color:var(--grey);line-height:1.8;margin-bottom:36px;">Якщо ви хочете співпрацювати з нами — телефонуйте або пишіть у месенджери. Розглянемо всі пропозиції.</p>
@@ -716,6 +717,76 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
       <a href="https://www.instagram.com/transfer.kh" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;font-family:var(--font-b);font-weight:800;font-size:15px;padding:14px 28px;border-radius:100px;text-decoration:none;">Instagram</a>
     </div>
   </div>
+  <script>
+  (function(){
+    var canvas = document.getElementById('partnerCanvas');
+    if(!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var W, H, dots = [], mouse = {x:9999,y:9999};
+    var BLUE = '26,54,126';
+    function resize(){
+      W = canvas.width = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+    function init(){
+      dots = [];
+      var cols = Math.ceil(W/60), rows = Math.ceil(H/60);
+      for(var i=0;i<=cols;i++){
+        for(var j=0;j<=rows;j++){
+          dots.push({
+            ox: i*60, oy: j*60,
+            x: i*60, y: j*60,
+            r: 2 + Math.random()*1.5,
+            phase: Math.random()*Math.PI*2,
+            speed: 0.012 + Math.random()*0.008
+          });
+        }
+      }
+    }
+    function draw(t){
+      ctx.clearRect(0,0,W,H);
+      dots.forEach(function(d){
+        d.phase += d.speed;
+        var wave = Math.sin(d.phase + d.ox*0.015 + d.oy*0.015) * 8;
+        d.x = d.ox + wave;
+        d.y = d.oy + wave * 0.5;
+        var dx = d.x - mouse.x, dy = d.y - mouse.y;
+        var dist = Math.sqrt(dx*dx+dy*dy);
+        var alpha = dist < 120 ? 0.12 + (1-dist/120)*0.55 : 0.12;
+        var scale = dist < 120 ? 1 + (1-dist/120)*1.8 : 1;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r * scale, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba('+BLUE+','+alpha+')';
+        ctx.fill();
+      });
+      for(var i=0;i<dots.length;i++){
+        for(var j=i+1;j<dots.length;j++){
+          var dx=dots[i].x-dots[j].x, dy=dots[i].y-dots[j].y;
+          var dist=Math.sqrt(dx*dx+dy*dy);
+          if(dist<80){
+            ctx.beginPath();
+            ctx.moveTo(dots[i].x,dots[i].y);
+            ctx.lineTo(dots[j].x,dots[j].y);
+            ctx.strokeStyle='rgba('+BLUE+','+(0.06*(1-dist/80))+')';
+            ctx.lineWidth=1;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    canvas.closest('section').addEventListener('mousemove',function(e){
+      var r=canvas.getBoundingClientRect();
+      mouse.x=e.clientX-r.left;
+      mouse.y=e.clientY-r.top;
+    });
+    canvas.closest('section').addEventListener('mouseleave',function(){
+      mouse.x=9999;mouse.y=9999;
+    });
+    resize(); init(); requestAnimationFrame(draw);
+    window.addEventListener('resize',function(){resize();init();});
+  })();
+  </script>
 </section>
 
 <footer>
