@@ -6,89 +6,134 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-8QK3HWZQ93');
+  gtag("js", new Date());
+  gtag("config", "G-8QK3HWZQ93");
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Розробка сайту — INFINITE UNION</title>
-<meta name="description" content="INFINITE UNION — розробка сайтів, Telegram ботів, мобільних додатків, AI агентів. SEO, Google Ads, Facebook Ads. З 2021 року.">
+<title>Розробка сайту — INFINITE UNION | Digital Agency</title>
+<meta name="description" content="INFINITE UNION — преміум розробка сайтів, Telegram ботів, мобільних додатків, AI агентів. SEO, Google Ads, Facebook Ads. З 2021 року.">
 <link rel="canonical" href="https://transferkharkiv.com.ua/developer/">
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <meta name="robots" content="index, follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Manrope:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-.dev-wrap{max-width:780px;margin:0 auto;padding:140px 28px 80px}
-.eyebrow{font-family:var(--font-b);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
-.dev-wrap h1{font-size:clamp(36px,6vw,64px);line-height:1.1;margin-bottom:20px}
-.lead{font-size:17px;color:var(--grey);line-height:1.8;margin-bottom:48px}
-.dev-wrap h2{font-size:22px;margin:48px 0 16px}
-.dev-wrap p,.dev-wrap li{font-size:15px;color:var(--grey);line-height:1.8;margin-bottom:12px}
-.dev-wrap ul{padding-left:20px;margin-bottom:24px}
-.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin:32px 0 48px}
-.stat-box{background:#f8f8f8;border-radius:12px;padding:20px 16px;text-align:center}
-.stat-box .num{font-size:36px;font-weight:800;color:var(--ink);line-height:1}
-.stat-box .desc{font-size:13px;color:var(--grey);margin-top:4px}
-.tg-btn{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#fff;font-family:var(--font-b);font-weight:900;font-size:15px;padding:14px 32px;border-radius:100px;text-decoration:none;margin-top:16px}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:"Manrope",sans-serif;background:#0a0d1a;color:#fff;overflow-x:hidden;}
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,13,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06);}
+.logo-iu{font-family:"Manrope",sans-serif;font-weight:900;font-size:20px;letter-spacing:-0.5px;color:#fff;}
+.logo-iu span{color:#4B7BF5;}
+.back-link{font-size:14px;color:rgba(255,255,255,0.4);text-decoration:none;}
+.back-link:hover{color:#fff;}
+.hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:center;padding:140px 60px 80px;overflow:hidden;background:linear-gradient(135deg,#0a0d1a 0%,#0d1535 50%,#0a0d1a 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(75,123,245,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(75,123,245,0.07) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite;}
+@keyframes gridMove{0%{background-position:0 0;}100%{background-position:60px 60px;}}
+.glow{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(120px);opacity:0.15;animation:glowPulse 6s ease-in-out infinite;}
+.glow-1{background:#4B7BF5;top:-100px;right:-100px;}
+.glow-2{background:#7C3AED;bottom:-100px;left:-100px;animation-delay:-3s;}
+@keyframes glowPulse{0%,100%{opacity:0.12;transform:scale(1);}50%{opacity:0.2;transform:scale(1.1);}}
+.hero-label{font-size:11px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:#4B7BF5;margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+.hero-label::before{content:"";display:block;width:40px;height:2px;background:#4B7BF5;}
+.hero-title{font-family:"Playfair Display",serif;font-size:clamp(52px,8vw,108px);font-weight:900;line-height:0.95;margin-bottom:32px;letter-spacing:-2px;}
+.hero-title .w1{color:#fff;display:block;}
+.hero-title .w2{display:block;background:linear-gradient(135deg,#4B7BF5,#7C3AED,#4B7BF5);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gshift 4s ease infinite;}
+@keyframes gshift{0%{background-position:0% center;}50%{background-position:100% center;}100%{background-position:0% center;}}
+.hero-sub{font-size:18px;color:rgba(255,255,255,0.5);line-height:1.8;max-width:520px;margin-bottom:48px;}
+.btn{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#4B7BF5,#7C3AED);color:#fff;font-family:"Manrope",sans-serif;font-weight:800;font-size:16px;padding:18px 40px;border-radius:100px;text-decoration:none;box-shadow:0 0 40px rgba(75,123,245,0.3);transition:transform 0.2s,box-shadow 0.2s;}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 50px rgba(75,123,245,0.5);}
+.stats{background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:grid;grid-template-columns:repeat(4,1fr);}
+.stat{text-align:center;padding:0 24px;border-right:1px solid rgba(255,255,255,0.06);}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:"Playfair Display",serif;font-size:52px;font-weight:900;background:linear-gradient(135deg,#4B7BF5,#7C3AED);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:8px;}
+.stat-l{font-size:13px;color:rgba(255,255,255,0.4);letter-spacing:1px;}
+.marquee{padding:28px 0;background:linear-gradient(135deg,#4B7BF5,#7C3AED);overflow:hidden;white-space:nowrap;}
+.mtrack{display:inline-block;animation:mar 22s linear infinite;}
+.mtrack span{font-size:14px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.7);padding:0 28px;}
+.mtrack span.dot{color:rgba(255,255,255,0.3);}
+@keyframes mar{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.services{padding:100px 60px;background:#0a0d1a;}
+.stag{font-size:11px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:#4B7BF5;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.stag::before{content:"";display:block;width:40px;height:2px;background:#4B7BF5;}
+.stitle{font-family:"Playfair Display",serif;font-size:clamp(36px,5vw,60px);font-weight:900;color:#fff;margin-bottom:64px;line-height:1.1;}
+.stitle em{font-style:italic;background:linear-gradient(135deg,#4B7BF5,#7C3AED);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);border-radius:20px;overflow:hidden;}
+.svc{background:#0d1025;padding:40px 36px;position:relative;overflow:hidden;transition:background 0.3s;}
+.svc::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(75,123,245,0.08),rgba(124,58,237,0.08));opacity:0;transition:opacity 0.3s;}
+.svc:hover::before{opacity:1;}
+.sn{font-family:"Playfair Display",serif;font-size:48px;font-weight:900;color:rgba(75,123,245,0.15);line-height:1;margin-bottom:20px;}
+.st{font-size:20px;font-weight:700;color:#fff;margin-bottom:12px;}
+.sd{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.7;}
+.cta-s{padding:120px 60px;text-align:center;position:relative;overflow:hidden;}
+.cta-s::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(75,123,245,0.1) 0%,transparent 70%);}
+.ct{font-family:"Playfair Display",serif;font-size:clamp(40px,6vw,72px);font-weight:900;line-height:1.1;margin-bottom:20px;}
+.ct em{font-style:italic;background:linear-gradient(135deg,#4B7BF5,#7C3AED);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.cs{font-size:18px;color:rgba(255,255,255,0.5);margin-bottom:48px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7;}
+footer{padding:40px 60px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+footer p{font-size:13px;color:rgba(255,255,255,0.25);}
+@media(max-width:768px){
+  header{padding:16px 24px;}
+  .hero{padding:110px 24px 60px;}
+  .stats{grid-template-columns:repeat(2,1fr);padding:32px 24px;}
+  .services{padding:60px 24px;}
+  .sgrid{grid-template-columns:1fr;}
+  .cta-s{padding:80px 24px;}
+  footer{padding:32px 24px;flex-direction:column;text-align:center;}
+}
 </style>
-<!-- TikTok Pixel Code Start -->
-<script>
-!function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-  ttq.load('D92KU1BC77UBI6V95VU0');
-  ttq.page();
-}(window, document, 'ttq');
-</script>
-<!-- TikTok Pixel Code End -->
 </head>
 <body>
 <header>
-  <div class="wrap">
-    <nav class="nav">
-      <a href="/" class="logo"><b>TRANSFER</b><span>KHARKIV</span></a>
-      <a href="tel:+380633094949" class="nav-phone">+38 063 309 49 49</a>
-    </nav>
-  </div>
+  <div class="logo-iu">INFINITE<span>UNION</span></div>
+  <a href="/" class="back-link">← transferkharkiv.com.ua</a>
 </header>
-<div class="dev-wrap">
-  <div class="eyebrow">Розробник цього проєкту</div>
-  <h1>INFINITE UNION</h1>
-  <p class="lead">Будуємо цифрові продукти, які працюють і заробляють — сайти, боти, мобільні додатки, AI агенти та системи автоматизації. На ринку з 2021 року.</p>
-  <div class="stats-row">
-    <div class="stat-box"><div class="num">5+</div><div class="desc">років на ринку</div></div>
-    <div class="stat-box"><div class="num">50+</div><div class="desc">проєктів</div></div>
-    <div class="stat-box"><div class="num">4+</div><div class="desc">роки в Facebook Ads</div></div>
-    <div class="stat-box"><div class="num">24/7</div><div class="desc">підтримка</div></div>
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div style="position:relative;z-index:1;max-width:900px;">
+    <div class="hero-label">Digital Agency — з 2021 року</div>
+    <h1 class="hero-title">
+      <span class="w1">Ми будуємо</span>
+      <span class="w2">цифрові продукти</span>
+    </h1>
+    <p class="hero-sub">Сайти, боти, мобільні додатки та AI системи що реально працюють і приносять гроші. Не шаблони — кастом під бізнес.</p>
+    <a href="https://t.me/infiniteunion_manager" target="_blank" rel="noopener" class="btn">Обговорити проєкт →</a>
   </div>
-  <h2>Розробка</h2>
-  <ul>
-    <li><strong>Сайти</strong> — лендінги, корпоративні сайти, SEO-платформи під ключ</li>
-    <li><strong>Telegram боти</strong> — CRM, бронювання, розсилки, адмін-панелі будь-якої складності</li>
-    <li><strong>Мобільні додатки</strong> — iOS та Android, нативна і кросплатформена розробка</li>
-    <li><strong>AI агенти</strong> — інтелектуальні рішення під конкретні задачі бізнесу</li>
-    <li><strong>Автоматизації</strong> — Make, n8n, власні системи, інтеграції між сервісами</li>
-  </ul>
-  <h2>Також надаємо</h2>
-  <ul>
-    <li><strong>SEO просування</strong> — стратегія, технічний аудит, контент, ріст органічного трафіку</li>
-    <li><strong>Google Ads</strong> — налаштування, оптимізація, AI Max кампанії</li>
-    <li><strong>Facebook Ads</strong> — 4+ роки досвіду, таргетована реклама з реальними конверсіями</li>
-  </ul>
-  <h2>Зв'язатися з нами</h2>
-  <p>Напишіть нам — обговоримо завдання, терміни і бюджет. Перша консультація безкоштовна.</p>
-  <a href="https://t.me/infiniteunion_manager" target="_blank" rel="noopener" class="tg-btn">Написати в Telegram →</a>
+</section>
+<div class="stats">
+  <div class="stat"><div class="stat-n">5+</div><div class="stat-l">Років на ринку</div></div>
+  <div class="stat"><div class="stat-n">50+</div><div class="stat-l">Проєктів</div></div>
+  <div class="stat"><div class="stat-n">4+</div><div class="stat-l">Роки в Ads</div></div>
+  <div class="stat"><div class="stat-n">24/7</div><div class="stat-l">Підтримка</div></div>
 </div>
-<footer style="border-top:1px solid var(--line);padding:32px 0;margin-top:40px;">
-  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
-    <a href="/" class="logo"><b>TRANSFER</b><span>KHARKIV</span></a>
-    <p style="font-size:13px;color:var(--grey);">© 2026 Transfer Kharkiv. Розробка: <a href="/developer/" style="color:var(--grey);text-decoration:underline;">INFINITE UNION</a></p>
-    <a href="tel:+380633094949" style="font-size:14px;font-weight:700;color:var(--ink);">+38 063 309 49 49</a>
+<div class="marquee">
+  <div class="mtrack">
+    <span>Розробка сайтів</span><span class="dot">✦</span><span>Telegram боти</span><span class="dot">✦</span><span>Мобільні додатки</span><span class="dot">✦</span><span>AI агенти</span><span class="dot">✦</span><span>Автоматизації</span><span class="dot">✦</span><span>SEO просування</span><span class="dot">✦</span><span>Google Ads</span><span class="dot">✦</span><span>Facebook Ads</span><span class="dot">✦</span><span>Розробка сайтів</span><span class="dot">✦</span><span>Telegram боти</span><span class="dot">✦</span><span>Мобільні додатки</span><span class="dot">✦</span><span>AI агенти</span><span class="dot">✦</span><span>Автоматизації</span><span class="dot">✦</span><span>SEO просування</span><span class="dot">✦</span><span>Google Ads</span><span class="dot">✦</span><span>Facebook Ads</span><span class="dot">✦</span>
   </div>
+</div>
+<section class="services">
+  <div class="stag">Послуги</div>
+  <h2 class="stitle">Що ми <em>робимо</em></h2>
+  <div class="sgrid">
+    <div class="svc"><div class="sn">01</div><div class="st">Розробка сайтів</div><div class="sd">Лендінги, корпоративні сайти, SEO-платформи. Від дизайну до запуску — під ключ. Без шаблонів.</div></div>
+    <div class="svc"><div class="sn">02</div><div class="st">Telegram боти</div><div class="sd">CRM-боти, бронювання, розсилки, адмін-панелі, FSM-флоу будь-якої складності.</div></div>
+    <div class="svc"><div class="sn">03</div><div class="st">Мобільні додатки</div><div class="sd">iOS та Android. Нативна і кросплатформена розробка для вашого бізнесу.</div></div>
+    <div class="svc"><div class="sn">04</div><div class="st">AI агенти</div><div class="sd">Інтелектуальні рішення під конкретні задачі — підтримка, аналітика, автоматизація.</div></div>
+    <div class="svc"><div class="sn">05</div><div class="st">Автоматизації</div><div class="sd">Make, n8n, власні системи. Автоматизуємо рутину і зв'язуємо сервіси між собою.</div></div>
+    <div class="svc"><div class="sn">06</div><div class="st">Реклама і SEO</div><div class="sd">Google Ads, Facebook Ads (4+ роки), SEO-стратегія. Трафік і конверсії — не просто кліки.</div></div>
+  </div>
+</section>
+<section class="cta-s">
+  <h2 class="ct" style="position:relative;">Готові до<br><em>вашого проєкту?</em></h2>
+  <p class="cs" style="position:relative;">Перша консультація безкоштовна. Розкажіть задачу — запропонуємо рішення і вартість.</p>
+  <a href="https://t.me/infiniteunion_manager" target="_blank" rel="noopener" class="btn" style="position:relative;">Написати в Telegram →</a>
+</section>
+<footer>
+  <div class="logo-iu">INFINITE<span>UNION</span></div>
+  <p>© 2026 INFINITE UNION. Розробник сайту <a href="/" style="color:rgba(255,255,255,0.4);text-decoration:underline;">Transfer Kharkiv</a></p>
+  <a href="https://t.me/infiniteunion_manager" target="_blank" rel="noopener" style="font-size:14px;font-weight:700;color:#4B7BF5;text-decoration:none;">@infiniteunion_manager</a>
 </footer>
-<script>
-window.addEventListener('scroll',()=>{document.querySelector('header').classList.toggle('scrolled',window.scrollY>20);});
-</script>
 </body>
 </html>
