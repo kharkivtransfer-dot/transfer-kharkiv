@@ -783,8 +783,15 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     canvas.closest('section').addEventListener('mouseleave',function(){
       mouse.x=9999;mouse.y=9999;
     });
-    resize(); init(); requestAnimationFrame(draw);
-    window.addEventListener('resize',function(){resize();init();});
+    var started = false;
+    var obs = new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting && !started){
+        started = true;
+        resize(); init(); requestAnimationFrame(draw);
+      }
+    },{threshold:0.1});
+    obs.observe(canvas.closest('section'));
+    window.addEventListener('resize',function(){if(started){resize();init();}});
   })();
   </script>
 </section>
