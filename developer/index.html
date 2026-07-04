@@ -441,22 +441,18 @@ window.addEventListener("resize",()=>{resize();initParticles();});
 window.addEventListener("scroll",()=>{
   document.getElementById("hdr").classList.toggle("scrolled",window.scrollY>30);
   
+  const resultsBar = document.querySelector(".results-bar");
+  const startY = resultsBar ? resultsBar.getBoundingClientRect().bottom + window.scrollY : document.body.scrollHeight * 0.75;
   const maxScroll = document.body.scrollHeight - window.innerHeight;
-  const progress = Math.min(window.scrollY / maxScroll, 1);
-  
-  // Dark #060918 -> mid #0d1535 -> light #eef1f9
+  const rawProgress = Math.max(0, window.scrollY - startY) / Math.max(1, maxScroll - startY);
+  const progress = Math.min(rawProgress, 1);
+
+  // Only transition after results bar — dark #060918 -> light #eef1f9
   let r, g, b;
-  if(progress < 0.5) {
-    const t = progress * 2;
-    r = Math.round(6 + (13-6)*t);
-    g = Math.round(9 + (21-9)*t);
-    b = Math.round(24 + (53-24)*t);
-  } else {
-    const t = (progress - 0.5) * 2;
-    r = Math.round(13 + (238-13)*t);
-    g = Math.round(21 + (241-21)*t);
-    b = Math.round(53 + (249-53)*t);
-  }
+  const t = progress;
+  r = Math.round(6 + (238-6)*t);
+  g = Math.round(9 + (241-9)*t);
+  b = Math.round(24 + (249-24)*t);
   const col = "rgb("+r+","+g+","+b+")";
   document.body.style.background = col;
   document.getElementById("bgCanvas").style.background = col;
