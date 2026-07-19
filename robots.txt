@@ -1,21 +1,7 @@
 User-agent: *
 Allow: /
 
-# Старі redirect-сторінки (замінені новою транслітерацією)
-Disallow: /taksi-kyyiv-kharkiv/
-Disallow: /taksi-kharkiv-kyyiv/
-Disallow: /taksi-izyum-kharkiv/
-Disallow: /taksi-kharkiv-izyum/
-Disallow: /taksi-kryvyy-rih-kharkiv/
-Disallow: /taksi-kharkiv-kryvyy-rih/
-Disallow: /taksi-vinnytsya-kharkiv/
-Disallow: /taksi-kharkiv-vinnytsya/
-Disallow: /taksi-mykolayiv-kharkiv/
-Disallow: /taksi-kharkiv-mykolayiv/
-Disallow: /taksi-kropyvnytskyy-kharkiv/
-Disallow: /taksi-kharkiv-kropyvnytskyy/
-
-# Telegram API та технічні URL
+# Технічні URL — не індексувати
 Disallow: /sendMessage
 Disallow: /*?chat_id=
 
