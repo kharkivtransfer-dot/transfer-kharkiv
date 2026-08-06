@@ -221,7 +221,7 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
       <h3>Замовити поїздку</h3>
       <p class="bk-sub">Дізнайтесь вартість маршруту за 15 секунд</p>
       <div class="field"><label for="name">Ваше ім'я</label><input type="text" id="name" placeholder="Введіть ваше ім'я"></div>
-      <div class="field"><label for="phone">Номер телефону</label><input type="tel" id="phone" placeholder="+38 (0__) ___-__-__"></div>
+      <div class="field"><label for="phone">Номер телефону</label><input type="tel" id="phone" placeholder="(0__) ___-__-__" value="+38 "></div>
       <div class="field"><label for="from">Звідки</label><div class="ac-wrap">
   <input type="text" id="from" placeholder="Місто, адреса подачі" autocomplete="off" oninput="acInput(this,'ac-from')">
   <div class="ac-list" id="ac-from"></div>
@@ -830,7 +830,7 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     </div>
     <div style="margin-bottom:24px;">
       <label style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:900;display:block;margin-bottom:7px;">Номер телефону</label>
-      <input id="cb-phone" type="tel" aria-label="Номер телефону" placeholder="+38 (0__) ___-__-__" style="width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;padding:14px 16px;border-radius:12px;outline:none;box-sizing:border-box;">
+      <input id="cb-phone" type="tel" aria-label="Номер телефону" placeholder="(0__) ___-__-__" value="+38 " style="width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;padding:14px 16px;border-radius:12px;outline:none;box-sizing:border-box;">
     </div>
     <button data-action="sendCallback" style="width:100%;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:900;font-size:15px;padding:16px;border-radius:100px;border:none;cursor:pointer;">Відправити</button>
     <p id="cb-success" style="display:none;text-align:center;color:var(--blue);font-weight:600;margin-top:16px;">✓ Дякуємо! Менеджер зв'яжеться з Вами протягом 15 хвилин.</p>
@@ -1287,6 +1287,32 @@ document.addEventListener('DOMContentLoaded', function(){
       gtag_report_conversion();
     });
   });
+});
+
+// Захист поля телефону — не дати стерти +38
+function guardPhone(el) {
+  el.addEventListener('input', function() {
+    if (!this.value.startsWith('+38 ')) {
+      this.value = '+38 ' + this.value.replace(/^\+?3?8?\s?/, '');
+    }
+  });
+  el.addEventListener('keydown', function(e) {
+    const sel = this.selectionStart;
+    if ((e.key === 'Backspace' || e.key === 'Delete') && sel <= 4) {
+      e.preventDefault();
+    }
+  });
+  el.addEventListener('focus', function() {
+    if (this.value === '+38 ') {
+      setTimeout(() => this.setSelectionRange(4, 4), 0);
+    }
+  });
+}
+document.addEventListener('DOMContentLoaded', function() {
+  const p1 = document.getElementById('phone');
+  const p2 = document.getElementById('cb-phone');
+  if (p1) guardPhone(p1);
+  if (p2) guardPhone(p2);
 });
 </script>
 </body>
