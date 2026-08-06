@@ -221,7 +221,7 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
       <h3>Замовити поїздку</h3>
       <p class="bk-sub">Дізнайтесь вартість маршруту за 15 секунд</p>
       <div class="field"><label for="name">Ваше ім'я</label><input type="text" id="name" placeholder="Введіть ваше ім'я"></div>
-      <div class="field"><label for="phone">Номер телефону</label><input type="tel" id="phone" placeholder="(0__) ___-__-__" value="+38 "></div>
+      <div class="field"><label for="phone">Номер телефону</label><input type="tel" id="phone" placeholder="0__ ___-__-__" value="+38 "></div>
       <div class="field"><label for="from">Звідки</label><div class="ac-wrap">
   <input type="text" id="from" placeholder="Місто, адреса подачі" autocomplete="off" oninput="acInput(this,'ac-from')">
   <div class="ac-list" id="ac-from"></div>
@@ -830,7 +830,7 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     </div>
     <div style="margin-bottom:24px;">
       <label style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:900;display:block;margin-bottom:7px;">Номер телефону</label>
-      <input id="cb-phone" type="tel" aria-label="Номер телефону" placeholder="(0__) ___-__-__" value="+38 " style="width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;padding:14px 16px;border-radius:12px;outline:none;box-sizing:border-box;">
+      <input id="cb-phone" type="tel" aria-label="Номер телефону" placeholder="0__ ___-__-__" value="+38 " style="width:100%;background:var(--surface-2);border:1.5px solid var(--line-2);color:var(--ink);font-family:var(--font-b);font-size:15px;padding:14px 16px;border-radius:12px;outline:none;box-sizing:border-box;">
     </div>
     <button data-action="sendCallback" style="width:100%;background:linear-gradient(135deg,#3B6BE0,#2B57C8);color:#fff;font-family:var(--font-b);font-weight:900;font-size:15px;padding:16px;border-radius:100px;border:none;cursor:pointer;">Відправити</button>
     <p id="cb-success" style="display:none;text-align:center;color:var(--blue);font-weight:600;margin-top:16px;">✓ Дякуємо! Менеджер зв'яжеться з Вами протягом 15 хвилин.</p>
@@ -1303,16 +1303,56 @@ function guardPhone(el) {
     }
   });
   el.addEventListener('focus', function() {
-    if (this.value === '+38 ') {
-      setTimeout(() => this.setSelectionRange(4, 4), 0);
+    if (!this.value || this.value.trim() === '' || this.value === '+38') {
+      this.value = '+38 ';
     }
+    setTimeout(() => {
+      if (this.selectionStart < 4) this.setSelectionRange(4, 4);
+    }, 0);
   });
 }
+
+// Ресет поля при відкритті модалки
+function resetPhoneField(el) {
+  if (el) { el.value = '+38 '; }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   const p1 = document.getElementById('phone');
   const p2 = document.getElementById('cb-phone');
   if (p1) guardPhone(p1);
   if (p2) guardPhone(p2);
+
+  // Ресет при кожному відкритті модалки зворотного зв'язку
+  const cbBtn = document.querySelector('[data-action="openCallback"], .cb-open, [onclick*="callback"], [onclick*="cb-modal"]');
+  const modal = document.getElementById('cb-modal') || document.querySelector('.callback-modal');
+  
+  // Спостерігаємо за появою модалки
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(m) {
+      if (m.type === 'attributes' || m.type === 'childList') {
+        const cbPhone = document.getElementById('cb-phone');
+        if (cbPhone && (!cbPhone.value || cbPhone.value === '+38' || cbPhone.value.trim() === '')) {
+          cbPhone.value = '+38 ';
+        }
+      }
+    });
+  });
+  
+  // Слухаємо всі кнопки що можуть відкрити модалку
+  document.querySelectorAll('button, a').forEach(function(btn) {
+    if (btn.textContent.includes('зворот') || btn.textContent.includes('Зворот') || 
+        btn.className.includes('callback') || (btn.getAttribute('onclick') || '').includes('callback') ||
+        (btn.getAttribute('onclick') || '').includes('cb')) {
+      btn.addEventListener('click', function() {
+        setTimeout(function() { resetPhoneField(document.getElementById('cb-phone')); }, 50);
+      });
+    }
+  });
+  
+  if (modal) {
+    observer.observe(modal, { attributes: true, attributeFilter: ['style', 'class'] });
+  }
 });
 </script>
 </body>
