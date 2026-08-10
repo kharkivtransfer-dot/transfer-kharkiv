@@ -713,7 +713,17 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
       0% { background-position: 0 0; }
       100% { background-position: 80px 80px; }
     }
-  </style>
+  
+.hero-contact-btns{display:none;gap:8px;margin-bottom:20px;}
+@media(max-width:767px){.hero-contact-btns{display:flex!important}}
+.hcb{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:12px 6px 10px;border-radius:14px;font-size:10px;font-weight:700;text-decoration:none;color:#fff;transition:.15s;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.hcb:active{transform:scale(.94)}
+.hcb-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(255,255,255,.2);}
+.hcb-tg{background:linear-gradient(145deg,#2AABEE,#1a8cc9)}
+.hcb-wa{background:linear-gradient(145deg,#25D366,#1aad52)}
+.hcb-vb{background:linear-gradient(145deg,#7360F2,#5b49d6)}
+.hcb-call{background:linear-gradient(145deg,#2B57C8,#1a3d96)}
+</style>
   <!-- Білий центральний блок -->
   <div style="position:relative;z-index:1;max-width:720px;margin:0 auto;background:#fff;border-radius:24px;padding:56px 48px;box-shadow:0 8px 48px rgba(26,54,126,0.10);">
     <!-- Фонові TK букви -->
