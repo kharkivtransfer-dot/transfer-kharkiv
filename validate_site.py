@@ -11,11 +11,11 @@ warnings = []
 
 # Правильні ціни з db.py (тільки ті що знаємо точно)
 KNOWN_PRICES = {
-    'такsi-kharkiv-kyiv': 14000, 'taksi-kharkiv-dnipro': 6200,
-    'taksi-kharkiv-lviv': 28500, 'taksi-kharkiv-odesa': 18500,
-    'taksi-kyiv-kharkiv': 15000, 'taksi-kharkiv-poltava': 4000,
-    'taksi-kharkiv-kramatorsk': 12000, 'taksi-kharkiv-sumy': 6000,
-    'taksi-kharkiv-kremenchuk': 6800, 'taksi-kyiv-kramatorsk': 25000,
+    'taksi-kharkiv-kyiv': 14500, 'taksi-kharkiv-dnipro': 6800,
+    'taksi-kharkiv-lviv': 30900, 'taksi-kharkiv-odesa': 20500,
+    'taksi-kyiv-kharkiv': 14500, 'taksi-kharkiv-poltava': 4500,
+    'taksi-kharkiv-kramatorsk': 15000, 'taksi-kharkiv-sumy': 7800,
+    'taksi-kharkiv-kremenchuk': 7700, 'taksi-kyiv-kramatorsk': 28800,
 }
 
 pages = list(BASE.rglob('taksi-*/index.html'))
