@@ -1982,6 +1982,8 @@ select.inp option { background: var(--ink); color: var(--fg); }
   function guardPhone(el) {
     el.addEventListener('input', function () {
       if (!this.value.startsWith('+38 ')) this.value = '+38 ' + this.value.replace(/^\+?3?8?\s?/, '');
+      // вставлений номер "+380..." після маски давав "+38 +380..." — прибираємо дубль коду країни
+      if (/^\s*\+?38\s?0/.test(this.value.slice(4))) this.value = '+38 ' + this.value.slice(4).replace(/^\s*\+?38\s?/, '');
     });
     el.addEventListener('keydown', function (e) {
       if ((e.key === 'Backspace' || e.key === 'Delete') && this.selectionStart <= 4 && this.selectionEnd <= 4) e.preventDefault();
