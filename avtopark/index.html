@@ -55,7 +55,8 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geologica:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"></noscript>
-<link rel="preload" as="image" type="image/webp" imagesrcset="/img/fleet/avtopark-hero-transfer-kharkiv-1600.webp 1600w, /img/fleet/avtopark-hero-transfer-kharkiv-960.webp 960w, /img/fleet/avtopark-hero-transfer-kharkiv-640.webp 640w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" media="(min-width: 768px)" imagesrcset="/img/fleet/avtopark-hero-transfer-kharkiv-1600.webp 1600w, /img/fleet/avtopark-hero-transfer-kharkiv-960.webp 960w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" media="(max-width: 767px)" imagesrcset="/img/fleet/avtopark-hero-m-transfer-kharkiv-960.webp 960w, /img/fleet/avtopark-hero-m-transfer-kharkiv-640.webp 640w" imagesizes="100vw" fetchpriority="high">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -89,14 +90,31 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
    "@type": "ItemList",
    "@id": "https://transferkharkiv.com.ua/avtopark/#cars",
    "name": "Автопарк Transfer Kharkiv",
-   "numberOfItems": 9,
+   "numberOfItems": 10,
    "itemListElement": [
     {
      "@type": "ListItem",
      "position": 1,
      "item": {
       "@type": "Car",
-      "name": "Toyota Avalon",
+      "name": "Toyota Avalon (білий)",
+      "brand": {
+       "@type": "Brand",
+       "name": "Toyota"
+      },
+      "model": "Avalon",
+      "color": "білий",
+      "description": "Бізнес, до 3 пасажирів. Білий Toyota Avalon — великий гібридний седан бізнес-класу. Тихий хід і просторий задній ряд роблять його зручним для довгих поїздок між містами та ділових зустрічей.",
+      "url": "https://transferkharkiv.com.ua/avtopark/#avalon-white",
+      "image": "https://transferkharkiv.com.ua/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-1127.jpg"
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "item": {
+      "@type": "Car",
+      "name": "Toyota Avalon (синій)",
       "brand": {
        "@type": "Brand",
        "name": "Toyota"
@@ -110,7 +128,7 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     },
     {
      "@type": "ListItem",
-     "position": 2,
+     "position": 3,
      "item": {
       "@type": "Car",
       "name": "Volkswagen Passat (чорний)",
@@ -127,7 +145,7 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     },
     {
      "@type": "ListItem",
-     "position": 3,
+     "position": 4,
      "item": {
       "@type": "Car",
       "name": "Volkswagen Passat (сірий)",
@@ -144,7 +162,7 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     },
     {
      "@type": "ListItem",
-     "position": 4,
+     "position": 5,
      "item": {
       "@type": "Car",
       "name": "Lincoln MKZ",
@@ -161,7 +179,7 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     },
     {
      "@type": "ListItem",
-     "position": 5,
+     "position": 6,
      "item": {
       "@type": "Car",
       "name": "Tesla Model X",
@@ -178,7 +196,7 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     },
     {
      "@type": "ListItem",
-     "position": 6,
+     "position": 7,
      "item": {
       "@type": "Car",
       "name": "Mercedes-Benz Vito",
@@ -195,7 +213,7 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     },
     {
      "@type": "ListItem",
-     "position": 7,
+     "position": 8,
      "item": {
       "@type": "Car",
       "name": "Skoda Octavia",
@@ -212,7 +230,7 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     },
     {
      "@type": "ListItem",
-     "position": 8,
+     "position": 9,
      "item": {
       "@type": "Car",
       "name": "Ford Fusion",
@@ -229,7 +247,7 @@ src="https://www.facebook.com/tr?id=2396956954169489&ev=PageView&noscript=1"
     },
     {
      "@type": "ListItem",
-     "position": 9,
+     "position": 10,
      "item": {
       "@type": "Car",
       "name": "Nissan Rogue",
@@ -577,19 +595,13 @@ section { position: relative; padding: var(--section-y) 0; }
 .fl-arrow { width: 52px; height: 52px; padding: 0; border-radius: 50%; border: 1px solid rgba(238,242,247,.18); background: rgba(255,255,255,.03); display: grid; place-items: center; transition: border-color .3s, background .3s, opacity .3s; }
 .fl-arrow:hover { border-color: rgba(91,134,240,.6); background: rgba(91,134,240,.08); }
 .fl-arrow[disabled] { opacity: .35; cursor: default; }
-.fl-mass { margin-top: clamp(48px,6vw,72px); overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
-.fl-mass-track { display: flex; gap: 12px; width: max-content; animation: tkMarquee 70s linear infinite; }
-.fl-mass:hover .fl-mass-track { animation-play-state: paused; }
-.fl-mass picture { flex: none; }
-.fl-mass img { height: clamp(110px,12vw,170px); width: auto; border-radius: 16px; filter: saturate(.85) brightness(.82); }
 @media (min-width: 768px) { .fl-card { flex-basis: calc((100% - 16px) / 2); } }
 @media (min-width: 1080px) { .fl-card { flex-basis: calc((100% - 32px) / 3); } .fl-foot { margin-top: 32px; } }
-@media (prefers-reduced-motion: reduce) { .fl-mass-track { animation: none; } }
 
 /* ============ AVTOPARK PAGE ============ */
 .av-hero { position: relative; overflow: hidden; padding: clamp(120px,13vw,176px) 0 clamp(56px,7vw,96px); background: var(--bg-0); }
 .av-hero-bg { position: absolute; inset: 0; z-index: 0; }
-.av-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 62%; } /* darkening is baked into the file */
+.av-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; } /* darkening is baked into the file */
 .av-hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,16,30,.94) 0%, rgba(8,16,30,.72) 48%, rgba(8,16,30,.35) 100%), linear-gradient(0deg, var(--bg-0) 0%, transparent 38%); }
 .av-hero .container { position: relative; z-index: 1; }
 .crumbs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 26px; padding: 0; list-style: none; font: 600 13px var(--f-body); color: var(--fg-3); }
@@ -636,7 +648,7 @@ section { position: relative; padding: var(--section-y) 0; }
   .av-hero .acts .btn { flex: 1 1 100%; }
   /* phones: the tall hero would crop the car to a sliver — show the whole Avalon as a band under the text */
   .av-hero-bg { top: auto; height: min(86vw, 440px); }
-  .av-hero-bg img { object-position: 50% 62%; }
+  .av-hero-bg img { object-position: 50% 50%; }
   .av-hero-bg::after { background: linear-gradient(180deg, var(--bg-0) 0%, rgba(8,16,30,.25) 40%, rgba(8,16,30,.1) 70%, var(--bg-0) 100%); }
 }
 
@@ -756,10 +768,10 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
 
 <main>
 <section class="av-hero">
-  <div class="av-hero-bg"><picture><source type="image/webp" srcset="/img/fleet/avtopark-hero-transfer-kharkiv-1600.webp 1600w, /img/fleet/avtopark-hero-transfer-kharkiv-960.webp 960w, /img/fleet/avtopark-hero-transfer-kharkiv-640.webp 640w" sizes="100vw"><img src="/img/fleet/avtopark-hero-transfer-kharkiv-960.jpg" srcset="/img/fleet/avtopark-hero-transfer-kharkiv-1600.jpg 1600w, /img/fleet/avtopark-hero-transfer-kharkiv-960.jpg 960w, /img/fleet/avtopark-hero-transfer-kharkiv-640.jpg 640w" sizes="100vw" width="1600" height="1066" alt="" loading="eager" decoding="async" fetchpriority="high"></picture></div>
+  <div class="av-hero-bg"><picture><source media="(max-width: 767px)" type="image/webp" srcset="/img/fleet/avtopark-hero-m-transfer-kharkiv-960.webp 960w, /img/fleet/avtopark-hero-m-transfer-kharkiv-640.webp 640w" sizes="100vw"><source media="(max-width: 767px)" srcset="/img/fleet/avtopark-hero-m-transfer-kharkiv-960.jpg 960w, /img/fleet/avtopark-hero-m-transfer-kharkiv-640.jpg 640w" sizes="100vw"><source type="image/webp" srcset="/img/fleet/avtopark-hero-transfer-kharkiv-1600.webp 1600w, /img/fleet/avtopark-hero-transfer-kharkiv-960.webp 960w" sizes="100vw"><img src="/img/fleet/avtopark-hero-transfer-kharkiv-960.jpg" srcset="/img/fleet/avtopark-hero-transfer-kharkiv-1600.jpg 1600w, /img/fleet/avtopark-hero-transfer-kharkiv-960.jpg 960w" sizes="100vw" width="1600" height="1000" alt="" loading="eager" decoding="async" fetchpriority="high"></picture></div>
   <div class="container">
     <ol class="crumbs" aria-label="Навігація"><li><a href="/">Головна</a></li><li aria-current="page">Автопарк</li></ol>
-    <span class="eyebrow in-1">Автопарк · 9 авто</span>
+    <span class="eyebrow in-1">Автопарк · 10 авто</span>
     <h1 class="in-2">Таксі бізнес-класу в Харкові — <span class="grad-text">наш автопарк</span></h1>
     <p class="sub in-3">Бізнес-седани, преміум Tesla Model X і мінівен Mercedes-Benz Vito до 7 пасажирів. Оберіть авто для міжміської поїздки — подамо до дверей і довеземо за фіксованою ціною.</p>
     <div class="acts in-4">
@@ -767,7 +779,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <a href="tel:+380633094949" class="btn btn-ghost">+38 063 309 49 49</a>
     </div>
     <div class="av-facts in-5">
-      <div><div class="v">9</div><div class="l">авто в автопарку</div></div>
+      <div><div class="v">10</div><div class="l">авто в автопарку</div></div>
       <div><div class="v">4</div><div class="l">класи: бізнес, преміум, мінівен, комфорт</div></div>
       <div><div class="v">7</div><div class="l">пасажирів у мінівені</div></div>
     </div>
@@ -777,8 +789,17 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
 <section class="av-list" id="cars">
   <div class="container">
     <h2 class="sr-only">Усі авто автопарку</h2>
-    <div class="av-filter noscroll" role="group" aria-label="Фільтр за класом авто"><button type="button" class="av-chip" data-filter="all" aria-pressed="true">Усі <small>9</small></button><button type="button" class="av-chip" data-filter="Бізнес" aria-pressed="false">Бізнес <small>4</small></button><button type="button" class="av-chip" data-filter="Преміум" aria-pressed="false">Преміум <small>1</small></button><button type="button" class="av-chip" data-filter="Комфорт" aria-pressed="false">Комфорт <small>3</small></button><button type="button" class="av-chip" data-filter="Мінівен" aria-pressed="false">Мінівен <small>1</small></button></div>
+    <div class="av-filter noscroll" role="group" aria-label="Фільтр за класом авто"><button type="button" class="av-chip" data-filter="all" aria-pressed="true">Усі <small>10</small></button><button type="button" class="av-chip" data-filter="Бізнес" aria-pressed="false">Бізнес <small>5</small></button><button type="button" class="av-chip" data-filter="Преміум" aria-pressed="false">Преміум <small>1</small></button><button type="button" class="av-chip" data-filter="Комфорт" aria-pressed="false">Комфорт <small>3</small></button><button type="button" class="av-chip" data-filter="Мінівен" aria-pressed="false">Мінівен <small>1</small></button></div>
     <div class="av-grid" id="avGrid">
+      <article class="fl-card reveal" id="avalon-white" data-cls="Бізнес">
+        <div class="av-cover"><picture><source type="image/webp" data-srcset="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-1127.webp 1127w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-800.webp 800w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 767px) 100vw, (max-width: 1079px) 50vw, 400px"><img data-src="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-800.jpg" data-srcset="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-1127.jpg 1127w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-800.jpg 800w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 767px) 100vw, (max-width: 1079px) 50vw, 400px" width="1127" height="741" alt="Білий Toyota Avalon — таксі бізнес-класу Харків, вид спереду" loading="lazy" decoding="async" style="object-position:80% 55%"></picture><span class="n">2 фото</span></div>
+        <div class="fl-meta">
+          <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
+          <h3>Toyota Avalon</h3>
+          <p>білий · до 3 пасажирів · просторий задній ряд</p>
+          <div class="fl-act"><a href="/?car=avalon-white#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="avalon-white" aria-haspopup="dialog">Детальніше</button></div>
+        </div>
+      </article>
       <article class="fl-card reveal" id="avalon" data-cls="Бізнес">
         <div class="av-cover"><picture><source type="image/webp" data-srcset="/img/fleet/toyota-avalon-transfer-kharkiv-01-1600.webp 1600w, /img/fleet/toyota-avalon-transfer-kharkiv-01-800.webp 800w, /img/fleet/toyota-avalon-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 767px) 100vw, (max-width: 1079px) 50vw, 400px"><img data-src="/img/fleet/toyota-avalon-transfer-kharkiv-01-800.jpg" data-srcset="/img/fleet/toyota-avalon-transfer-kharkiv-01-1600.jpg 1600w, /img/fleet/toyota-avalon-transfer-kharkiv-01-800.jpg 800w, /img/fleet/toyota-avalon-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 767px) 100vw, (max-width: 1079px) 50vw, 400px" width="1600" height="1066" alt="Toyota Avalon синього кольору — таксі бізнес-класу Харків, вид спереду" loading="lazy" decoding="async" style="object-position:48% 62%"></picture><span class="n">5 фото</span></div>
         <div class="fl-meta">
@@ -960,6 +981,40 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
 
 
 <div class="pf-ov" id="pfOverlay" aria-hidden="true">
+  <div class="pf" id="pf-avalon-white" role="dialog" aria-modal="true" aria-labelledby="pf-t-avalon-white" data-pf="avalon-white">
+    <span class="pf-grab" aria-hidden="true"></span>
+    <button type="button" class="pf-x" data-pf-close aria-label="Закрити"><svg><use href="#i-x"/></svg></button>
+    <div class="pf-gal">
+      <div class="pf-view">
+        <div class="pf-track noscroll"><picture><source type="image/webp" srcset="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-1127.webp 1127w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-800.webp 800w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 899px) 100vw, 680px"><img src="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-800.jpg" srcset="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-1127.jpg 1127w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-800.jpg 800w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 899px) 100vw, 680px" width="1127" height="741" alt="Білий Toyota Avalon — таксі бізнес-класу Харків, вид спереду" loading="lazy" decoding="async" data-i="0"></picture><picture><source type="image/webp" srcset="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-1127.webp 1127w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-800.webp 800w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-480.webp 480w" sizes="(max-width: 899px) 100vw, 680px"><img src="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-800.jpg" srcset="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-1127.jpg 1127w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-800.jpg 800w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-480.jpg 480w" sizes="(max-width: 899px) 100vw, 680px" width="1127" height="654" alt="Білий Toyota Avalon, вид ззаду — трансфер бізнес-клас з Харкова" loading="lazy" decoding="async" data-i="1"></picture></div>
+        <button type="button" class="fl-nav prev" aria-label="Попереднє фото" disabled><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="fl-nav next" aria-label="Наступне фото"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+        <span class="pf-count" aria-live="polite">1 / 2</span>
+      </div>
+      <div class="pf-thumbs noscroll"><button type="button" aria-label="Фото 1" aria-current="true"><picture><source type="image/webp" srcset="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-1127.webp 1127w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-800.webp 800w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-480.webp 480w" sizes="92px"><img src="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-800.jpg" srcset="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-1127.jpg 1127w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-800.jpg 800w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-01-480.jpg 480w" sizes="92px" width="1127" height="741" alt="" loading="lazy" decoding="async"></picture></button><button type="button" aria-label="Фото 2"><picture><source type="image/webp" srcset="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-1127.webp 1127w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-800.webp 800w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-480.webp 480w" sizes="92px"><img src="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-800.jpg" srcset="/img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-1127.jpg 1127w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-800.jpg 800w, /img/fleet/toyota-avalon-bilyi-transfer-kharkiv-02-480.jpg 480w" sizes="92px" width="1127" height="654" alt="" loading="lazy" decoding="async"></picture></button></div>
+    </div>
+    <div class="pf-info">
+      <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
+      <h2 id="pf-t-avalon-white">Toyota Avalon</h2>
+      <p class="sub">Колір кузова: білий</p>
+      <dl class="pf-specs">
+        <div><dt>Клас</dt><dd>Бізнес</dd></div>
+        <div><dt>Пасажири</dt><dd>до 3 пасажирів</dd></div>
+        <div><dt>Багаж</dt><dd>Багажник седана</dd></div>
+        <div><dt>Салон</dt><dd>Просторий задній ряд</dd></div>
+      </dl>
+      <h3>Зручності</h3>
+      <ul class="ticks"><li>Гібрид — тиха поїздка</li><li>Комплектація XLE</li><li>Кондиціонер</li><li>Зарядка для телефону</li><li>Дитяче крісло — на запит</li><li>Можна з тваринами</li></ul>
+      <h3>Про авто</h3>
+      <p class="d">Білий Toyota Avalon — великий гібридний седан бізнес-класу. Тихий хід і просторий задній ряд роблять його зручним для довгих поїздок між містами та ділових зустрічей.</p><p class="d">Світлий кузов виглядає святково й доречно і біля офісу, і біля готелю. У багажник седана поміщаються валізи для відрядження на кілька днів.</p>
+      <h3>Підходить для</h3>
+      <ul class="ticks"><li>Ділові поїздки та переговори</li><li>Зустріч гостей</li><li>Довгі міжміські маршрути</li></ul>
+      <div class="pf-acts">
+        <a href="/?car=avalon-white#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
+      </div>
+    </div>
+  </div>
   <div class="pf" id="pf-avalon" role="dialog" aria-modal="true" aria-labelledby="pf-t-avalon" data-pf="avalon">
     <span class="pf-grab" aria-hidden="true"></span>
     <button type="button" class="pf-x" data-pf-close aria-label="Закрити"><svg><use href="#i-x"/></svg></button>
@@ -1484,7 +1539,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
   }
   var flSec = $('#fleet');
   if (flSec) {
-    var flFirst = function () { $$('.fl-track > picture:first-child, .fl-mass picture', flSec).forEach(loadPic); };
+    var flFirst = function () { $$('.fl-track > picture:first-child', flSec).forEach(loadPic); };
     if ('IntersectionObserver' in window) {
       var fio = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { fio.disconnect(); flFirst(); } }, { rootMargin: '600px 0px' });
       fio.observe(flSec);
