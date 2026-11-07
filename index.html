@@ -578,33 +578,51 @@ select.inp option { background: var(--ink); color: var(--fg); }
 }
 
 /* ============ FLEET ============ */
-#fleet { background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(43,87,200,.14), transparent 70%), var(--bg-deep); border-top: 1px solid rgba(170,182,204,.06); }
-.fleet-row { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 40px calc(-1 * var(--gutter)) 0; padding: 0 var(--gutter); scroll-padding: 0 var(--gutter); }
-.car-card { position: relative; flex: 0 0 84%; height: 480px; scroll-snap-align: center; border-radius: var(--r-card); overflow: hidden; background: radial-gradient(ellipse 80% 30% at 50% 70%, rgba(43,87,200,.45), transparent 70%), linear-gradient(180deg, var(--ink), var(--bg-deep) 80%); border: 1px solid rgba(91,134,240,.25); transition: flex .9s var(--expo), border-color .5s; }
-.car-card img { position: absolute; left: 0; top: 0; width: 100%; height: 62%; object-fit: cover; filter: saturate(.8) brightness(.88) contrast(1.05); -webkit-mask-image: linear-gradient(180deg, #000 50%, transparent 98%); mask-image: linear-gradient(180deg, #000 50%, transparent 98%); }
-.car-card .podium { position: absolute; left: 10%; right: 10%; top: 50%; height: 40px; border-radius: 50%; border: 1px solid rgba(91,134,240,.4); background: radial-gradient(ellipse at center, rgba(91,134,240,.3), transparent 70%); box-shadow: 0 0 60px rgba(43,87,200,.4); }
-.car-card .meta { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px; display: flex; flex-direction: column; gap: 12px; }
-.car-card .cls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.car-card .cls > span:first-child { padding: 5px 10px; border-radius: 999px; background: rgba(91,134,240,.16); border: 1px solid rgba(91,134,240,.4); font: 700 10px var(--f-body); letter-spacing: .12em; text-transform: uppercase; color: var(--fg); white-space: nowrap; }
-.car-card .seats { display: inline-flex; gap: 1px; }
-.car-card .seats svg { width: 14px; height: 14px; fill: none; stroke: var(--blue-2); stroke-width: 2; stroke-linecap: round; }
-.car-card h3 { font-weight: 700; font-size: 26px; line-height: 1.05; letter-spacing: -.03em; }
-.car-card p { font: 500 14px/1.5 var(--f-body); color: var(--fg-2); }
-.car-card .go { align-self: flex-start; display: inline-flex; align-items: center; height: 46px; padding: 0 22px; border-radius: 999px; background: var(--fg); color: var(--ink); font: 800 14px var(--f-body); transition: background .3s, transform .3s; }
-.car-card .go:hover { background: #fff; color: var(--blue); transform: translateX(4px); }
-@media (min-width: 768px) { .car-card { flex-basis: 58%; } }
-@media (min-width: 1080px) {
-  .fleet-row { overflow: visible; margin: clamp(48px,6vw,72px) 0 0; padding: 0; gap: 16px; height: clamp(480px,44vw,620px); }
-  .car-card { flex: 1 1 0; min-width: 0; height: auto; border-radius: var(--r-panel); border-color: rgba(170,182,204,.1); cursor: pointer; background: radial-gradient(ellipse 70% 30% at 50% 74%, rgba(43,87,200,.45), transparent 70%), linear-gradient(180deg, var(--ink), var(--bg-deep) 80%); }
-  .car-card.on { flex: 1.9 1 0; border-color: rgba(91,134,240,.55); }
-  .car-card img { height: 66%; }
-  .car-card .podium { left: 12%; right: 12%; top: 48%; height: 56px; }
-  .car-card .meta { padding: clamp(22px,2.4vw,32px); gap: 14px; }
-  .car-card .cls > span:first-child { padding: 6px 12px; font-size: 11px; }
-  .car-card h3 { font-size: clamp(24px,2.4vw,34px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .car-card p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: .75; transition: opacity .5s; }
-  .car-card.on p { opacity: 1; }
-}
+#fleet { background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(43,87,200,.14), transparent 70%), var(--bg-deep); border-top: 1px solid rgba(170,182,204,.06); overflow: hidden; }
+.fl-rail { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; margin: clamp(40px,5vw,64px) calc(-1 * var(--gutter)) 0; padding: 4px var(--gutter) 8px; scroll-padding: 0 var(--gutter); }
+.fl-card { position: relative; flex: 0 0 84%; min-width: 0; scroll-snap-align: start; display: flex; flex-direction: column; border-radius: var(--r-card); overflow: hidden; background: radial-gradient(ellipse 80% 30% at 50% 42%, rgba(43,87,200,.32), transparent 70%), linear-gradient(180deg, var(--ink), var(--bg-deep) 80%); border: 1px solid rgba(91,134,240,.25); transition: border-color .5s, transform .5s var(--expo); }
+.fl-card:hover { border-color: rgba(91,134,240,.55); }
+.fl-media { position: relative; aspect-ratio: 4/3; overflow: hidden; background: #0B1526; }
+.fl-track { display: flex; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; }
+.fl-track > picture { flex: 0 0 100%; height: 100%; scroll-snap-align: center; scroll-snap-stop: always; }
+.fl-track img, .av-cover img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.9) brightness(.94) contrast(1.03); }
+.fl-media::after { content: ""; position: absolute; inset: auto 0 0; height: 34%; background: linear-gradient(180deg, transparent, rgba(6,12,24,.55)); pointer-events: none; }
+.fl-nav { position: absolute; top: 50%; z-index: 2; width: 40px; height: 40px; margin-top: -20px; padding: 0; border-radius: 50%; border: 1px solid rgba(238,242,247,.22); background: rgba(8,16,30,.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); display: grid; place-items: center; opacity: 0; transition: opacity .3s, background .3s; }
+.fl-nav.prev { left: 12px; } .fl-nav.next { right: 12px; }
+.fl-nav svg, .fl-arrow svg { width: 18px; height: 18px; fill: none; stroke: var(--fg); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.fl-nav:hover { background: rgba(43,87,200,.7); }
+.fl-card:hover .fl-nav, .fl-nav:focus-visible { opacity: 1; }
+.fl-nav[disabled] { opacity: 0 !important; pointer-events: none; }
+@media (hover: none) { .fl-nav { opacity: .9; width: 34px; height: 34px; margin-top: -17px; } .fl-nav.prev { left: 8px; } .fl-nav.next { right: 8px; } }
+.fl-dots { position: absolute; left: 0; right: 0; bottom: 8px; z-index: 2; display: flex; justify-content: center; }
+.fl-dots button { width: 18px; height: 22px; padding: 0; border: none; background: none; display: grid; place-items: center; }
+.fl-dots button::before { content: ""; width: 7px; height: 7px; border-radius: 4px; background: rgba(238,242,247,.45); transition: width .35s var(--expo), background .3s; }
+.fl-dots button[aria-current="true"]::before { width: 18px; background: var(--fg); }
+.fl-meta { flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 22px 22px 24px; }
+.fl-meta .cls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.fl-meta .cls > span:first-child { padding: 5px 10px; border-radius: 999px; background: rgba(91,134,240,.16); border: 1px solid rgba(91,134,240,.4); font: 700 10px var(--f-body); letter-spacing: .12em; text-transform: uppercase; color: var(--fg); white-space: nowrap; }
+.seats { display: inline-flex; gap: 1px; }
+.seats svg { width: 14px; height: 14px; fill: none; stroke: var(--blue-2); stroke-width: 2; stroke-linecap: round; }
+.fl-meta h3 { font-weight: 700; font-size: clamp(22px,2vw,28px); line-height: 1.05; letter-spacing: -.03em; }
+.fl-meta p { font: 500 14px/1.5 var(--f-body); color: var(--fg-2); }
+.fl-act { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 18px; margin-top: auto; padding-top: 6px; }
+.fl-act .go { display: inline-flex; align-items: center; height: 46px; padding: 0 22px; border-radius: 999px; background: var(--fg); color: var(--ink); font: 800 14px var(--f-body); transition: background .3s, transform .3s; }
+.fl-act .go:hover { background: #fff; color: var(--blue); transform: translateX(4px); }
+.fl-act .more { padding: 4px 0; border: none; background: none; font: 700 14px var(--f-body); color: var(--fg-2); border-bottom: 1px solid rgba(170,182,204,.3); transition: color .3s, border-color .3s; }
+.fl-act .more:hover { color: var(--fg); border-color: var(--blue-2); }
+.fl-foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+.fl-ctrl { display: flex; gap: 10px; }
+.fl-arrow { width: 52px; height: 52px; padding: 0; border-radius: 50%; border: 1px solid rgba(238,242,247,.18); background: rgba(255,255,255,.03); display: grid; place-items: center; transition: border-color .3s, background .3s, opacity .3s; }
+.fl-arrow:hover { border-color: rgba(91,134,240,.6); background: rgba(91,134,240,.08); }
+.fl-arrow[disabled] { opacity: .35; cursor: default; }
+.fl-mass { margin-top: clamp(48px,6vw,72px); overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+.fl-mass-track { display: flex; gap: 12px; width: max-content; animation: tkMarquee 70s linear infinite; }
+.fl-mass:hover .fl-mass-track { animation-play-state: paused; }
+.fl-mass picture { flex: none; }
+.fl-mass img { height: clamp(110px,12vw,170px); width: auto; border-radius: 16px; filter: saturate(.85) brightness(.82); }
+@media (min-width: 768px) { .fl-card { flex-basis: calc((100% - 16px) / 2); } }
+@media (min-width: 1080px) { .fl-card { flex-basis: calc((100% - 32px) / 3); } .fl-foot { margin-top: 32px; } }
+@media (prefers-reduced-motion: reduce) { .fl-mass-track { animation: none; } }
 
 /* ============ REVIEWS ============ */
 .g-rate { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; padding: 18px 20px 18px 24px; border-radius: 24px; background: rgba(14,27,48,.6); border: 1px solid rgba(170,182,204,.12); }
@@ -1004,10 +1022,24 @@ select.inp option { background: var(--ink); color: var(--fg); }
           </div>
           <div class="field full" data-f="car_class">
             <label for="car_class">Клас авто</label>
-            <select class="inp" id="car_class" name="car_class">
-              <option value="Комфорт" selected>Комфорт — Toyota Avalon, до 3 пасажирів</option>
-              <option value="Бізнес">Бізнес — Volkswagen Passat, до 3 пасажирів</option>
-              <option value="Мінівен">Мінівен — Toyota Sienna, до 6 пасажирів</option>
+            <select class="inp" id="car_class" name="car">
+              <optgroup label="Бізнес">
+                <option value="avalon" data-cls="Бізнес" data-name="Toyota Avalon" data-chip="Бізнес · Avalon" selected>Бізнес — Toyota Avalon, до 3 пасажирів</option>
+                <option value="passat-black" data-cls="Бізнес" data-name="Volkswagen Passat (чорний)" data-chip="Бізнес · Passat">Бізнес — Volkswagen Passat (чорний), до 3 пасажирів</option>
+                <option value="passat-grey" data-cls="Бізнес" data-name="Volkswagen Passat (сірий)" data-chip="Бізнес · Passat">Бізнес — Volkswagen Passat (сірий), до 3 пасажирів</option>
+                <option value="lincoln" data-cls="Бізнес" data-name="Lincoln MKZ" data-chip="Бізнес · Lincoln">Бізнес — Lincoln MKZ, до 3 пасажирів</option>
+              </optgroup>
+              <optgroup label="Преміум">
+                <option value="tesla" data-cls="Преміум" data-name="Tesla Model X" data-chip="Преміум · Model X">Преміум — Tesla Model X, до 4 пасажирів</option>
+              </optgroup>
+              <optgroup label="Мінівен">
+                <option value="vito" data-cls="Мінівен" data-name="Mercedes-Benz Vito" data-chip="Мінівен · Vito">Мінівен — Mercedes-Benz Vito, до 7 пасажирів</option>
+              </optgroup>
+              <optgroup label="Комфорт">
+                <option value="octavia" data-cls="Комфорт" data-name="Skoda Octavia" data-chip="Комфорт · Octavia">Комфорт — Skoda Octavia, до 3 пасажирів</option>
+                <option value="fusion" data-cls="Комфорт" data-name="Ford Fusion" data-chip="Комфорт · Fusion">Комфорт — Ford Fusion, до 3 пасажирів</option>
+                <option value="rogue" data-cls="Комфорт" data-name="Nissan Rogue" data-chip="Комфорт · Rogue">Комфорт — Nissan Rogue, до 4 пасажирів</option>
+              </optgroup>
             </select>
           </div>
           <label class="field full pets">
@@ -1035,7 +1067,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
         <div class="chips" aria-hidden="true">
           <span class="chip" id="chipDate">—</span>
           <span class="chip" id="chipTime">—</span>
-          <span class="chip" id="chipClass">Комфорт</span>
+          <span class="chip" id="chipClass">Бізнес · Avalon</span>
           <span class="chip pet" id="chipPet"><svg><use href="#i-paw"/></svg></span>
         </div>
         <div class="price-box" aria-live="polite">
@@ -1062,6 +1094,107 @@ select.inp option { background: var(--ink); color: var(--fg); }
     <span aria-hidden="true">Фіксована ціна за маршрут</span><span aria-hidden="true">200+ міст та напрямків</span><span aria-hidden="true">З точки в точку</span><span aria-hidden="true">Поїздки 24/7</span><span aria-hidden="true">Дитячі крісла</span><span aria-hidden="true">Оплата карткою</span><span aria-hidden="true">Оплата на розрахунковий рахунок</span>
   </div>
 </div>
+
+<!-- 7. FLEET -->
+<section id="fleet" data-pin>
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">Наш автопарк</span>
+        <h2>Авто, що вражають</h2>
+      </div>
+      <p class="lead">Бізнес, преміум, мінівен і комфорт — оберіть авто під поїздку. Регулярне ТО й бездоганна чистота салону.</p>
+    </div>
+    <div class="fl-rail noscroll" id="flRail" role="region" aria-label="Автопарк: листайте, щоб побачити всі авто">
+      <article class="fl-card" data-car="avalon">
+        <div class="fl-media" data-slider aria-roledescription="карусель" aria-label="Фото Toyota Avalon"><div class="fl-track noscroll"><picture><source type="image/webp" data-srcset="/img/fleet/toyota-avalon-transfer-kharkiv-01-1600.webp 1600w, /img/fleet/toyota-avalon-transfer-kharkiv-01-800.webp 800w, /img/fleet/toyota-avalon-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/toyota-avalon-transfer-kharkiv-01-800.jpg" data-srcset="/img/fleet/toyota-avalon-transfer-kharkiv-01-1600.jpg 1600w, /img/fleet/toyota-avalon-transfer-kharkiv-01-800.jpg 800w, /img/fleet/toyota-avalon-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Toyota Avalon синього кольору — таксі бізнес-класу Харків, вид спереду" loading="lazy" decoding="async" style="object-position:48% 62%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/toyota-avalon-transfer-kharkiv-02-1600.webp 1600w, /img/fleet/toyota-avalon-transfer-kharkiv-02-800.webp 800w, /img/fleet/toyota-avalon-transfer-kharkiv-02-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/toyota-avalon-transfer-kharkiv-02-800.jpg" data-srcset="/img/fleet/toyota-avalon-transfer-kharkiv-02-1600.jpg 1600w, /img/fleet/toyota-avalon-transfer-kharkiv-02-800.jpg 800w, /img/fleet/toyota-avalon-transfer-kharkiv-02-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Toyota Avalon з відчиненими передніми дверима — трансфер бізнес-клас" loading="lazy" decoding="async" style="object-position:52% 63%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/toyota-avalon-transfer-kharkiv-03-1600.webp 1600w, /img/fleet/toyota-avalon-transfer-kharkiv-03-800.webp 800w, /img/fleet/toyota-avalon-transfer-kharkiv-03-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/toyota-avalon-transfer-kharkiv-03-800.jpg" data-srcset="/img/fleet/toyota-avalon-transfer-kharkiv-03-1600.jpg 1600w, /img/fleet/toyota-avalon-transfer-kharkiv-03-800.jpg 800w, /img/fleet/toyota-avalon-transfer-kharkiv-03-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Toyota Avalon, вид ззаду — міжміське таксі бізнес-класу з Харкова" loading="lazy" decoding="async" style="object-position:45% 55%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/toyota-avalon-transfer-kharkiv-04-1600.webp 1600w, /img/fleet/toyota-avalon-transfer-kharkiv-04-800.webp 800w, /img/fleet/toyota-avalon-transfer-kharkiv-04-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/toyota-avalon-transfer-kharkiv-04-800.jpg" data-srcset="/img/fleet/toyota-avalon-transfer-kharkiv-04-1600.jpg 1600w, /img/fleet/toyota-avalon-transfer-kharkiv-04-800.jpg 800w, /img/fleet/toyota-avalon-transfer-kharkiv-04-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Toyota Avalon з відчиненими дверима — чорний шкіряний салон" loading="lazy" decoding="async" style="object-position:50% 60%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/toyota-avalon-transfer-kharkiv-05-1600.webp 1600w, /img/fleet/toyota-avalon-transfer-kharkiv-05-800.webp 800w, /img/fleet/toyota-avalon-transfer-kharkiv-05-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/toyota-avalon-transfer-kharkiv-05-800.jpg" data-srcset="/img/fleet/toyota-avalon-transfer-kharkiv-05-1600.jpg 1600w, /img/fleet/toyota-avalon-transfer-kharkiv-05-800.jpg 800w, /img/fleet/toyota-avalon-transfer-kharkiv-05-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Задній ряд Toyota Avalon — шкіряні сидіння для пасажирів" loading="lazy" decoding="async" style="object-position:50% 50%"></picture></div><button type="button" class="fl-nav prev" aria-label="Попереднє фото" disabled><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="fl-nav next" aria-label="Наступне фото"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><div class="fl-dots"><button type="button" aria-label="Фото 1 з 5" aria-current="true"></button><button type="button" aria-label="Фото 2 з 5"></button><button type="button" aria-label="Фото 3 з 5"></button><button type="button" aria-label="Фото 4 з 5"></button><button type="button" aria-label="Фото 5 з 5"></button></div></div>
+        <div class="fl-meta">
+          <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
+          <h3>Toyota Avalon</h3>
+          <p>синій · до 3 пасажирів</p>
+          <div class="fl-act"><a href="/?car=avalon#booking" class="go" data-pick-car="avalon">Замовити →</a><a href="/avtopark/#avalon" class="more">Детальніше</a></div>
+        </div>
+      </article>
+      <article class="fl-card" data-car="passat-black">
+        <div class="fl-media" data-slider aria-roledescription="карусель" aria-label="Фото Volkswagen Passat (чорний)"><div class="fl-track noscroll"><picture><source type="image/webp" data-srcset="/img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-01-1600.webp 1600w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-01-800.webp 800w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-01-800.jpg" data-srcset="/img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-01-1600.jpg 1600w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-01-800.jpg 800w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Чорний Volkswagen Passat — трансфер бізнес-клас Харків, вид спереду" loading="lazy" decoding="async" style="object-position:50% 63%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-02-1600.webp 1600w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-02-800.webp 800w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-02-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-02-800.jpg" data-srcset="/img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-02-1600.jpg 1600w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-02-800.jpg 800w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-02-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Чорний Volkswagen Passat, вид збоку — міжміське таксі бізнес-класу" loading="lazy" decoding="async" style="object-position:50% 60%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-03-1600.webp 1600w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-03-800.webp 800w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-03-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-03-800.jpg" data-srcset="/img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-03-1600.jpg 1600w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-03-800.jpg 800w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-03-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Чорний Volkswagen Passat з відчиненими дверима — салон для пасажирів" loading="lazy" decoding="async" style="object-position:50% 62%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-04-1600.webp 1600w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-04-800.webp 800w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-04-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-04-800.jpg" data-srcset="/img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-04-1600.jpg 1600w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-04-800.jpg 800w, /img/fleet/volkswagen-passat-chornyi-transfer-kharkiv-04-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Задній ряд сидінь чорного Volkswagen Passat" loading="lazy" decoding="async" style="object-position:50% 50%"></picture></div><button type="button" class="fl-nav prev" aria-label="Попереднє фото" disabled><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="fl-nav next" aria-label="Наступне фото"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><div class="fl-dots"><button type="button" aria-label="Фото 1 з 4" aria-current="true"></button><button type="button" aria-label="Фото 2 з 4"></button><button type="button" aria-label="Фото 3 з 4"></button><button type="button" aria-label="Фото 4 з 4"></button></div></div>
+        <div class="fl-meta">
+          <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
+          <h3>Volkswagen Passat</h3>
+          <p>чорний · до 3 пасажирів</p>
+          <div class="fl-act"><a href="/?car=passat-black#booking" class="go" data-pick-car="passat-black">Замовити →</a><a href="/avtopark/#passat-black" class="more">Детальніше</a></div>
+        </div>
+      </article>
+      <article class="fl-card" data-car="passat-grey">
+        <div class="fl-media" data-slider aria-roledescription="карусель" aria-label="Фото Volkswagen Passat (сірий)"><div class="fl-track noscroll"><picture><source type="image/webp" data-srcset="/img/fleet/volkswagen-passat-siryi-transfer-kharkiv-01-1600.webp 1600w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-01-800.webp 800w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/volkswagen-passat-siryi-transfer-kharkiv-01-800.jpg" data-srcset="/img/fleet/volkswagen-passat-siryi-transfer-kharkiv-01-1600.jpg 1600w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-01-800.jpg 800w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Сірий Volkswagen Passat — таксі бізнес-класу Харків, вид спереду" loading="lazy" decoding="async" style="object-position:56% 59%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/volkswagen-passat-siryi-transfer-kharkiv-02-1600.webp 1600w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-02-800.webp 800w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-02-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/volkswagen-passat-siryi-transfer-kharkiv-02-800.jpg" data-srcset="/img/fleet/volkswagen-passat-siryi-transfer-kharkiv-02-1600.jpg 1600w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-02-800.jpg 800w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-02-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Сірий Volkswagen Passat, вид ззаду — трансфер бізнес-клас" loading="lazy" decoding="async" style="object-position:50% 60%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/volkswagen-passat-siryi-transfer-kharkiv-03-1600.webp 1600w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-03-800.webp 800w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-03-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/volkswagen-passat-siryi-transfer-kharkiv-03-800.jpg" data-srcset="/img/fleet/volkswagen-passat-siryi-transfer-kharkiv-03-1600.jpg 1600w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-03-800.jpg 800w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-03-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Сірий Volkswagen Passat з відчиненими дверима — темний салон" loading="lazy" decoding="async" style="object-position:50% 60%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/volkswagen-passat-siryi-transfer-kharkiv-04-1600.webp 1600w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-04-800.webp 800w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-04-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/volkswagen-passat-siryi-transfer-kharkiv-04-800.jpg" data-srcset="/img/fleet/volkswagen-passat-siryi-transfer-kharkiv-04-1600.jpg 1600w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-04-800.jpg 800w, /img/fleet/volkswagen-passat-siryi-transfer-kharkiv-04-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Задній ряд сидінь сірого Volkswagen Passat" loading="lazy" decoding="async" style="object-position:50% 50%"></picture></div><button type="button" class="fl-nav prev" aria-label="Попереднє фото" disabled><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="fl-nav next" aria-label="Наступне фото"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><div class="fl-dots"><button type="button" aria-label="Фото 1 з 4" aria-current="true"></button><button type="button" aria-label="Фото 2 з 4"></button><button type="button" aria-label="Фото 3 з 4"></button><button type="button" aria-label="Фото 4 з 4"></button></div></div>
+        <div class="fl-meta">
+          <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
+          <h3>Volkswagen Passat</h3>
+          <p>сірий · до 3 пасажирів</p>
+          <div class="fl-act"><a href="/?car=passat-grey#booking" class="go" data-pick-car="passat-grey">Замовити →</a><a href="/avtopark/#passat-grey" class="more">Детальніше</a></div>
+        </div>
+      </article>
+      <article class="fl-card" data-car="lincoln">
+        <div class="fl-media" data-slider aria-roledescription="карусель" aria-label="Фото Lincoln MKZ"><div class="fl-track noscroll"><picture><source type="image/webp" data-srcset="/img/fleet/lincoln-mkz-transfer-kharkiv-01-1600.webp 1600w, /img/fleet/lincoln-mkz-transfer-kharkiv-01-800.webp 800w, /img/fleet/lincoln-mkz-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/lincoln-mkz-transfer-kharkiv-01-800.jpg" data-srcset="/img/fleet/lincoln-mkz-transfer-kharkiv-01-1600.jpg 1600w, /img/fleet/lincoln-mkz-transfer-kharkiv-01-800.jpg 800w, /img/fleet/lincoln-mkz-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Lincoln MKZ синього кольору — таксі бізнес-класу Харків, вид спереду" loading="lazy" decoding="async" style="object-position:43% 64%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/lincoln-mkz-transfer-kharkiv-02-1600.webp 1600w, /img/fleet/lincoln-mkz-transfer-kharkiv-02-800.webp 800w, /img/fleet/lincoln-mkz-transfer-kharkiv-02-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/lincoln-mkz-transfer-kharkiv-02-800.jpg" data-srcset="/img/fleet/lincoln-mkz-transfer-kharkiv-02-1600.jpg 1600w, /img/fleet/lincoln-mkz-transfer-kharkiv-02-800.jpg 800w, /img/fleet/lincoln-mkz-transfer-kharkiv-02-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Lincoln MKZ з відчиненими дверима водія — трансфер бізнес-клас" loading="lazy" decoding="async" style="object-position:55% 60%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/lincoln-mkz-transfer-kharkiv-03-1600.webp 1600w, /img/fleet/lincoln-mkz-transfer-kharkiv-03-800.webp 800w, /img/fleet/lincoln-mkz-transfer-kharkiv-03-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/lincoln-mkz-transfer-kharkiv-03-800.jpg" data-srcset="/img/fleet/lincoln-mkz-transfer-kharkiv-03-1600.jpg 1600w, /img/fleet/lincoln-mkz-transfer-kharkiv-03-800.jpg 800w, /img/fleet/lincoln-mkz-transfer-kharkiv-03-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Lincoln MKZ, вид ззаду — міжміське таксі бізнес-класу з Харкова" loading="lazy" decoding="async" style="object-position:45% 55%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/lincoln-mkz-transfer-kharkiv-04-1600.webp 1600w, /img/fleet/lincoln-mkz-transfer-kharkiv-04-800.webp 800w, /img/fleet/lincoln-mkz-transfer-kharkiv-04-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/lincoln-mkz-transfer-kharkiv-04-800.jpg" data-srcset="/img/fleet/lincoln-mkz-transfer-kharkiv-04-1600.jpg 1600w, /img/fleet/lincoln-mkz-transfer-kharkiv-04-800.jpg 800w, /img/fleet/lincoln-mkz-transfer-kharkiv-04-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Lincoln MKZ з відчиненими дверима — світлий шкіряний салон" loading="lazy" decoding="async" style="object-position:50% 60%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/lincoln-mkz-transfer-kharkiv-05-1600.webp 1600w, /img/fleet/lincoln-mkz-transfer-kharkiv-05-800.webp 800w, /img/fleet/lincoln-mkz-transfer-kharkiv-05-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/lincoln-mkz-transfer-kharkiv-05-800.jpg" data-srcset="/img/fleet/lincoln-mkz-transfer-kharkiv-05-1600.jpg 1600w, /img/fleet/lincoln-mkz-transfer-kharkiv-05-800.jpg 800w, /img/fleet/lincoln-mkz-transfer-kharkiv-05-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Задній ряд Lincoln MKZ — бежеві шкіряні сидіння" loading="lazy" decoding="async" style="object-position:50% 55%"></picture></div><button type="button" class="fl-nav prev" aria-label="Попереднє фото" disabled><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="fl-nav next" aria-label="Наступне фото"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><div class="fl-dots"><button type="button" aria-label="Фото 1 з 5" aria-current="true"></button><button type="button" aria-label="Фото 2 з 5"></button><button type="button" aria-label="Фото 3 з 5"></button><button type="button" aria-label="Фото 4 з 5"></button><button type="button" aria-label="Фото 5 з 5"></button></div></div>
+        <div class="fl-meta">
+          <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
+          <h3>Lincoln MKZ</h3>
+          <p>синій · до 3 пасажирів</p>
+          <div class="fl-act"><a href="/?car=lincoln#booking" class="go" data-pick-car="lincoln">Замовити →</a><a href="/avtopark/#lincoln" class="more">Детальніше</a></div>
+        </div>
+      </article>
+      <article class="fl-card" data-car="tesla">
+        <div class="fl-media" data-slider aria-roledescription="карусель" aria-label="Фото Tesla Model X"><div class="fl-track noscroll"><picture><source type="image/webp" data-srcset="/img/fleet/tesla-model-x-transfer-kharkiv-01-1600.webp 1600w, /img/fleet/tesla-model-x-transfer-kharkiv-01-800.webp 800w, /img/fleet/tesla-model-x-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/tesla-model-x-transfer-kharkiv-01-800.jpg" data-srcset="/img/fleet/tesla-model-x-transfer-kharkiv-01-1600.jpg 1600w, /img/fleet/tesla-model-x-transfer-kharkiv-01-800.jpg 800w, /img/fleet/tesla-model-x-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Tesla Model X синього кольору — преміум таксі Харків, вид спереду" loading="lazy" decoding="async" style="object-position:54% 65%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/tesla-model-x-transfer-kharkiv-02-1600.webp 1600w, /img/fleet/tesla-model-x-transfer-kharkiv-02-800.webp 800w, /img/fleet/tesla-model-x-transfer-kharkiv-02-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/tesla-model-x-transfer-kharkiv-02-800.jpg" data-srcset="/img/fleet/tesla-model-x-transfer-kharkiv-02-1600.jpg 1600w, /img/fleet/tesla-model-x-transfer-kharkiv-02-800.jpg 800w, /img/fleet/tesla-model-x-transfer-kharkiv-02-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Tesla Model X, вид ззаду — преміум трансфер з Харкова" loading="lazy" decoding="async" style="object-position:50% 55%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/tesla-model-x-transfer-kharkiv-03-1600.webp 1600w, /img/fleet/tesla-model-x-transfer-kharkiv-03-800.webp 800w, /img/fleet/tesla-model-x-transfer-kharkiv-03-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/tesla-model-x-transfer-kharkiv-03-800.jpg" data-srcset="/img/fleet/tesla-model-x-transfer-kharkiv-03-1600.jpg 1600w, /img/fleet/tesla-model-x-transfer-kharkiv-03-800.jpg 800w, /img/fleet/tesla-model-x-transfer-kharkiv-03-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Салон Tesla Model X — світлі сидіння другого ряду" loading="lazy" decoding="async" style="object-position:55% 50%"></picture></div><button type="button" class="fl-nav prev" aria-label="Попереднє фото" disabled><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="fl-nav next" aria-label="Наступне фото"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><div class="fl-dots"><button type="button" aria-label="Фото 1 з 3" aria-current="true"></button><button type="button" aria-label="Фото 2 з 3"></button><button type="button" aria-label="Фото 3 з 3"></button></div></div>
+        <div class="fl-meta">
+          <div class="cls"><span>Преміум</span><span class="seats" role="img" aria-label="до 4 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
+          <h3>Tesla Model X</h3>
+          <p>синій · до 4 пасажирів</p>
+          <div class="fl-act"><a href="/?car=tesla#booking" class="go" data-pick-car="tesla">Замовити →</a><a href="/avtopark/#tesla" class="more">Детальніше</a></div>
+        </div>
+      </article>
+      <article class="fl-card" data-car="vito">
+        <div class="fl-media" data-slider aria-roledescription="карусель" aria-label="Фото Mercedes-Benz Vito"><div class="fl-track noscroll"><picture><source type="image/webp" data-srcset="/img/fleet/mercedes-benz-vito-transfer-kharkiv-01-1600.webp 1600w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-01-800.webp 800w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/mercedes-benz-vito-transfer-kharkiv-01-800.jpg" data-srcset="/img/fleet/mercedes-benz-vito-transfer-kharkiv-01-1600.jpg 1600w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-01-800.jpg 800w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Мінівен Mercedes-Benz Vito — трансфер для групи до 7 пасажирів, Харків" loading="lazy" decoding="async" style="object-position:54% 60%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/mercedes-benz-vito-transfer-kharkiv-02-1600.webp 1600w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-02-800.webp 800w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-02-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/mercedes-benz-vito-transfer-kharkiv-02-800.jpg" data-srcset="/img/fleet/mercedes-benz-vito-transfer-kharkiv-02-1600.jpg 1600w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-02-800.jpg 800w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-02-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Mercedes-Benz Vito, вид збоку — мінівен для групових поїздок" loading="lazy" decoding="async" style="object-position:50% 60%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/mercedes-benz-vito-transfer-kharkiv-03-1600.webp 1600w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-03-800.webp 800w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-03-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/mercedes-benz-vito-transfer-kharkiv-03-800.jpg" data-srcset="/img/fleet/mercedes-benz-vito-transfer-kharkiv-03-1600.jpg 1600w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-03-800.jpg 800w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-03-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Mercedes-Benz Vito з відчиненими розсувними дверима" loading="lazy" decoding="async" style="object-position:50% 60%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/mercedes-benz-vito-transfer-kharkiv-04-1600.webp 1600w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-04-800.webp 800w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-04-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/mercedes-benz-vito-transfer-kharkiv-04-800.jpg" data-srcset="/img/fleet/mercedes-benz-vito-transfer-kharkiv-04-1600.jpg 1600w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-04-800.jpg 800w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-04-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Mercedes-Benz Vito з відчиненим багажним відсіком" loading="lazy" decoding="async" style="object-position:35% 60%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/mercedes-benz-vito-transfer-kharkiv-05-1600.webp 1600w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-05-800.webp 800w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-05-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/mercedes-benz-vito-transfer-kharkiv-05-800.jpg" data-srcset="/img/fleet/mercedes-benz-vito-transfer-kharkiv-05-1600.jpg 1600w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-05-800.jpg 800w, /img/fleet/mercedes-benz-vito-transfer-kharkiv-05-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Пасажирські сидіння в салоні мінівена Mercedes-Benz Vito" loading="lazy" decoding="async" style="object-position:50% 50%"></picture></div><button type="button" class="fl-nav prev" aria-label="Попереднє фото" disabled><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="fl-nav next" aria-label="Наступне фото"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><div class="fl-dots"><button type="button" aria-label="Фото 1 з 5" aria-current="true"></button><button type="button" aria-label="Фото 2 з 5"></button><button type="button" aria-label="Фото 3 з 5"></button><button type="button" aria-label="Фото 4 з 5"></button><button type="button" aria-label="Фото 5 з 5"></button></div></div>
+        <div class="fl-meta">
+          <div class="cls"><span>Мінівен</span><span class="seats" role="img" aria-label="до 7 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
+          <h3>Mercedes-Benz Vito</h3>
+          <p>синій · до 7 пасажирів</p>
+          <div class="fl-act"><a href="/?car=vito#booking" class="go" data-pick-car="vito">Замовити →</a><a href="/avtopark/#vito" class="more">Детальніше</a></div>
+        </div>
+      </article>
+      <article class="fl-card" data-car="octavia">
+        <div class="fl-media" data-slider aria-roledescription="карусель" aria-label="Фото Skoda Octavia"><div class="fl-track noscroll"><picture><source type="image/webp" data-srcset="/img/fleet/skoda-octavia-transfer-kharkiv-01-1600.webp 1600w, /img/fleet/skoda-octavia-transfer-kharkiv-01-800.webp 800w, /img/fleet/skoda-octavia-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/skoda-octavia-transfer-kharkiv-01-800.jpg" data-srcset="/img/fleet/skoda-octavia-transfer-kharkiv-01-1600.jpg 1600w, /img/fleet/skoda-octavia-transfer-kharkiv-01-800.jpg 800w, /img/fleet/skoda-octavia-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Skoda Octavia — міжміське таксі класу комфорт, Харків" loading="lazy" decoding="async" style="object-position:51% 57%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/skoda-octavia-transfer-kharkiv-02-1600.webp 1600w, /img/fleet/skoda-octavia-transfer-kharkiv-02-800.webp 800w, /img/fleet/skoda-octavia-transfer-kharkiv-02-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/skoda-octavia-transfer-kharkiv-02-800.jpg" data-srcset="/img/fleet/skoda-octavia-transfer-kharkiv-02-1600.jpg 1600w, /img/fleet/skoda-octavia-transfer-kharkiv-02-800.jpg 800w, /img/fleet/skoda-octavia-transfer-kharkiv-02-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Skoda Octavia, вид збоку — таксі комфорт з Харкова" loading="lazy" decoding="async" style="object-position:50% 55%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/skoda-octavia-transfer-kharkiv-03-1600.webp 1600w, /img/fleet/skoda-octavia-transfer-kharkiv-03-800.webp 800w, /img/fleet/skoda-octavia-transfer-kharkiv-03-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/skoda-octavia-transfer-kharkiv-03-800.jpg" data-srcset="/img/fleet/skoda-octavia-transfer-kharkiv-03-1600.jpg 1600w, /img/fleet/skoda-octavia-transfer-kharkiv-03-800.jpg 800w, /img/fleet/skoda-octavia-transfer-kharkiv-03-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Skoda Octavia з відчиненими дверима — салон для пасажирів" loading="lazy" decoding="async" style="object-position:50% 60%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/skoda-octavia-transfer-kharkiv-04-1600.webp 1600w, /img/fleet/skoda-octavia-transfer-kharkiv-04-800.webp 800w, /img/fleet/skoda-octavia-transfer-kharkiv-04-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/skoda-octavia-transfer-kharkiv-04-800.jpg" data-srcset="/img/fleet/skoda-octavia-transfer-kharkiv-04-1600.jpg 1600w, /img/fleet/skoda-octavia-transfer-kharkiv-04-800.jpg 800w, /img/fleet/skoda-octavia-transfer-kharkiv-04-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="2402" alt="Skoda Octavia, задня частина кузова" loading="lazy" decoding="async" style="object-position:50% 65%"></picture></div><button type="button" class="fl-nav prev" aria-label="Попереднє фото" disabled><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="fl-nav next" aria-label="Наступне фото"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><div class="fl-dots"><button type="button" aria-label="Фото 1 з 4" aria-current="true"></button><button type="button" aria-label="Фото 2 з 4"></button><button type="button" aria-label="Фото 3 з 4"></button><button type="button" aria-label="Фото 4 з 4"></button></div></div>
+        <div class="fl-meta">
+          <div class="cls"><span>Комфорт</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
+          <h3>Skoda Octavia</h3>
+          <p>сірий · до 3 пасажирів</p>
+          <div class="fl-act"><a href="/?car=octavia#booking" class="go" data-pick-car="octavia">Замовити →</a><a href="/avtopark/#octavia" class="more">Детальніше</a></div>
+        </div>
+      </article>
+      <article class="fl-card" data-car="fusion">
+        <div class="fl-media" data-slider aria-roledescription="карусель" aria-label="Фото Ford Fusion"><div class="fl-track noscroll"><picture><source type="image/webp" data-srcset="/img/fleet/ford-fusion-transfer-kharkiv-01-1600.webp 1600w, /img/fleet/ford-fusion-transfer-kharkiv-01-800.webp 800w, /img/fleet/ford-fusion-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/ford-fusion-transfer-kharkiv-01-800.jpg" data-srcset="/img/fleet/ford-fusion-transfer-kharkiv-01-1600.jpg 1600w, /img/fleet/ford-fusion-transfer-kharkiv-01-800.jpg 800w, /img/fleet/ford-fusion-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Ford Fusion — міжміське таксі класу комфорт, Харків" loading="lazy" decoding="async" style="object-position:48% 61%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/ford-fusion-transfer-kharkiv-02-1600.webp 1600w, /img/fleet/ford-fusion-transfer-kharkiv-02-800.webp 800w, /img/fleet/ford-fusion-transfer-kharkiv-02-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/ford-fusion-transfer-kharkiv-02-800.jpg" data-srcset="/img/fleet/ford-fusion-transfer-kharkiv-02-1600.jpg 1600w, /img/fleet/ford-fusion-transfer-kharkiv-02-800.jpg 800w, /img/fleet/ford-fusion-transfer-kharkiv-02-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Ford Fusion з відчиненими дверима водія — таксі комфорт" loading="lazy" decoding="async" style="object-position:45% 60%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/ford-fusion-transfer-kharkiv-03-1600.webp 1600w, /img/fleet/ford-fusion-transfer-kharkiv-03-800.webp 800w, /img/fleet/ford-fusion-transfer-kharkiv-03-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/ford-fusion-transfer-kharkiv-03-800.jpg" data-srcset="/img/fleet/ford-fusion-transfer-kharkiv-03-1600.jpg 1600w, /img/fleet/ford-fusion-transfer-kharkiv-03-800.jpg 800w, /img/fleet/ford-fusion-transfer-kharkiv-03-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Ford Fusion з відчиненими дверима — темний салон" loading="lazy" decoding="async" style="object-position:50% 62%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/ford-fusion-transfer-kharkiv-04-1600.webp 1600w, /img/fleet/ford-fusion-transfer-kharkiv-04-800.webp 800w, /img/fleet/ford-fusion-transfer-kharkiv-04-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/ford-fusion-transfer-kharkiv-04-800.jpg" data-srcset="/img/fleet/ford-fusion-transfer-kharkiv-04-1600.jpg 1600w, /img/fleet/ford-fusion-transfer-kharkiv-04-800.jpg 800w, /img/fleet/ford-fusion-transfer-kharkiv-04-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Задній ряд Ford Fusion — шкіряні сидіння" loading="lazy" decoding="async" style="object-position:55% 55%"></picture></div><button type="button" class="fl-nav prev" aria-label="Попереднє фото" disabled><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="fl-nav next" aria-label="Наступне фото"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><div class="fl-dots"><button type="button" aria-label="Фото 1 з 4" aria-current="true"></button><button type="button" aria-label="Фото 2 з 4"></button><button type="button" aria-label="Фото 3 з 4"></button><button type="button" aria-label="Фото 4 з 4"></button></div></div>
+        <div class="fl-meta">
+          <div class="cls"><span>Комфорт</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
+          <h3>Ford Fusion</h3>
+          <p>темно-сірий · до 3 пасажирів</p>
+          <div class="fl-act"><a href="/?car=fusion#booking" class="go" data-pick-car="fusion">Замовити →</a><a href="/avtopark/#fusion" class="more">Детальніше</a></div>
+        </div>
+      </article>
+      <article class="fl-card" data-car="rogue">
+        <div class="fl-media" data-slider aria-roledescription="карусель" aria-label="Фото Nissan Rogue"><div class="fl-track noscroll"><picture><source type="image/webp" data-srcset="/img/fleet/nissan-rogue-transfer-kharkiv-01-1600.webp 1600w, /img/fleet/nissan-rogue-transfer-kharkiv-01-800.webp 800w, /img/fleet/nissan-rogue-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/nissan-rogue-transfer-kharkiv-01-800.jpg" data-srcset="/img/fleet/nissan-rogue-transfer-kharkiv-01-1600.jpg 1600w, /img/fleet/nissan-rogue-transfer-kharkiv-01-800.jpg 800w, /img/fleet/nissan-rogue-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Кросовер Nissan Rogue — таксі комфорт до 4 пасажирів, Харків" loading="lazy" decoding="async" style="object-position:51% 63%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/nissan-rogue-transfer-kharkiv-02-1600.webp 1600w, /img/fleet/nissan-rogue-transfer-kharkiv-02-800.webp 800w, /img/fleet/nissan-rogue-transfer-kharkiv-02-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/nissan-rogue-transfer-kharkiv-02-800.jpg" data-srcset="/img/fleet/nissan-rogue-transfer-kharkiv-02-1600.jpg 1600w, /img/fleet/nissan-rogue-transfer-kharkiv-02-800.jpg 800w, /img/fleet/nissan-rogue-transfer-kharkiv-02-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Nissan Rogue, вид ззаду — міжміське таксі з Харкова" loading="lazy" decoding="async" style="object-position:50% 55%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/nissan-rogue-transfer-kharkiv-03-1600.webp 1600w, /img/fleet/nissan-rogue-transfer-kharkiv-03-800.webp 800w, /img/fleet/nissan-rogue-transfer-kharkiv-03-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/nissan-rogue-transfer-kharkiv-03-800.jpg" data-srcset="/img/fleet/nissan-rogue-transfer-kharkiv-03-1600.jpg 1600w, /img/fleet/nissan-rogue-transfer-kharkiv-03-800.jpg 800w, /img/fleet/nissan-rogue-transfer-kharkiv-03-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Nissan Rogue з відчиненими дверима — салон кросовера" loading="lazy" decoding="async" style="object-position:50% 62%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/nissan-rogue-transfer-kharkiv-04-1600.webp 1600w, /img/fleet/nissan-rogue-transfer-kharkiv-04-800.webp 800w, /img/fleet/nissan-rogue-transfer-kharkiv-04-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/nissan-rogue-transfer-kharkiv-04-800.jpg" data-srcset="/img/fleet/nissan-rogue-transfer-kharkiv-04-1600.jpg 1600w, /img/fleet/nissan-rogue-transfer-kharkiv-04-800.jpg 800w, /img/fleet/nissan-rogue-transfer-kharkiv-04-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Місце водія Nissan Rogue" loading="lazy" decoding="async" style="object-position:60% 50%"></picture><picture><source type="image/webp" data-srcset="/img/fleet/nissan-rogue-transfer-kharkiv-05-1600.webp 1600w, /img/fleet/nissan-rogue-transfer-kharkiv-05-800.webp 800w, /img/fleet/nissan-rogue-transfer-kharkiv-05-480.webp 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px"><img data-src="/img/fleet/nissan-rogue-transfer-kharkiv-05-800.jpg" data-srcset="/img/fleet/nissan-rogue-transfer-kharkiv-05-1600.jpg 1600w, /img/fleet/nissan-rogue-transfer-kharkiv-05-800.jpg 800w, /img/fleet/nissan-rogue-transfer-kharkiv-05-480.jpg 480w" sizes="(max-width: 767px) 84vw, (max-width: 1079px) 46vw, 400px" width="1600" height="1066" alt="Задній ряд сидінь Nissan Rogue" loading="lazy" decoding="async" style="object-position:50% 55%"></picture></div><button type="button" class="fl-nav prev" aria-label="Попереднє фото" disabled><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="fl-nav next" aria-label="Наступне фото"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><div class="fl-dots"><button type="button" aria-label="Фото 1 з 5" aria-current="true"></button><button type="button" aria-label="Фото 2 з 5"></button><button type="button" aria-label="Фото 3 з 5"></button><button type="button" aria-label="Фото 4 з 5"></button><button type="button" aria-label="Фото 5 з 5"></button></div></div>
+        <div class="fl-meta">
+          <div class="cls"><span>Комфорт</span><span class="seats" role="img" aria-label="до 4 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
+          <h3>Nissan Rogue</h3>
+          <p>сірий · до 4 пасажирів</p>
+          <div class="fl-act"><a href="/?car=rogue#booking" class="go" data-pick-car="rogue">Замовити →</a><a href="/avtopark/#rogue" class="more">Детальніше</a></div>
+        </div>
+      </article>
+    </div>
+    <div class="fl-foot">
+      <div class="fl-ctrl"><button type="button" class="fl-arrow prev" aria-label="Попередні авто" disabled><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="fl-arrow next" aria-label="Наступні авто"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
+      <a href="/avtopark/" class="btn btn-ghost">Весь автопарк →</a>
+    </div>
+  </div>
+  <div class="fl-mass" aria-hidden="true"><div class="fl-mass-track"><picture><source type="image/webp" data-srcset="/img/fleet/avtopark-transfer-kharkiv-01-1600.webp 1600w, /img/fleet/avtopark-transfer-kharkiv-01-800.webp 800w, /img/fleet/avtopark-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 767px) 260px, 360px"><img data-src="/img/fleet/avtopark-transfer-kharkiv-01-800.jpg" data-srcset="/img/fleet/avtopark-transfer-kharkiv-01-1600.jpg 1600w, /img/fleet/avtopark-transfer-kharkiv-01-800.jpg 800w, /img/fleet/avtopark-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 767px) 260px, 360px" width="1600" height="1252" alt="Автопарк Transfer Kharkiv: Toyota Avalon і Volkswagen Passat" loading="lazy" decoding="async"></picture><picture><source type="image/webp" data-srcset="/img/fleet/avtopark-transfer-kharkiv-02-1600.webp 1600w, /img/fleet/avtopark-transfer-kharkiv-02-800.webp 800w, /img/fleet/avtopark-transfer-kharkiv-02-480.webp 480w" sizes="(max-width: 767px) 260px, 360px"><img data-src="/img/fleet/avtopark-transfer-kharkiv-02-800.jpg" data-srcset="/img/fleet/avtopark-transfer-kharkiv-02-1600.jpg 1600w, /img/fleet/avtopark-transfer-kharkiv-02-800.jpg 800w, /img/fleet/avtopark-transfer-kharkiv-02-480.jpg 480w" sizes="(max-width: 767px) 260px, 360px" width="1600" height="1066" alt="Lincoln MKZ, Tesla Model X і Mercedes-Benz Vito з автопарку Transfer Kharkiv" loading="lazy" decoding="async"></picture><picture><source type="image/webp" data-srcset="/img/fleet/avtopark-transfer-kharkiv-03-1600.webp 1600w, /img/fleet/avtopark-transfer-kharkiv-03-800.webp 800w, /img/fleet/avtopark-transfer-kharkiv-03-480.webp 480w" sizes="(max-width: 767px) 260px, 360px"><img data-src="/img/fleet/avtopark-transfer-kharkiv-03-800.jpg" data-srcset="/img/fleet/avtopark-transfer-kharkiv-03-1600.jpg 1600w, /img/fleet/avtopark-transfer-kharkiv-03-800.jpg 800w, /img/fleet/avtopark-transfer-kharkiv-03-480.jpg 480w" sizes="(max-width: 767px) 260px, 360px" width="1600" height="1066" alt="Mercedes-Benz Vito, Tesla Model X і Lincoln MKZ — автопарк міжміського таксі" loading="lazy" decoding="async"></picture><picture><source type="image/webp" data-srcset="/img/fleet/avtopark-transfer-kharkiv-04-1600.webp 1600w, /img/fleet/avtopark-transfer-kharkiv-04-800.webp 800w, /img/fleet/avtopark-transfer-kharkiv-04-480.webp 480w" sizes="(max-width: 767px) 260px, 360px"><img data-src="/img/fleet/avtopark-transfer-kharkiv-04-800.jpg" data-srcset="/img/fleet/avtopark-transfer-kharkiv-04-1600.jpg 1600w, /img/fleet/avtopark-transfer-kharkiv-04-800.jpg 800w, /img/fleet/avtopark-transfer-kharkiv-04-480.jpg 480w" sizes="(max-width: 767px) 260px, 360px" width="1600" height="737" alt="Volkswagen Passat і Toyota Avalon — автопарк Transfer Kharkiv" loading="lazy" decoding="async"></picture><picture><source type="image/webp" data-srcset="/img/fleet/avtopark-transfer-kharkiv-01-1600.webp 1600w, /img/fleet/avtopark-transfer-kharkiv-01-800.webp 800w, /img/fleet/avtopark-transfer-kharkiv-01-480.webp 480w" sizes="(max-width: 767px) 260px, 360px"><img data-src="/img/fleet/avtopark-transfer-kharkiv-01-800.jpg" data-srcset="/img/fleet/avtopark-transfer-kharkiv-01-1600.jpg 1600w, /img/fleet/avtopark-transfer-kharkiv-01-800.jpg 800w, /img/fleet/avtopark-transfer-kharkiv-01-480.jpg 480w" sizes="(max-width: 767px) 260px, 360px" width="1600" height="1252" alt="" loading="lazy" decoding="async"></picture><picture><source type="image/webp" data-srcset="/img/fleet/avtopark-transfer-kharkiv-02-1600.webp 1600w, /img/fleet/avtopark-transfer-kharkiv-02-800.webp 800w, /img/fleet/avtopark-transfer-kharkiv-02-480.webp 480w" sizes="(max-width: 767px) 260px, 360px"><img data-src="/img/fleet/avtopark-transfer-kharkiv-02-800.jpg" data-srcset="/img/fleet/avtopark-transfer-kharkiv-02-1600.jpg 1600w, /img/fleet/avtopark-transfer-kharkiv-02-800.jpg 800w, /img/fleet/avtopark-transfer-kharkiv-02-480.jpg 480w" sizes="(max-width: 767px) 260px, 360px" width="1600" height="1066" alt="" loading="lazy" decoding="async"></picture><picture><source type="image/webp" data-srcset="/img/fleet/avtopark-transfer-kharkiv-03-1600.webp 1600w, /img/fleet/avtopark-transfer-kharkiv-03-800.webp 800w, /img/fleet/avtopark-transfer-kharkiv-03-480.webp 480w" sizes="(max-width: 767px) 260px, 360px"><img data-src="/img/fleet/avtopark-transfer-kharkiv-03-800.jpg" data-srcset="/img/fleet/avtopark-transfer-kharkiv-03-1600.jpg 1600w, /img/fleet/avtopark-transfer-kharkiv-03-800.jpg 800w, /img/fleet/avtopark-transfer-kharkiv-03-480.jpg 480w" sizes="(max-width: 767px) 260px, 360px" width="1600" height="1066" alt="" loading="lazy" decoding="async"></picture><picture><source type="image/webp" data-srcset="/img/fleet/avtopark-transfer-kharkiv-04-1600.webp 1600w, /img/fleet/avtopark-transfer-kharkiv-04-800.webp 800w, /img/fleet/avtopark-transfer-kharkiv-04-480.webp 480w" sizes="(max-width: 767px) 260px, 360px"><img data-src="/img/fleet/avtopark-transfer-kharkiv-04-800.jpg" data-srcset="/img/fleet/avtopark-transfer-kharkiv-04-1600.jpg 1600w, /img/fleet/avtopark-transfer-kharkiv-04-800.jpg 800w, /img/fleet/avtopark-transfer-kharkiv-04-480.jpg 480w" sizes="(max-width: 767px) 260px, 360px" width="1600" height="737" alt="" loading="lazy" decoding="async"></picture></div></div>
+</section>
 
 <!-- SERVICES -->
 <section id="services" data-pin>
@@ -1246,50 +1379,6 @@ select.inp option { background: var(--ink); color: var(--fg); }
   </div>
 </section>
 
-<!-- 7. FLEET -->
-<section id="fleet" data-pin>
-  <div class="container">
-    <div class="sec-head reveal">
-      <div>
-        <span class="eyebrow">Наш автопарк</span>
-        <h2>Авто, що вражають</h2>
-      </div>
-      <p class="lead">Регулярне ТО, бездоганна чистота салону й стиль, що відповідає рівню сервісу.</p>
-    </div>
-    <div class="fleet-row noscroll" id="fleetRow">
-      <article class="car-card on" data-class="Комфорт">
-        <img src="img/avalon-front.jpg" alt="Toyota Avalon — міжміське таксі Харків" width="645" height="420" loading="lazy" style="object-position:center 62%">
-        <div class="podium" aria-hidden="true"></div>
-        <div class="meta">
-          <div class="cls"><span>Комфорт преміум</span><span class="seats" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
-          <h3>Toyota Avalon</h3>
-          <p>просторий салон · до 3 пасажирів</p>
-          <a href="#booking" class="go" data-pick-class="Комфорт">Замовити →</a>
-        </div>
-      </article>
-      <article class="car-card" data-class="Бізнес">
-        <img src="img/passat.avif" alt="Volkswagen Passat — бізнес-клас трансфер Харків" width="600" height="400" loading="lazy" style="object-position:center 55%">
-        <div class="podium" aria-hidden="true"></div>
-        <div class="meta">
-          <div class="cls"><span>Бізнес-клас</span><span class="seats" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
-          <h3>Volkswagen Passat</h3>
-          <p>сірий · до 3 пасажирів</p>
-          <a href="#booking" class="go" data-pick-class="Бізнес">Замовити →</a>
-        </div>
-      </article>
-      <article class="car-card" data-class="Мінівен">
-        <img src="img/sienna.jpg" alt="Toyota Sienna — мінівен для групових поїздок Харків" width="640" height="480" loading="lazy" style="object-position:center 55%">
-        <div class="podium" aria-hidden="true"></div>
-        <div class="meta">
-          <div class="cls"><span>Мінівен</span><span class="seats" aria-label="до 6 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
-          <h3>Toyota Sienna</h3>
-          <p>до 6 пасажирів · ідеально для груп</p>
-          <a href="#booking" class="go" data-pick-class="Мінівен">Замовити →</a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
 
 <!-- 9. REVIEWS -->
 <section id="reviews" data-pin>
@@ -1312,7 +1401,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
       </figure>
       <figure class="card rev reveal" data-glow>
         <div class="top"><span class="q" aria-hidden="true">“</span><span class="stars" aria-label="5 зірок">★★★★★</span></div>
-        <blockquote>«Їздимо з колегами на наради в Дніпро щомісяця. Sienna — ідеально для 4 осіб з багажем. Ціна заздалегідь відома, водій завжди пунктуальний. Вже 8-а поїздка.»</blockquote>
+        <blockquote>«Їздимо з колегами на наради в Дніпро щомісяця. Ціна заздалегідь відома, водій завжди пунктуальний. Вже 8-а поїздка.»</blockquote>
         <figcaption><div class="who"><span class="av" aria-hidden="true">Д</span>Дмитро В.</div><div class="rt"><span class="o"></span><span>Харків</span><span class="ln"></span><span aria-hidden="true" style="color:var(--blue-2)">→</span><span>Дніпро</span><span class="f"></span><span class="d">· квітень 2026</span></div></figcaption>
       </figure>
       <figure class="card rev reveal" data-glow>
@@ -1534,7 +1623,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
       </div>
       <div class="foot-col">
         <h4>Компанія</h4>
-        <ul><li><a href="#why">Про нас</a></li><li><a href="#fleet">Автопарк</a></li><li><a href="#reviews">Відгуки</a></li><li><a href="#how">Як замовити</a></li><li><a href="/spivpratsia/">Співпраця</a></li></ul>
+        <ul><li><a href="#why">Про нас</a></li><li><a href="/avtopark/">Автопарк</a></li><li><a href="#reviews">Відгуки</a></li><li><a href="#how">Як замовити</a></li><li><a href="/spivpratsia/">Співпраця</a></li></ul>
       </div>
       <div class="foot-col c">
         <h4>Контакти</h4>
@@ -1845,14 +1934,52 @@ select.inp option { background: var(--ink); color: var(--fg); }
   addEventListener('load', scheduleRebuild);
   updateHow();
 
-  /* ---------- Fleet hover (desktop) ---------- */
-  var fleetRow = $('#fleetRow');
-  if (fleetRow) {
-    $$('.car-card', fleetRow).forEach(function (card) {
-      card.addEventListener('mouseenter', function () { $$('.car-card', fleetRow).forEach(function (c) { c.classList.toggle('on', c === card); }); });
-    });
+  /* ---------- Fleet: photo sliders inside cards + rail of cards ---------- */
+  function loadPic(pic) {
+    $$('[data-srcset]', pic).forEach(function (el) { el.srcset = el.getAttribute('data-srcset'); el.removeAttribute('data-srcset'); });
+    var im = $('img[data-src]', pic); if (im) { im.src = im.getAttribute('data-src'); im.removeAttribute('data-src'); im.loading = 'eager'; }
   }
-  $$('[data-pick-class]').forEach(function (a) { a.addEventListener('click', function () { var s = $('#car_class'); if (s) { s.value = a.getAttribute('data-pick-class'); calc(); } }); });
+  var flSec = $('#fleet');
+  if (flSec) {
+    var flFirst = function () { $$('.fl-track > picture:first-child, .fl-mass picture', flSec).forEach(loadPic); };
+    if ('IntersectionObserver' in window) {
+      var fio = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { fio.disconnect(); flFirst(); } }, { rootMargin: '600px 0px' });
+      fio.observe(flSec);
+    } else flFirst();
+  }
+  function initSlider(root) {
+    var track = $('.fl-track', root), slides = $$('picture', track), dots = $$('.fl-dots button', root);
+    var prev = $('.fl-nav.prev', root), next = $('.fl-nav.next', root), cur = -1, raf = 0, armed = false;
+    function idx() { return Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); }
+    function sync() {
+      raf = 0; var i = idx(); if (i === cur) return; cur = i;
+      dots.forEach(function (d, j) { if (j === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+      if (prev) prev.disabled = i <= 0; if (next) next.disabled = i >= slides.length - 1;
+      // once the visitor touches this slider, neighbours start loading before the swipe reaches them
+      if (armed) [i - 1, i, i + 1].forEach(function (k) { if (slides[k]) loadPic(slides[k]); });
+    }
+    function go(i) { i = Math.max(0, Math.min(slides.length - 1, i)); track.scrollTo({ left: i * track.clientWidth, behavior: RM ? 'auto' : 'smooth' }); }
+    var arm = function () { if (armed) return; armed = true; cur = -1; sync(); };
+    ['pointerenter', 'touchstart', 'focusin'].forEach(function (t) { root.addEventListener(t, arm, { passive: true }); });
+    track.addEventListener('scroll', function () { armed = true; if (!raf) raf = requestAnimationFrame(sync); }, { passive: true });
+    if (prev) prev.addEventListener('click', function (e) { e.stopPropagation(); go(idx() - 1); });
+    if (next) next.addEventListener('click', function (e) { e.stopPropagation(); go(idx() + 1); });
+    dots.forEach(function (d, j) { d.addEventListener('click', function (e) { e.stopPropagation(); go(j); }); });
+    addEventListener('resize', function () { cur = -1; sync(); });
+    sync();
+    return { go: go, idx: idx };
+  }
+  $$('[data-slider]').forEach(initSlider);
+  var flRail = $('#flRail');
+  if (flRail) {
+    var flPrev = $('.fl-arrow.prev'), flNext = $('.fl-arrow.next'), flRaf = 0;
+    var step = function () { var c = $('.fl-card', flRail); return c ? c.getBoundingClientRect().width + 16 : flRail.clientWidth; };
+    var syncRail = function () { flRaf = 0; flPrev.disabled = flRail.scrollLeft <= 4; flNext.disabled = flRail.scrollLeft >= flRail.scrollWidth - flRail.clientWidth - 4; };
+    flRail.addEventListener('scroll', function () { if (!flRaf) flRaf = requestAnimationFrame(syncRail); }, { passive: true });
+    flPrev.addEventListener('click', function () { flRail.scrollBy({ left: -step(), behavior: RM ? 'auto' : 'smooth' }); });
+    flNext.addEventListener('click', function () { flRail.scrollBy({ left: step(), behavior: RM ? 'auto' : 'smooth' }); });
+    addEventListener('resize', syncRail); syncRail();
+  }
 
   /* ---------- Routes board: tabs + split-flap ---------- */
   var tabs = $$('.tab'), panels = $$('.panel');
@@ -2093,6 +2220,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
       if (k < 1) priceRaf = requestAnimationFrame(f);
     })(t0);
   }
+  function carOpt() { return classEl.options[classEl.selectedIndex] || classEl.options[0]; }
   function updateStub() {
     var f = fromEl.value.trim(), t = toEl.value.trim();
     var sf = $('#stubFrom'), st = $('#stubTo');
@@ -2101,7 +2229,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
     $('#stubRoute').classList.toggle('has', !!(f && t));
     $('#chipDate').textContent = dateEl.value ? dateEl.value.split('-').reverse().join('.') : '—';
     $('#chipTime').textContent = timeEl.value || '—';
-    $('#chipClass').textContent = classEl.value;
+    $('#chipClass').textContent = carOpt().dataset.chip;
     $('#chipPet').classList.toggle('on', petsEl.checked);
   }
   function calc() {
@@ -2115,9 +2243,10 @@ select.inp option { background: var(--ink); color: var(--fg); }
     currentPrice = price;
     if (price !== null) {
       animPrice(price); estCur.classList.add('on');
-      var comfort = classEl.value === 'Комфорт';
-      estFrom.classList.toggle('on', !comfort);
-      noteEl.textContent = comfort ? '* Фіксована ціна за маршрут' : '* Ціна для класу «Комфорт». Вартість для класу «' + classEl.value + '» підтвердить оператор';
+      // ціни маршрутів одні для всіх авто (базова — Toyota Avalon); для інших авто вартість підтверджує оператор
+      var base = classEl.value === 'avalon';
+      estFrom.classList.toggle('on', !base);
+      noteEl.textContent = base ? '* Фіксована ціна за маршрут' : '* Ціна для Toyota Avalon. Вартість для ' + carOpt().dataset.name + ' підтвердить оператор';
       var key = normCity(from) + '|' + normCity(to);
       if (key !== lastViewed) { lastViewed = key; track('event', 'view_item', { currency: 'UAH', value: price, items: [{ item_name: from + ' → ' + to }] }); }
     } else {
@@ -2199,7 +2328,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
     var to = (toEl.value || '').trim();
     var date = (dateEl.value || '').trim();
     var time = (timeEl.value || '').trim();
-    var carClass = classEl.value || 'Комфорт';
+    var car = classEl.value || 'avalon', carClass = carOpt().dataset.cls || 'Бізнес';
     var comment = ($('#comment').value || '').trim();
     var pets = !!petsEl.checked;
     var honeypot = $('#hp_field').value || '';
@@ -2227,7 +2356,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
       var res = await fetch(API + '/booking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name, phone: phone, from_city: from, to_city: to, date: date, time: time, car_class: carClass, price: price, comment: comment, pets: pets, honeypot: honeypot })
+        body: JSON.stringify({ name: name, phone: phone, from_city: from, to_city: to, date: date, time: time, car_class: carClass, car: car, price: price, comment: comment, pets: pets, honeypot: honeypot })
       });
       var data = null;
       try { data = await res.json(); } catch (_) { data = null; }
@@ -2235,7 +2364,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
       if (res.ok && data && data.ok) {
         track('event', 'purchase', { currency: 'UAH', value: parseInt(price, 10) || 0, transaction_id: data.booking_id || '', items: [{ item_name: from + ' → ' + to }] });
         $('#name').value = ''; $('#phone').value = '+38 '; fromEl.value = ''; toEl.value = '';
-        resetDate(); timeEl.value = ''; $('#comment').value = ''; petsEl.checked = false; classEl.value = 'Комфорт';
+        resetDate(); timeEl.value = ''; $('#comment').value = ''; petsEl.checked = false; classEl.value = 'avalon';
         lastViewed = ''; calc();
         openModal('successModal');
       } else if (res.status === 429) {
@@ -2324,6 +2453,19 @@ select.inp option { background: var(--ink); color: var(--fg); }
     } catch (e) {}
   })();
   calc();
+
+  /* ---------- Car preselect: /?car=<slug>#booking (fleet cards, /avtopark/) ---------- */
+  function pickCar(slug) {
+    var o = slug && classEl.querySelector('option[value="' + String(slug).replace(/[^a-z-]/g, '') + '"]');
+    if (!o) return false;
+    classEl.value = o.value; calc(); return true;
+  }
+  try {
+    if (pickCar(new URLSearchParams(location.search).get('car'))) setTimeout(function () { $('#booking').scrollIntoView({ behavior: RM ? 'auto' : 'smooth' }); }, 300);
+  } catch (e) {}
+  $$('[data-pick-car]').forEach(function (a) {
+    a.addEventListener('click', function (e) { if (pickCar(a.dataset.pickCar)) { e.preventDefault(); $('#booking').scrollIntoView({ behavior: RM ? 'auto' : 'smooth' }); } });
+  });
 
   /* ---------- Auto popups (max one automatic popup per session) ---------- */
   var AUTO_KEY = 'tk_auto_popup';
