@@ -645,6 +645,8 @@ section { position: relative; padding: var(--section-y) 0; }
 .fl-act .more:hover { color: var(--fg); border-color: var(--blue-2); }
 .fl-foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
 .fl-ctrl { display: flex; gap: 10px; }
+.fl-foot-acts { display: flex; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 559px) { .fl-foot-acts { width: 100%; } .fl-foot-acts .btn { flex: 1 1 100%; } }
 .fl-arrow { width: 52px; height: 52px; padding: 0; border-radius: 50%; border: 1px solid rgba(238,242,247,.18); background: rgba(255,255,255,.03); display: grid; place-items: center; transition: border-color .3s, background .3s, opacity .3s; }
 .fl-arrow:hover { border-color: rgba(91,134,240,.6); background: rgba(91,134,240,.08); }
 .fl-arrow[disabled] { opacity: .35; cursor: default; }
@@ -836,7 +838,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
     <ol class="crumbs" aria-label="Навігація"><li><a href="/">Головна</a></li><li aria-current="page">Автопарк</li></ol>
     <span class="eyebrow in-1">Автопарк · 14 авто</span>
     <h1 class="in-2">Таксі бізнес-класу в Харкові — <span class="grad-text">наш автопарк</span></h1>
-    <p class="sub in-3">Бізнес-седани Toyota, Lexus і Volkswagen, преміум Tesla Model X і мінівени до 8 пасажирів. Оберіть авто для міжміської поїздки — подамо до дверей і довеземо за фіксованою ціною.</p>
+    <p class="sub in-3">Бізнес-седани Toyota, Lexus і Volkswagen, преміум Tesla Model X і мінівени до 8 пасажирів. Подамо авто до дверей і довеземо за фіксованою ціною за маршрут.</p>
     <div class="acts in-4">
       <a href="/#booking" class="btn btn-primary" data-magnet>Замовити поїздку →</a>
       <a href="tel:+380633094949" class="btn btn-ghost">+38 063 309 49 49</a>
@@ -863,7 +865,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Toyota Avalon</h3>
           <p>до 3 пасажирів · просторий задній ряд</p>
-          <div class="fl-act"><a href="/?car=avalon-white#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="avalon-white" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="avalon-white" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
       <article class="fl-card reveal" id="avalon" data-cls="Бізнес">
@@ -872,7 +874,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Toyota Avalon</h3>
           <p>до 3 пасажирів · шкіряний салон</p>
-          <div class="fl-act"><a href="/?car=avalon#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="avalon" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="avalon" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
       <article class="fl-card reveal" id="passat-black" data-cls="Бізнес">
@@ -881,7 +883,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Volkswagen Passat</h3>
           <p>до 3 пасажирів · акуратний салон</p>
-          <div class="fl-act"><a href="/?car=passat-black#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="passat-black" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="passat-black" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
       <article class="fl-card reveal" id="passat-grey" data-cls="Бізнес">
@@ -890,7 +892,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Volkswagen Passat</h3>
           <p>до 3 пасажирів · акуратний салон</p>
-          <div class="fl-act"><a href="/?car=passat-grey#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="passat-grey" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="passat-grey" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
       <article class="fl-card reveal" id="lincoln" data-cls="Бізнес">
@@ -899,7 +901,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Lincoln MKZ</h3>
           <p>до 3 пасажирів · шкіряний салон</p>
-          <div class="fl-act"><a href="/?car=lincoln#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="lincoln" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="lincoln" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
       <article class="fl-card reveal" id="lexus-es" data-cls="Бізнес">
@@ -908,7 +910,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Lexus ES</h3>
           <p>до 3 пасажирів · шкіряний салон</p>
-          <div class="fl-act"><a href="/?car=lexus-es#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="lexus-es" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="lexus-es" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
       <article class="fl-card reveal" id="lexus-es-red" data-cls="Бізнес">
@@ -917,7 +919,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Lexus ES</h3>
           <p>до 3 пасажирів · шкіряний салон</p>
-          <div class="fl-act"><a href="/?car=lexus-es-red#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="lexus-es-red" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="lexus-es-red" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
       <article class="fl-card reveal" id="lexus-es-350" data-cls="Бізнес">
@@ -926,7 +928,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Lexus ES</h3>
           <p>до 3 пасажирів · шкіряний салон</p>
-          <div class="fl-act"><a href="/?car=lexus-es-350#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="lexus-es-350" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="lexus-es-350" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
       <article class="fl-card reveal" id="tesla" data-cls="Преміум">
@@ -935,7 +937,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Преміум</span><span class="seats" role="img" aria-label="до 4 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Tesla Model X</h3>
           <p>до 4 пасажирів · сучасний салон</p>
-          <div class="fl-act"><a href="/?car=tesla#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="tesla" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="tesla" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
       <article class="fl-card reveal" id="vito" data-cls="Мінівен">
@@ -944,7 +946,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Мінівен</span><span class="seats" role="img" aria-label="до 7 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Mercedes-Benz Vito</h3>
           <p>до 7 пасажирів · окремі пасажирські крісла</p>
-          <div class="fl-act"><a href="/?car=vito#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="vito" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="vito" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
       <article class="fl-card reveal" id="vw-multivan" data-cls="Мінівен">
@@ -953,7 +955,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Мінівен</span><span class="seats" role="img" aria-label="до 6 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Volkswagen Multivan</h3>
           <p>до 6 пасажирів · поворотні крісла та диван</p>
-          <div class="fl-act"><a href="/?car=vw-multivan#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="vw-multivan" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="vw-multivan" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
       <article class="fl-card reveal" id="fiat-talento" data-cls="Мінівен">
@@ -962,7 +964,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Мінівен</span><span class="seats" role="img" aria-label="до 8 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Fiat Talento</h3>
           <p>до 8 пасажирів · три ряди сидінь</p>
-          <div class="fl-act"><a href="/?car=fiat-talento#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="fiat-talento" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="fiat-talento" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
       <article class="fl-card reveal" id="fusion" data-cls="Комфорт">
@@ -971,7 +973,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Комфорт</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Ford Fusion</h3>
           <p>до 3 пасажирів · шкіряний салон</p>
-          <div class="fl-act"><a href="/?car=fusion#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="fusion" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="fusion" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
       <article class="fl-card reveal" id="rogue" data-cls="Комфорт">
@@ -980,7 +982,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
           <div class="cls"><span>Комфорт</span><span class="seats" role="img" aria-label="до 4 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Nissan Rogue</h3>
           <p>до 4 пасажирів · тканинний салон</p>
-          <div class="fl-act"><a href="/?car=rogue#booking" class="go">Обрати це авто</a><button type="button" class="more" data-pf-open="rogue" aria-haspopup="dialog">Детальніше</button></div>
+          <div class="fl-act"><a href="/#booking" class="go">Замовити поїздку</a><button type="button" class="more" data-pf-open="rogue" aria-haspopup="dialog">Детальніше</button></div>
         </div>
       </article>
     </div>
@@ -1008,13 +1010,13 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
         </div>
         <div>
           <h3>Преміум таксі Харків</h3>
-          <p>Для особливих поїздок є Tesla Model X — електричний кросовер преміум-класу до 4 пасажирів. Його обирають для зустрічі важливих гостей, сімейних поїздок і випадків, коли хочеться максимальної тиші та комфорту в дорозі.</p>
+          <p>Для особливих поїздок є Tesla Model X — електричний кросовер преміум-класу до 4 пасажирів. Він підходить для зустрічі важливих гостей, сімейних поїздок і випадків, коли хочеться максимальної тиші та комфорту в дорозі.</p>
           <h3>Мінівен Харків — трансфер для групи</h3>
-          <p>Якщо їдете компанією, сім'єю з дітьми або з великою кількістю валіз, замовте мінівен: Mercedes-Benz Vito до 7 пасажирів, Volkswagen Multivan з поворотними кріслами до 6 або Fiat Talento до 8 пасажирів. Одне авто замість двох — це зручніше й вигідніше, а розсувні двері та великий багажний відсік спрощують посадку з речами. Мінівен підходить для поїздок на весілля, конференції та до аеропортів сусідніх країн.</p>
+          <p>Для поїздок компанією, сім'єю з дітьми або з великою кількістю валіз у автопарку є мінівени: Mercedes-Benz Vito до 7 пасажирів, Volkswagen Multivan з поворотними кріслами до 6 або Fiat Talento до 8 пасажирів. Одне авто замість двох — це зручніше й вигідніше, а розсувні двері та великий багажний відсік спрощують посадку з речами. Мінівен підходить для поїздок на весілля, конференції та до аеропортів сусідніх країн.</p>
           <h3>Комфорт на кожен день</h3>
           <p>Для звичайних міжміських поїздок є Ford Fusion і кросовер Nissan Rogue. Це надійні авто для поїздок по Харківській області та до сусідніх обласних центрів.</p>
-          <h3>Як замовити авто потрібного класу</h3>
-          <p>Натисніть «Обрати це авто» на картці — форма замовлення відкриється з уже вибраною машиною. Вкажіть маршрут, дату й час, і калькулятор покаже базову вартість поїздки. Менеджер зв'яжеться з вами, підтвердить авто, ціну для обраного класу та час подачі. Можна також просто зателефонувати або написати в Telegram — підберемо авто під кількість пасажирів і багажу.</p>
+          <h3>Як замовити поїздку</h3>
+          <p>Залиште заявку у формі на головній сторінці: вкажіть маршрут, дату й час, і калькулятор одразу покаже вартість поїздки. Менеджер зв'яжеться з вами та підтвердить час подачі. Якщо пасажирів багато або є великий багаж, напишіть про це в коментарі — подамо авто відповідного розміру. Можна також просто зателефонувати або написати в Telegram.</p>
         </div>
       </div>
   </div>
@@ -1023,8 +1025,8 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
 <section class="av-cta">
   <div class="container">
     <div class="box reveal">
-      <h2>Оберіть авто — розрахуємо поїздку</h2>
-      <p>Вкажіть маршрут і авто у формі замовлення або зателефонуйте — менеджер підтвердить вартість і час подачі.</p>
+      <h2>Розрахуємо вартість поїздки</h2>
+      <p>Вкажіть маршрут у формі замовлення або зателефонуйте — менеджер підтвердить час подачі.</p>
       <div class="acts"><a href="/#booking" class="btn btn-primary" data-magnet>Замовити поїздку</a><a href="tel:+380633094949" class="btn btn-ghost">+38 063 309 49 49</a></div>
     </div>
   </div>
@@ -1112,7 +1114,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>Ділові поїздки та переговори</li><li>Зустріч гостей</li><li>Довгі міжміські маршрути</li></ul>
       <div class="pf-acts">
-        <a href="/?car=avalon-white#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>
@@ -1146,7 +1148,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>Ділові поїздки та переговори</li><li>Трансфер до аеропорту</li><li>Довгі міжміські маршрути</li></ul>
       <div class="pf-acts">
-        <a href="/?car=avalon#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>
@@ -1180,7 +1182,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>Бізнес-поїздки</li><li>Зустріч і проводи</li><li>Поїздки по Україні</li></ul>
       <div class="pf-acts">
-        <a href="/?car=passat-black#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>
@@ -1214,7 +1216,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>Бізнес-поїздки</li><li>Міжміські трансфери</li><li>Поїздки з багажем</li></ul>
       <div class="pf-acts">
-        <a href="/?car=passat-grey#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>
@@ -1248,7 +1250,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>VIP-трансфер</li><li>Ділові зустрічі</li><li>Урочисті події</li></ul>
       <div class="pf-acts">
-        <a href="/?car=lincoln#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>
@@ -1282,7 +1284,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>Ділові поїздки та переговори</li><li>VIP-трансфер</li><li>Довгі міжміські маршрути</li></ul>
       <div class="pf-acts">
-        <a href="/?car=lexus-es#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>
@@ -1316,7 +1318,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>Ділові поїздки</li><li>Зустріч гостей</li><li>Урочисті події</li></ul>
       <div class="pf-acts">
-        <a href="/?car=lexus-es-red#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>
@@ -1350,7 +1352,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>Ділові поїздки</li><li>Міжміські трансфери</li><li>Зустріч і проводи</li></ul>
       <div class="pf-acts">
-        <a href="/?car=lexus-es-350#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>
@@ -1384,7 +1386,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>Преміум-трансфер</li><li>Поїздки для гостей компанії</li><li>Сімейні поїздки до 4 пасажирів</li></ul>
       <div class="pf-acts">
-        <a href="/?car=tesla#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>
@@ -1418,7 +1420,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>Групові поїздки до 7 пасажирів</li><li>Сім&#x27;я з багажем</li><li>Корпоративні виїзди</li></ul>
       <div class="pf-acts">
-        <a href="/?car=vito#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>
@@ -1452,7 +1454,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>Групові поїздки до 6 пасажирів</li><li>Сім&#x27;я з дітьми</li><li>Ділова поїздка командою</li></ul>
       <div class="pf-acts">
-        <a href="/?car=vw-multivan#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>
@@ -1486,7 +1488,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>Групові поїздки до 8 пасажирів</li><li>Весілля та свята</li><li>Поїздки з великим багажем</li></ul>
       <div class="pf-acts">
-        <a href="/?car=fiat-talento#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>
@@ -1520,7 +1522,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>Міжміські поїздки</li><li>Трансфер на вокзал і в аеропорт</li><li>Поїздки з багажем</li></ul>
       <div class="pf-acts">
-        <a href="/?car=fusion#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>
@@ -1554,7 +1556,7 @@ body.pf-lock { position: fixed; left: 0; right: 0; overflow: hidden; }
       <h3>Підходить для</h3>
       <ul class="ticks"><li>Поїздки до 4 пасажирів</li><li>Сім&#x27;я з дітьми</li><li>Поїздки з речами</li></ul>
       <div class="pf-acts">
-        <a href="/?car=rogue#booking" class="btn btn-primary">Замовити це авто</a>
+        <a href="/#booking" class="btn btn-primary">Замовити поїздку</a>
         <a href="tel:+380633094949" class="btn btn-ghost">Подзвонити</a>
       </div>
     </div>

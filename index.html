@@ -612,6 +612,8 @@ select.inp option { background: var(--ink); color: var(--fg); }
 .fl-act .more:hover { color: var(--fg); border-color: var(--blue-2); }
 .fl-foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
 .fl-ctrl { display: flex; gap: 10px; }
+.fl-foot-acts { display: flex; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 559px) { .fl-foot-acts { width: 100%; } .fl-foot-acts .btn { flex: 1 1 100%; } }
 .fl-arrow { width: 52px; height: 52px; padding: 0; border-radius: 50%; border: 1px solid rgba(238,242,247,.18); background: rgba(255,255,255,.03); display: grid; place-items: center; transition: border-color .3s, background .3s, opacity .3s; }
 .fl-arrow:hover { border-color: rgba(91,134,240,.6); background: rgba(91,134,240,.08); }
 .fl-arrow[disabled] { opacity: .35; cursor: default; }
@@ -1014,29 +1016,8 @@ select.inp option { background: var(--ink); color: var(--fg); }
             <input class="inp num" type="time" id="time" name="time">
             <span class="f-err">Введіть час поїздки</span>
           </div>
-          <div class="field full" data-f="car_class">
-            <label for="car_class">Клас авто</label>
-            <select class="inp" id="car_class" name="car">
-              <optgroup label="Бізнес">
-                <option value="avalon-white" data-cls="Бізнес" data-name="Toyota Avalon" data-chip="Бізнес · Avalon" data-alias="avalon" selected>Бізнес — Toyota Avalon, до 3 пасажирів</option>
-                <option value="passat-black" data-cls="Бізнес" data-name="Volkswagen Passat" data-chip="Бізнес · Passat" data-alias="passat-grey">Бізнес — Volkswagen Passat, до 3 пасажирів</option>
-                <option value="lincoln" data-cls="Бізнес" data-name="Lincoln MKZ" data-chip="Бізнес · Lincoln">Бізнес — Lincoln MKZ, до 3 пасажирів</option>
-                <option value="lexus-es" data-cls="Бізнес" data-name="Lexus ES" data-chip="Бізнес · Lexus ES" data-alias="lexus-es-red lexus-es-350">Бізнес — Lexus ES, до 3 пасажирів</option>
-              </optgroup>
-              <optgroup label="Преміум">
-                <option value="tesla" data-cls="Преміум" data-name="Tesla Model X" data-chip="Преміум · Model X">Преміум — Tesla Model X, до 4 пасажирів</option>
-              </optgroup>
-              <optgroup label="Мінівен">
-                <option value="vito" data-cls="Мінівен" data-name="Mercedes-Benz Vito" data-chip="Мінівен · Vito">Мінівен — Mercedes-Benz Vito, до 7 пасажирів</option>
-                <option value="vw-multivan" data-cls="Мінівен" data-name="Volkswagen Multivan" data-chip="Мінівен · Multivan">Мінівен — Volkswagen Multivan, до 6 пасажирів</option>
-                <option value="fiat-talento" data-cls="Мінівен" data-name="Fiat Talento" data-chip="Мінівен · Talento">Мінівен — Fiat Talento, до 8 пасажирів</option>
-              </optgroup>
-              <optgroup label="Комфорт">
-                <option value="fusion" data-cls="Комфорт" data-name="Ford Fusion" data-chip="Комфорт · Fusion">Комфорт — Ford Fusion, до 3 пасажирів</option>
-                <option value="rogue" data-cls="Комфорт" data-name="Nissan Rogue" data-chip="Комфорт · Rogue">Комфорт — Nissan Rogue, до 4 пасажирів</option>
-              </optgroup>
-            </select>
-          </div>
+<!-- car-selection:form -->
+<!-- /car-selection:form -->
           <label class="field full pets">
             <input type="checkbox" id="pets" name="pets">
             <span class="box"><svg><use href="#i-ok"/></svg></span>
@@ -1062,7 +1043,8 @@ select.inp option { background: var(--ink); color: var(--fg); }
         <div class="chips" aria-hidden="true">
           <span class="chip" id="chipDate">—</span>
           <span class="chip" id="chipTime">—</span>
-          <span class="chip" id="chipClass">Бізнес · Avalon</span>
+<!-- car-selection:chip -->
+<!-- /car-selection:chip -->
           <span class="chip pet" id="chipPet"><svg><use href="#i-paw"/></svg></span>
         </div>
         <div class="price-box" aria-live="polite">
@@ -1098,7 +1080,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
         <span class="eyebrow">Наш автопарк</span>
         <h2>Авто, що вражають</h2>
       </div>
-      <p class="lead">Бізнес, преміум, мінівен і комфорт — оберіть авто під поїздку. Регулярне ТО й бездоганна чистота салону.</p>
+      <p class="lead">Бізнес, преміум, мінівен і комфорт — авто для будь-якої поїздки. Регулярне ТО й бездоганна чистота салону.</p>
     </div>
     <div class="fl-rail noscroll" id="flRail" role="region" aria-label="Автопарк: листайте, щоб побачити всі авто">
       <article class="fl-card" data-car="avalon-white">
@@ -1107,7 +1089,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Toyota Avalon</h3>
           <p>до 3 пасажирів · гібридний седан</p>
-          <div class="fl-act"><a href="/?car=avalon-white#booking" class="go" data-pick-car="avalon-white">Замовити →</a><a href="/avtopark/#avalon-white" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#avalon-white" class="go">Детальніше →</a></div>
         </div>
       </article>
       <article class="fl-card" data-car="avalon">
@@ -1116,7 +1098,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Toyota Avalon</h3>
           <p>до 3 пасажирів · седан</p>
-          <div class="fl-act"><a href="/?car=avalon#booking" class="go" data-pick-car="avalon">Замовити →</a><a href="/avtopark/#avalon" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#avalon" class="go">Детальніше →</a></div>
         </div>
       </article>
       <article class="fl-card" data-car="passat-black">
@@ -1125,7 +1107,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Volkswagen Passat</h3>
           <p>до 3 пасажирів · седан</p>
-          <div class="fl-act"><a href="/?car=passat-black#booking" class="go" data-pick-car="passat-black">Замовити →</a><a href="/avtopark/#passat-black" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#passat-black" class="go">Детальніше →</a></div>
         </div>
       </article>
       <article class="fl-card" data-car="passat-grey">
@@ -1134,7 +1116,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Volkswagen Passat</h3>
           <p>до 3 пасажирів · седан</p>
-          <div class="fl-act"><a href="/?car=passat-grey#booking" class="go" data-pick-car="passat-grey">Замовити →</a><a href="/avtopark/#passat-grey" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#passat-grey" class="go">Детальніше →</a></div>
         </div>
       </article>
       <article class="fl-card" data-car="lincoln">
@@ -1143,7 +1125,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Lincoln MKZ</h3>
           <p>до 3 пасажирів · седан</p>
-          <div class="fl-act"><a href="/?car=lincoln#booking" class="go" data-pick-car="lincoln">Замовити →</a><a href="/avtopark/#lincoln" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#lincoln" class="go">Детальніше →</a></div>
         </div>
       </article>
       <article class="fl-card" data-car="lexus-es">
@@ -1152,7 +1134,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Lexus ES</h3>
           <p>до 3 пасажирів · гібридний седан</p>
-          <div class="fl-act"><a href="/?car=lexus-es#booking" class="go" data-pick-car="lexus-es">Замовити →</a><a href="/avtopark/#lexus-es" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#lexus-es" class="go">Детальніше →</a></div>
         </div>
       </article>
       <article class="fl-card" data-car="lexus-es-red">
@@ -1161,7 +1143,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Lexus ES</h3>
           <p>до 3 пасажирів · гібридний седан</p>
-          <div class="fl-act"><a href="/?car=lexus-es-red#booking" class="go" data-pick-car="lexus-es-red">Замовити →</a><a href="/avtopark/#lexus-es-red" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#lexus-es-red" class="go">Детальніше →</a></div>
         </div>
       </article>
       <article class="fl-card" data-car="lexus-es-350">
@@ -1170,7 +1152,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Бізнес</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Lexus ES</h3>
           <p>до 3 пасажирів · седан</p>
-          <div class="fl-act"><a href="/?car=lexus-es-350#booking" class="go" data-pick-car="lexus-es-350">Замовити →</a><a href="/avtopark/#lexus-es-350" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#lexus-es-350" class="go">Детальніше →</a></div>
         </div>
       </article>
       <article class="fl-card" data-car="tesla">
@@ -1179,7 +1161,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Преміум</span><span class="seats" role="img" aria-label="до 4 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Tesla Model X</h3>
           <p>до 4 пасажирів · електричний кросовер</p>
-          <div class="fl-act"><a href="/?car=tesla#booking" class="go" data-pick-car="tesla">Замовити →</a><a href="/avtopark/#tesla" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#tesla" class="go">Детальніше →</a></div>
         </div>
       </article>
       <article class="fl-card" data-car="vito">
@@ -1188,7 +1170,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Мінівен</span><span class="seats" role="img" aria-label="до 7 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Mercedes-Benz Vito</h3>
           <p>до 7 пасажирів · мінівен</p>
-          <div class="fl-act"><a href="/?car=vito#booking" class="go" data-pick-car="vito">Замовити →</a><a href="/avtopark/#vito" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#vito" class="go">Детальніше →</a></div>
         </div>
       </article>
       <article class="fl-card" data-car="vw-multivan">
@@ -1197,7 +1179,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Мінівен</span><span class="seats" role="img" aria-label="до 6 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Volkswagen Multivan</h3>
           <p>до 6 пасажирів · мінівен</p>
-          <div class="fl-act"><a href="/?car=vw-multivan#booking" class="go" data-pick-car="vw-multivan">Замовити →</a><a href="/avtopark/#vw-multivan" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#vw-multivan" class="go">Детальніше →</a></div>
         </div>
       </article>
       <article class="fl-card" data-car="fiat-talento">
@@ -1206,7 +1188,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Мінівен</span><span class="seats" role="img" aria-label="до 8 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Fiat Talento</h3>
           <p>до 8 пасажирів · мінівен</p>
-          <div class="fl-act"><a href="/?car=fiat-talento#booking" class="go" data-pick-car="fiat-talento">Замовити →</a><a href="/avtopark/#fiat-talento" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#fiat-talento" class="go">Детальніше →</a></div>
         </div>
       </article>
       <article class="fl-card" data-car="fusion">
@@ -1215,7 +1197,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Комфорт</span><span class="seats" role="img" aria-label="до 3 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Ford Fusion</h3>
           <p>до 3 пасажирів · седан</p>
-          <div class="fl-act"><a href="/?car=fusion#booking" class="go" data-pick-car="fusion">Замовити →</a><a href="/avtopark/#fusion" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#fusion" class="go">Детальніше →</a></div>
         </div>
       </article>
       <article class="fl-card" data-car="rogue">
@@ -1224,13 +1206,13 @@ select.inp option { background: var(--ink); color: var(--fg); }
           <div class="cls"><span>Комфорт</span><span class="seats" role="img" aria-label="до 4 пасажирів"><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg><svg><use href="#i-seat"/></svg></span></div>
           <h3>Nissan Rogue</h3>
           <p>до 4 пасажирів · кросовер</p>
-          <div class="fl-act"><a href="/?car=rogue#booking" class="go" data-pick-car="rogue">Замовити →</a><a href="/avtopark/#rogue" class="more">Детальніше</a></div>
+          <div class="fl-act"><a href="/avtopark/#rogue" class="go">Детальніше →</a></div>
         </div>
       </article>
     </div>
     <div class="fl-foot">
       <div class="fl-ctrl"><button type="button" class="fl-arrow prev" aria-label="Попередні авто" disabled><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="fl-arrow next" aria-label="Наступні авто"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
-      <a href="/avtopark/" class="btn btn-ghost">Весь автопарк →</a>
+      <div class="fl-foot-acts"><a href="/avtopark/" class="btn btn-ghost">Весь автопарк →</a><a href="#booking" class="btn btn-primary">Замовити поїздку</a></div>
     </div>
   </div>
 </section>
@@ -2245,9 +2227,12 @@ select.inp option { background: var(--ink); color: var(--fg); }
     return null;
   }
 
-  var fromEl = $('#from'), toEl = $('#to'), dateEl = $('#date'), timeEl = $('#time'), classEl = $('#car_class'), petsEl = $('#pets');
+  var fromEl = $('#from'), toEl = $('#to'), dateEl = $('#date'), timeEl = $('#time'), petsEl = $('#pets');
   var estEl = $('#estVal'), estCur = $('#estCur'), estFrom = $('#estFrom'), noteEl = $('#priceNote');
   var currentPrice = null, lastViewed = '', priceAnimFrom = 0, priceRaf = 0;
+  var CAR = null;   // car selection hooks (stub chip, price note, booking payload, reset); null = the client doesn't pick a car
+/* car-selection:js */
+/* /car-selection:js */
   function animPrice(to) {
     cancelAnimationFrame(priceRaf);
     var from = priceAnimFrom; priceAnimFrom = to;
@@ -2259,7 +2244,6 @@ select.inp option { background: var(--ink); color: var(--fg); }
       if (k < 1) priceRaf = requestAnimationFrame(f);
     })(t0);
   }
-  function carOpt() { return classEl.options[classEl.selectedIndex] || classEl.options[0]; }
   function updateStub() {
     var f = fromEl.value.trim(), t = toEl.value.trim();
     var sf = $('#stubFrom'), st = $('#stubTo');
@@ -2268,7 +2252,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
     $('#stubRoute').classList.toggle('has', !!(f && t));
     $('#chipDate').textContent = dateEl.value ? dateEl.value.split('-').reverse().join('.') : '—';
     $('#chipTime').textContent = timeEl.value || '—';
-    $('#chipClass').textContent = carOpt().dataset.chip;
+    if (CAR) CAR.stub();
     $('#chipPet').classList.toggle('on', petsEl.checked);
   }
   function calc() {
@@ -2282,10 +2266,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
     currentPrice = price;
     if (price !== null) {
       animPrice(price); estCur.classList.add('on');
-      // бізнес-клас (Avalon, обидва Passat, Lincoln) — точна ціна маршруту; для комфорт/преміум/мінівен вартість підтверджує оператор
-      var base = carOpt().dataset.cls === 'Бізнес';
-      estFrom.classList.toggle('on', !base);
-      noteEl.textContent = base ? '* Фіксована ціна за маршрут' : '* Ціна для бізнес-класу. Вартість для ' + carOpt().dataset.name + ' підтвердить оператор';
+      noteEl.textContent = CAR ? CAR.note() : '* Фіксована ціна за маршрут';
       var key = normCity(from) + '|' + normCity(to);
       if (key !== lastViewed) { lastViewed = key; track('event', 'view_item', { currency: 'UAH', value: price, items: [{ item_name: from + ' → ' + to }] }); }
     } else {
@@ -2295,7 +2276,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
   }
   window.calc = calc;
   [fromEl, toEl].forEach(function (el) { el.addEventListener('input', calc); el.addEventListener('change', calc); });
-  [dateEl, timeEl, classEl, petsEl].forEach(function (el) { el.addEventListener('input', calc); el.addEventListener('change', calc); });
+  [dateEl, timeEl, petsEl].forEach(function (el) { el.addEventListener('input', calc); el.addEventListener('change', calc); });
 
   /* ---------- Autocomplete ---------- */
   function acInput(input, listId) {
@@ -2367,7 +2348,6 @@ select.inp option { background: var(--ink); color: var(--fg); }
     var to = (toEl.value || '').trim();
     var date = (dateEl.value || '').trim();
     var time = (timeEl.value || '').trim();
-    var car = classEl.value || 'avalon-white', carClass = carOpt().dataset.cls || 'Бізнес';
     var comment = ($('#comment').value || '').trim();
     var pets = !!petsEl.checked;
     var honeypot = $('#hp_field').value || '';
@@ -2395,7 +2375,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
       var res = await fetch(API + '/booking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name, phone: phone, from_city: from, to_city: to, date: date, time: time, car_class: carClass, car: car, price: price, comment: comment, pets: pets, honeypot: honeypot })
+        body: JSON.stringify((function (o) { return CAR ? CAR.payload(o) : o; })({ name: name, phone: phone, from_city: from, to_city: to, date: date, time: time, price: price, comment: comment, pets: pets, honeypot: honeypot }))
       });
       var data = null;
       try { data = await res.json(); } catch (_) { data = null; }
@@ -2403,7 +2383,7 @@ select.inp option { background: var(--ink); color: var(--fg); }
       if (res.ok && data && data.ok) {
         track('event', 'purchase', { currency: 'UAH', value: parseInt(price, 10) || 0, transaction_id: data.booking_id || '', items: [{ item_name: from + ' → ' + to }] });
         $('#name').value = ''; $('#phone').value = '+38 '; fromEl.value = ''; toEl.value = '';
-        resetDate(); timeEl.value = ''; $('#comment').value = ''; petsEl.checked = false; classEl.value = 'avalon-white';
+        resetDate(); timeEl.value = ''; $('#comment').value = ''; petsEl.checked = false; if (CAR) CAR.reset();
         lastViewed = ''; calc();
         openModal('successModal');
       } else if (res.status === 429) {
@@ -2493,21 +2473,8 @@ select.inp option { background: var(--ink); color: var(--fg); }
   })();
   calc();
 
-  /* ---------- Car preselect: /?car=<slug>#booking (fleet cards, /avtopark/) ---------- */
-  function pickCar(slug) {
-    // cars of the same model share one option: ?car= of any of them (data-alias) selects it
-    slug = slug && String(slug).replace(/[^a-z0-9-]/g, '');
-    var o = slug && (classEl.querySelector('option[value="' + slug + '"]') || classEl.querySelector('option[data-alias~="' + slug + '"]'));
-    if (!o) return false;
-    classEl.value = o.value; calc(); return true;
-  }
-  try {
-    if (pickCar(new URLSearchParams(location.search).get('car'))) setTimeout(function () { $('#booking').scrollIntoView({ behavior: RM ? 'auto' : 'smooth' }); }, 300);
-  } catch (e) {}
-  $$('[data-pick-car]').forEach(function (a) {
-    a.addEventListener('click', function (e) { if (pickCar(a.dataset.pickCar)) { e.preventDefault(); $('#booking').scrollIntoView({ behavior: RM ? 'auto' : 'smooth' }); } });
-  });
-
+/* car-selection:preselect */
+/* /car-selection:preselect */
   /* ---------- Auto popups (max one automatic popup per session) ---------- */
   var AUTO_KEY = 'tk_auto_popup';
   function formBusy() { var a = document.activeElement; return formTouched || (a && a.closest && a.closest('#bookingForm')); }
